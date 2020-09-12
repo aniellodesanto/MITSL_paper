@@ -1,0 +1,53 @@
+\begin{tikzpicture} %SSTSL EXAMPLE
+    \node (A) at (-1.2,1.4) {\textbf{(b)}};
+      \node (60) at (-0.5,0) {$\rtimes$};
+        \node (0) at (0,0) {s};
+        \node (1) at (0.5,0) {n};
+        \node (2) at (1,0) {e};
+        \node (3) at (1.5,0) {t};
+        \node (4) at (2,0) {u };
+        \node (5) at (2.5,0) {s};
+      \node (6) at (3,0) {$\ltimes$};
+        %%tier
+             \node (600) at (-0.5,1) {$\rtimes$};
+       \node (00) at (0,1) {s};
+       \node (01) at (0.5,1) {n};
+       \node (5) at (2.5,1) {s};
+          \node (06) at (3,1) {$\ltimes$};
+        %
+        %projection function
+       \draw[dashed, blue] (-0.7,-0.28 ) rectangle (0.25, 0.28);
+         \draw  [dashed, blue] (-0.2,-0.2 ) rectangle (0.65, 0.2);
+         \draw [dashed, blue](2.25,-0.28 ) rectangle (3.25, 0.28);
+          %local constraints   
+ 	 \node (000) at (-0.6,1.3){$^{ok}$};
+        \draw [dashed, green!50!black](-0.3, 0.7) -- (2.7, 0.7) -- (2.7,1.3) -- (-0.3,1.3) -- (-0.3, 0.7);
+        %tier bar
+        \draw[dotted, thick, blue] (-0.65,0.60) to (3.3,0.60);
+       % \node at (-0.5,0.40) {{\tiny T}};
+        
+        \begin{scope}[xshift=-180pt] %string in the center
+         \node (A) at (-1.2,1.4) {\textbf{(a)}};
+         \node (60) at (-0.5,0) {$\rtimes$};
+        \node (0) at (0,0) {s};
+        \node (1) at (0.5,0) {n};
+        \node (2) at (1,0) {i};
+        \node (3) at (1.5,0) {\textglotstop};
+         \node (6) at (2,0) {$\ltimes$};
+        %%tier
+          \node (600) at (-0.5,1) {$\rtimes$};
+        \node (00) at (0,1) {s};
+        \node (01) at (0.5,1) {n};
+          \node (006) at (2,1) {$\ltimes$};
+        %projection function
+        \draw[dashed, blue] (-0.7,-0.28 ) rectangle (0.25, 0.28);
+        \draw  [dashed, blue] (-0.2,-0.2 ) rectangle (0.65, 0.2);
+	%local constraints
+        \node (000) at (-0.5,1.3) {$^*$};
+        \draw [dashed, red] (-0.3, 0.7) -- (2.25, 0.7) -- (2.25,1.3) -- (-0.3,1.3) -- (-0.3, 0.7);
+      \draw[dotted, thick, blue] (-0.65,0.60) to (2.5,0.60);
+       % \node at (-0.5,0.40) {{\tiny T}};
+        %
+        \end{scope}
+        
+        \end{tikzpicture}

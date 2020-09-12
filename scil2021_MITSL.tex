@@ -1,0 +1,402 @@
+%
+% File acl2020.tex
+%
+%% Based on the style files for ACL 2020, which were
+%% Based on the style files for ACL 2018, NAACL 2018/19, which were
+%% Based on the style files for ACL-2015, with some improvements
+%%  taken from the NAACL-2016 style
+%% Based on the style files for ACL-2014, which were, in turn,
+%% based on ACL-2013, ACL-2012, ACL-2011, ACL-2010, ACL-IJCNLP-2009,
+%% EACL-2009, IJCNLP-2008...
+%% Based on the style files for EACL 2006 by 
+%%e.agirre@ehu.es or Sergi.Balari@uab.es
+%% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[hyperref]{acl2020}
+\usepackage{times}
+\usepackage{latexsym}
+\renewcommand{\UrlFont}{\ttfamily\small}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+%\aclfinalcopy % Uncomment this line for the final submission
+%\def\aclpaperid{***} %  Enter the acl Paper ID here
+
+%=======================Additional  Packages ==============%
+\usepackage{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usetikzlibrary{positioning}
+\usepackage{mypackages}
+
+\usepackage{latexsym,amssymb,amsfonts,amsmath}
+\usepackage{pstricks,verbatim,url,float}
+\usepackage{makeidx}
+\usepackage{multirow}
+
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{tipa}
+\usepackage{algorithm2e}
+\usepackage{microtype}
+\usepackage{linguex}
+\usepackage{stmaryrd}
+\usepackage{amsthm}
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{gastex}
+\usepackage[normalem]{ulem}
+
+%=======================Additional  Commands ==============%
+\usepackage{mycommands}
+\newcommand{\unproject}[1]{\ensuremath{\downarrow #1}}
+\newcommand{\comment}[3]{\textbf{From:} {#1} \textbf{To:} {#2} \textcolor{red}{#3}}
+\newcommand{\etal}{\emph{et al. }}
+
+%function macros
+\input{mathmacros}
+\input{tslmacros}
+
+\def\erase{\ensuremath{\texttt{erase}_T}}
+
+%k-factor macros
+\def\subst{\ensuremath{\sqsubseteq}}
+\def\fack{\ensuremath{\texttt{fac}_k}}
+\newcommand{\facn}[1]{\ensuremath{\texttt{fac}_{#1}}}
+\def\fackplus{\ensuremath{\texttt{fac}_{k+1}}}
+\def\fackminus{\ensuremath{\texttt{fac}_{k-1}}}
+\newcommand{\factn}[1]{\ensuremath{\texttt{fack}_{T\tn{-}#1}}}
+
+\newcommand{\Suff}{\ensuremath{\mathtt{Suff}}}
+\newcommand{\tails}{\ensuremath{\mathtt{tails}}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newcommand{\blank}{\rule{1em}{.5pt}}
+
+
+%\aclfinalcopy % Uncomment this line for the final submission
+%\def\aclpaperid{***} %  Enter the acl Paper ID here
+
+
+%\setlength\titlebox{5cm}
+% You can expand the titlebox if you need extra space
+% to show all the authors. Please do not make the titlebox
+% smaller than 5cm (the original size); we will check this
+% in the camera-ready version and ask you to change it back.
+
+
+%%%%%%%%%%%
+% {{{ example numbering
+% as usual gb4e's spaghetti code ruins something that we need to fix with silly hacks
+\makeatletter
+\def\new@fontshape{}
+\makeatother
+\usepackage{gb4e}
+\noautomath
+% }}}
+
+
+%%%%%%%
+
+\newcommand\BibTeX{B\textsc{ib}\TeX}
+
+\title{Instructions for ACL 2020 Proceedings}
+
+\author{First Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\\And
+  Second Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+\end{abstract}
+
+
+\section{Introduction}
+
+Formal language theory has long been used to study the complexity of linguistic dependencies.
+Recent research in this sense has posited that the phonotactics of natural languages can be described by subclasses of the regular languages.
+In particular, tier-based strictly local (TSL) grammars  ---  a minor extension of n-gram models --- have been shown to be able to capture a variety of non-local, unbounded processes \cite{HeinzRawalTanner,McMullin16,McMullinHansson16}.
+Recently however, it has been suggested that the particular notion of relativized locality employed by the TSL class is unable to describe a variety of complex phonotactic patterns cross-linguistically.
+Based on this linguistic motivation, extensions have been proposed in the search of the right fit for natural language phonotactics.
+Specifically, input-sensitive TSL languages have been suggested as being able to encode a combination of local and non local requirements on the well-formedness of strings in the language.
+
+Apart from typological coverage, an important aspect of evaluating the linguistic relevance of these analyses is to understand under which conditions such patterns are learnable.
+In this sense, an approach to learning grounded in grammatical inferences in interesting, as it illumintaes how properties of the patterns can restrict the learning space in useful ways.
+In this framework, TSL languages have been shown to be efficiently learnable from positive input only.
+While ITSL languages have been argued to share the same property, no learning algorithm exists for this class.
+In this paper, we extend \citet{McMullinSCIL2019} inference algorithm for multiple tier-based strictly $2$ local languages (MITSL$_2$), in order to learn patterns in the intersection closure of ITSL$_2$ which consider $2$-local \emph{contexts} for segments in the input string (MITSL$^2_2$). 
+The intersection closure is essential, if we strive to provide learning approaches able to capture the whole phonotactics of a language, and not one single pattern at the time.
+We evaluate our algorithm qualitatively ove†r a variety of natural and formal examples, and discuss known limitations of the framework and possible extensions.
+
+\section{MITSL Languages and Linguistic Motivation}
+\label{sec:length}
+
+%Tier-based strictly local languages (TSL) are able to encode a notion of relativized locality inspired by the idea of phonological tier, already popular in autosegmental phonology   \cite{goldsmith1976autosegmental}.
+%While this class fits a variety of patterns cross-linguistically, recently it has been pointed out that the way the TSL tier is constructed might be too restrictive to capture several phonotactic phenomena.
+%
+%In a TSL grammar,  a tier is defined as the projection of a subset of the segments of the input string, with n-gram constraints acting only over that subset.
+%The primary motivation for studying the properties of TSL extensions comes from their relevance as a formal model of natural language phonotactics.  
+Many dependencies in phonology can be captured by SL grammars: \emph{local constraints} that only make distinctions on the basis of contiguous substrings of segments up to some length $k$ \citep[essentially, $k$-grams;][]{Heinz2011a}.
+For example, a ($k$=2) local dependency requiring \textipa{/s/} to surface as \textipa{[z]} when followed by \textipa{[l]} can be captured by a grammar that forbids the sequence \textipa{[sl]}.
+However, (unbounded) long-distance dependencies cannot be captured by local constraints, and have been characterized instead as \emph{tier-based strictly local}.
+
+%We give a full introduction to the mathematical properties of TSL in Section~\ref{ssec:Subreg_intro}, but an informal treatment will suffice for now.
+Tier-based strictly local languages (TSL) are able to encode a notion of relativized locality inspired by the idea of phonological tier, already popular in autosegmental phonology   \cite{goldsmith1976autosegmental}.
+While a  formal introduction  to the properties of TSL  is beyond the scope of this paper,  a TSL dependency is intuitively non-local in the input string but local over a \emph{tier}.
+A tier is defined as the projection of a subset of the segments of the input string, and the grammar constraints are characterized as the set of sequences of length $k$ not allowed on the tier.
+For instance, the example in Figure~\ref{fig:Aari} (from Aari, an Omotic language of south Ethiopia) shows how to enforce long-distance sibilant harmony in anteriority.
+First one projects from the string a tier $T$ that only contains sibilants, and then one bans contiguous \textipa{[\textctyogh s]} and \textipa{[s\textctyogh]} on $T$ (see \cite{Hayward_Aari}).
+%
+ \begin{figure}[h!]
+\begin{center}
+%\resizebox{0.6\textwidth}{!}{%
+\input{./img/example1.tikz}
+%}
+\end{center}
+\caption{Example of sibilant harmony over tier from Aari. }
+\label{fig:Aari}
+\end{figure}
+%\vspace{-0.3cm}
+
+The class of TSL languages has been shown to have good cross-linguistic coverage, accounting for a variety of different phonotactic patters cross-linguistically \citep{HeinzRawalTanner,McMullin16}.
+Moreover, and most interesting to us, TSL$_k$ languages have been shown to be efficiently (in time and input) learnable in the limit from positive data, even when the tier-alphabet is not known \emph{a priori}  \citep{JardineHeinz16,Graf17Phonology,jardinemcmullin17}.
+
+However, there are two main known limits to TSL as a good formal account for natural language phonotactics.
+
+First, it is known that TSL languages are not closed under intersection.
+Lack of closure under intersection is problematic as it entails that the complexity of phonological dependencies is no longer constant under factorization.
+This implies that the upper bound for phonological phenomena would shift, depending on whether one treats a constraint as a single phenomenon or the interaction of multiple phenomena.
+Moreover, we clearly want to be able to consider multiple phenomena at the same time when describing the phonotactics of a language.
+Intersection closure is thus a fundamentally desirable property from a linguistic perspective.
+To account for this, \citet{desanto2019structure} propose the multiple tier-based strictly local (MTSL) class, as a proper extension of TSL formalizing its intersection closure.
+Intuitively, MTSL can be conceptualized has a class encoding multiple projections (tiers) at the same time, and enforcing distinct strictly local constraints over each tier.
+\citet{McMullinSCIL2019} propose an algorithm that efficiently learns multiple tier-based strictly $2$-local  (i.e. where tier constraints are bigrams) dependencies, with no a-priori knowledge about the tier-segments or the number of tiers required.
+
+
+The second limit of TSL lies in the simplicity of its projection mechanism.
+Recently, several patterns have been reported that cannot be described by the way TSL currently uses tier projection to mask out parts of a string before enforcing some strictly local constraint \citep{McMullin16,MayerMajor18,Baek2017CLS,graf2018sanskrit,desanto2019structure}.
+These patterns include the long-distance sibilant harmony in Imdlawn Tashlhiyt  \citep{McMullin16}, the nasal harmony pattern in Yaka \cite{WalkerYaka}, the unbounded stress of Classical Arabic (see \cite{Baek2017CLS} and references therein), and cases of unbounded tone plateauing.
+These patterns share the common trait that one has to inspect the local context of a segment before projecting it on a tier. 
+
+Consider the case of sibilant harmony in Samala, where an unbounded dependency can override a local one (see \cite{Applegate72} for the original data set and \cite{McMullin16} for a subregular analysis).
+
+\begin{exe}
+    \ex\label{ex:1}\begin{xlist}
+    	 \ex\label{ex:1a} \textipa{/k-su-Sojin/} $\rightarrow$  \textipa{kSuSojin}   
+	\end{xlist}
+    \ex\label{ex:2}\begin{xlist}
+     	\ex\label{ex:2a}\textipa{/s-ni\textglotstop/}  $\rightarrow$ \textipa{Sni\textglotstop} 
+    	\ex\label{ex:2b} \textipa{/s-ni\textglotstop/}  $\rightarrow$ $^*$\textipa{sni\textglotstop}
+    \end{xlist}
+     \ex\label{ex:3}\begin{xlist}
+    	 \ex\label{ex:3a}   \textipa{/s-net-us/}  $\rightarrow$  \textipa{snetus}
+	 \ex\label{ex:3b}   \textipa{/s-net-us/}  $\rightarrow$  $^*$\textipa{Senetus}
+	\end{xlist}
+\end{exe}
+
+
+Like Aari, Samala displays sibilant harmony such that \textipa{[s]} and \textipa{[S]} may not co-occur anywhere within the same word (cf. Ex.~(\ref{ex:1a})).
+There is also a ban against string-adjacent \textipa{[st]}, \textipa{[sn]}, \textipa{[sl]}, which is resolved by dissimilation of \textipa{[s]} to \textipa{[S]} (cf. Ex.~(\ref{ex:2a}) and (\ref{ex:2b})). %  (b) and (c).
+However, dissimilation is blocked if the result would violate sibilant harmony.
+Thus \textipa{/sn/} surfaces as \textipa{[Sn]} or \textipa{[sn]} depending on whether the word contains \textipa{[s]} somewhere to the right (cf. Ex.~(\ref{ex:2a}) and (\ref{ex:3a})).%(b) and (d)):
+
+
+\begin{figure}[t]
+\centering
+    \input{./img/tier_left.tikz}   %    \input{./img/tier_left_new.tikz} 
+        %
+       \hspace{2cm}
+    \input{./img/tier_right.tikz}    
+        \caption{Example of a TSL analysis of sibilant harmony in Samala: (a) is ill-formed because of adjacent $^*$\textipa{[sn]}; (b) is well-formed since  \textipa{[sn]} is followed by another  \textipa{[s]} later in the string, but it is still ruled out by the grammar.}
+        %if switched to new example
+        % \caption{Example of a TSL analysis of sibilant harmony in Samala: (a) should be  ill-formed because of violated sibilant harmony, but \textipa{[s]} and \textipa{[S]} are not adjacent on the tier so the grammar allows it; (b) is well-formed since  \textipa{[sn]} is followed by another  \textipa{[s]} later in the string, but it is still ruled out by the grammar because of adjacent \textipa{[sn]}.}
+        \label{fig:SAMALA1}
+        \end{figure}
+
+Fig.~\ref{fig:SAMALA1} exemplifies why this interaction of a local and a non-local dependency is not TSL\@. 
+Since \textipa{[sn]} is sometimes observed in a string-adjacent context (as in Ex.~(\ref{ex:3a})), it must be permitted as a $2$-gram on a tier --- even though it is only allowed when a segment such as \textipa{[s]} follows later in the string.
+But then,  a TSL grammar would have no means of distinguishing Ex.~(\ref{ex:2a}) from Ex.~(\ref{ex:3a}).
+%But then, a TSL grammar would have no means of banning \textipa{[sn]} when there is no subsequent \textipa{[s]} in the string (as in  Ex.~(\ref{ex:2a}) vs. (\ref{ex:2b})).
+Vice-versa, if we ban  \textipa{[sn]} on $T$, then the grammar will not be able to allow it when another \textipa{[s]} follows on the tier.
+%
+
+The reader might point out that the difference between Fig.~ \ref{fig:SAMALA1}.a and Fig.~ \ref{fig:SAMALA1}.b can be resolved by extending the tier-grammar to consider $3$-grams; which are anyway needed to account for the contrast between Ex.~(\ref{ex:3a}) and Ex.~(\ref{ex:3b}).
+However, in order to ban \textipa{[sn]}, the tier-projection places every occurrence of \textipa{[n]} in the string on the tier.
+Since the number of \textipa{[n]} segments between two sibilants is potentially unbounded, no TSL grammar can generally account for this pattern, independently of the dimension of the tier $k$-grams.
+The 3-gram proposal would work, though, if we could limit projection of \textipa{[n]} to only those segments that immediately follow an \textipa{[s]}.
+This is not possible with TSL as originally defined in \cite{HeinzRawalTanner}, as TSL selects tier elements only based on their $1$-local properties (i.e. which kind of segment they are). %Sec.~\ref{sec:SSTSL}.
+This kind of patters have inspired the definition of a different TSL extension --- input-sensitive TSL (ITSL) --- with a projection mechanism simultaneously aware of local and non-local properties of segments in the string \citep{desanto2019structure}.
+
+\begin{figure}[]
+\begin{center}
+    %\input{./img/sstsl.tikz}
+    \input{./img/sstsl_new.tikz}
+        \end{center}
+        % \caption{Example from Samala, allowing generalized tier projection: (a) is ill-formed because of $^*$\textipa{sn}; (b) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
+         %if changed to new fig
+        \caption{Example from Samala, allowing generalized tier projection: (a) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string; (b) is ill-formed because of $^*$\textipa{Ss}. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
+        \label{fig:SAMALA}
+        \end{figure}
+
+To see how this works in practice, consider again Samala's combination of  long-distance sibilant harmony with local dissimilation between \textipa{/s/} and \textipa{/n/}.
+%
+Fig.~\ref{fig:SAMALA} shows how, by increasing the locality of the projection to $2$, we allow the grammar to project  \textipa{[n]} iff it is immediately preceded by a sibilant in the input string, and then use $3$-local tier constraints to ban  $\{$\textipa{sn}($\neg$ \textipa{s}), \textipa{Sns}$\}$, in addition to the factors needed to enforce the usual sibilant harmony patterns.
+%
+This time, the possible unboundedness of \textipa{[n]} is not a problem, since \textipa{[n]} is now relevant for the projection only when adjacent to a sibilant.
+In the rest of the paper, we present a grammatical inference algorithm able to learn ITSL grammars with 2-local contexts and 2-local tier constraints (ITSL$^2_2$), only from positive examples and without a-priori knowledge about the tiers.
+Since, as discussed, intersection closure if a fundamental component of natural language phonotactics, we directly expand of \citet{McMullinSCIL2019}'s MTSL2IA algorithm for MTSL$_2$ languages, and learn conjunctions of ITSL$^2_2$ languages (MITSL$^2_2$).
+
+
+\section{MITSL Inference Algorithm}
+
+The remainder of the paper discusses our learning algorithm for MITSL languages with projection contexts and tier constraints of size $2$ (MITSL$^2_2$).
+While the previous section presented an intuitive definition of MITSL languages, a more formal definition is necessary in order to understand the way the algorithm works.
+Thus, we first introduce some mathematical preliminaries and discuss how the definition of MITSL grammar presented in \citep{desanto2019structure}  grounds the intuition behind our generalization of \citet{McMullinSCIL2019}'s learning algorithm. 
+We also discuss a generalization of the notion of  $2\text{-}path$ as introduced by \citet{JardineHeinz2016}.
+
+
+\subsection{Formal Preliminaries}
+
+%symbols background
+We assume familiarity with set notation on the reader's part.
+Given a finite alphabet $\Sigma$, $\Sigma^*$ is the set of all possible finite strings of symbols drawn from $\Sigma$. %while $\Sigma^{\leq n}$ denotes the set of strings of length $\leq n$.
+A language $L$ is a subset of $\Sigma^*$.
+For every string $w$ and every non-empty string $u$, $|w|$ denotes the length of the string, $|w|_u$ denotes the number of occurrences of $u$ in $w$, and $\lambda$ is the unique empty string.
+Left and right word boundaries are marked by  $\rtimes, \ltimes \notin \Sigma$ respectively.
+
+A string $u$ is a $k$-\emph{factor} of a string $w$ iff $\exists x, y \in \Sigma^*$ such that $w=xuy$ and $|u| = k$. 
+The function $\facn{k}$ maps words to the set of $k$-factors within them: $\facn{k}(w) := \{ u : u \textit{ is a $k$-factor of } w \textit{ if } |w| \geq k, \textit{ else } u = w\}$.
+For example, $\facn{2}(aab) = \{ aa, ab\}$.
+%
+The domain of $\facn{k}$ is generalized to languages $L \subseteq \Sigma^*$ in the usual way: $\facn{k}(L) = \bigcup_{w \in L} \facn{k}(w)$.
+
+As usual, we allow standard Boolean connectives ($\wedge$, $\vee$, $\neg$, $\rightarrow $), and first-order quantification ($\exists$, $\forall $) over individuals. 
+We let $x \prec y$ denote \emph{precedence}, $x \approx y$ denote \emph{identity}, and $x, y$ denote variables ranging over positions in a finite string $w \in \Sigma^*$. Note that $\prec$ is a strict total order.
+The remaining logical connectives are obtained from the given ones in the standard fashion, and brackets may be dropped where convenient. 
+For example, \emph{immediate precedence} is defined as $x \triangleleft y \leftrightarrow x \prec y \wedge \neg \exists z [ x \prec z \wedge z \prec y ]$.
+%
+%We add a dedicated predicate for each label $\sigma \in \Sigma$ we wish to use: $\sigma(x)$ holds iff $x$ is labelled $\sigma$, where $x$ is a position in $w$.
+%Classical results on definability of strings represented as finite first-order structures are then used \cite{McNaughtonPapert71}.
+%If $\Sigma = \{ \sigma_1, \dots, \sigma_n \}$, then a string $w \in \Sigma^*$ can be represented as a structure $M_w$ in the signature$(\sigma_1(\cdot), \dots, \sigma_n(\cdot), \prec)$. 
+%% $(P_{\sigma_1}, \dots, P_{\sigma_n}, \prec)$. 
+%If $\varphi$ is a logical formula without any free variables, we use $L(\varphi) = \{ w \in \Sigma^* | M_w \text{ satisfies } \varphi \}$ as the stringset extension of $\varphi$ .
+
+%ITSL languages
+TSL languages were deinied by \citet{} as a class where $k$-local constraints only apply to elements of a tier $T \subseteq \Sigma$.
+In order to do so, an erasing function (also called projection function hereafter) is introduced to delete (or mask) all symbols that are not in $T$.
+In order to extend the notion of tier in TSL languages to consider local properties of the segments in the input string, \citet{desanto2019structure} take inspiration from \cite{ChandleeHeinz18} and define ITSL projection function in terms of local contexts.
+%
+\begin{definition}[Contexts]
+    A \emph{$k$-context} $c$ over alphabet $\Sigma$ is a triple $\tuple{\sigma, u, v}$ such that $\sigma \in \Sigma$, $u, v \in \Sigma^*$ and $|u| + |v| \leq k$.
+    A \emph{$k$-context set} is a finite set of $k$-contexts.
+\end{definition}
+%
+\begin{definition}[ISL Projection]
+    Let $C$ be a $k$-context set over $\Sigma$ (where $\Sigma$ is an arbitrary alphabet also containing edge-markers).
+    Then the \emph{input strictly $k$-local} (ISL-$k$) tier projection $\pi_C$ maps every $s \in \Sigma^*$ to $\pi'_C(\LeftEdge^{k-1}, s\RightEdge^{k-1})$, where $\pi'_C(u, \sigma v)$ is defined as follows, given $\sigma \in \Sigma \cup \setof{\emptystring}$ and $u,v \in \Sigma^*$:
+    %
+    \[
+    \begin{array}{ll}
+        \emptystring & \text{if } \sigma a v = \emptystring,\\
+        \sigma \pi'_C(u\sigma, v) & \text{if } \tuple{\sigma, u, v} \in C,\\
+        \pi'_C(u\sigma, v) & \text{otherwise.}
+    \end{array}
+    \]
+\end{definition}
+Note that an ISL-$1$ tier projection only determines projection of $\sigma$ based on $\sigma$ itself, showing that this projection function is really just an extension of what happens for TSL languages\@.
+The definition of ITSL languages then  is as follows\@.
+
+\begin{definition}[ITSL]
+A language $L$ is \emph{$m$-input local $k$-TSL} ($m$-ITSL$_k$) iff there exists an $m$-context set $C$ and a finite set $S \subseteq \Sigma^k$ such that
+\[
+L = \{ w \in \Sigma^*: F_k (\rtimes^{k-1} \pi_C(w) \ltimes^{k-1})  \cap S = \emptyset \}.
+\]
+A language is \emph{input-local TSL} (ITSL) iff it is $m$-ITSL$_k$ for some $k, m \geq 0$.
+We call $\tuple{S, C}$ an ITSL grammar.
+\label{dfn:ITSL}
+\end{definition}
+
+Note that the notion of tier is here expressed by the set of contexts C, which is the set of tier segments with the locality conditions necessary for them to be relevant to the tier constraints.
+%This shows that ISL-$k$-tier projections are a natural generalization of $E_T$ even though they are no longer defined in terms of some $T \subseteq \Sigma$.
+
+Let us return to the interaction of local dissimilation and non-local harmony in Samala.
+This process can be handled by an $2$-ITSL$_3$ grammar $\tuple{S, C}$ with
+%
+\begin{itemize}
+    \item $S \is \setof{ \text{\textipa{sS}}, \text{\textipa{Ss}}, \text{\textipa{snx}} }$ where $\text{\textipa{x}} \in \{\Sigma - s\}$,
+    \item $C$ contains all of the following contexts, and only those:
+        \begin{itemize}
+            \item \tuple{\textipa{s}, \emptystring, \emptystring}
+            \item \tuple{\textipa{S}, \emptystring, \emptystring}
+            \item \tuple{\textipa{n}, \textipa{s}, \emptystring}
+        \end{itemize}
+\end{itemize}
+
+%2paths
+To do so, the algorithm incorporates the notion of a $2\text{-}path$ \citep{JardineHeinz2016}. 
+
+Intuitively, a 2-path can be thought of as a precedence relation ($\rho_1\ldots{}\rho_2$) accompanied by the set $X$ of symbols that intervene between $\rho_1$ and $\rho_2$. Formally, each 2-path is therefore a 3-tuple of the form $\tup{\rho_1, X, \rho_2}$. For example, the string $abcc$ includes the following 2-paths: $\tup{a, \emptyset, b}, \tup{a, \{b\}, c}, \tup{a, \{b,c\}, c}, \tup{b, \emptyset, c}, \tup{b, \{c\}, c}$. 
+\subsection{The Algorithm}
+
+\begin{algorithm}[!ht]
+	\KwData{A finite input sample $I\subset \Sigma^*$}
+    \KwResult{MITSL$^2_2$ grammar of the form $G=\bigwedge\tup{T_i,R_i}$}
+    Initialize $F=\facn{4}(\Sigma^*)-\facn{4}(I)$; \\
+    Initialize $B=\facn{2}(\Sigma^*)$; \\
+    	\ForEach{$f \in F$}
+        	{
+            Initialize $R_i=f$, $T_i=B$; (with $1 \leq i \leq  |F|$) \\
+            \ForEach{$\sigma\in B - \{f[:2], f[2:]\}$}
+            	{
+                	~\lIf {$\forall \tup{f[:2], X, f[2:]}\in paths_2(I)$ s.t. $\sigma\in X, \tup{f[:2], X-\{\sigma\}, f[2:]}\in paths_2(I)$\\}
+    					{$T_i=T_i-\{\sigma\}$ (i.e., remove $\sigma$ from $T_i$)}}
+					$G_i=\tup{T_i,R_i}$
+                }
+            $\mathbf{Return}\tn{ }G=G_1\wedge G_2\wedge ... \wedge G_{|F|}$
+            \medskip
+	\caption{Pseudocode for the MITSL$^2_2$ Inference Algorithm introduced in this paper.}
+\end{algorithm}
+
+%\ForEach{$\sigma\in\Sigma - \{f[0], f[1], f[2], f[3]\}$}
+ The algorithm exploits the fact that if a bigram $\rho_1\rho_2$ is banned on some tier, then it will never appear in string-adjacent contexts. For each $\rho_1\rho_2$ absent from the training data, the goal is therefore to determine which segments can be safely removed from the associated tier. 
+  In short, by examining the set of 2-paths present in the training data allows, we can determine which segments are freely distributed with respect to a bigram $\rho_1\rho_2$ that is known to be banned on some tier. Specifically, if all of the attested $\tup{\rho_1, X, \rho_2}$ 2-paths that include an intervening $\sigma$ are likewise attested \emph{without} an intervening $\sigma$, the algorithm removes $\sigma$ from the tier, since the presence of $\rho_1\ldots{}\rho_2$ is not dependent on an intervening $\sigma$.
+
+\subsection{Qualitative Evaluation: An Artificial MITSL$^2_2$ Pattern}
+
+\subsection{Unlearnable Patterns}
+
+ However, we note that the algorithm relies on the assumption that each bigram restriction is enforced on at most one tier. A small portion of logically-possible MTSL patterns therefore remains out of reach at present, but the problematic cases are among those which \citet{AksenovaDeshmukh2018} claim to be unattested (those with overlapping tiers, such that $T_1\not\subseteq T_2$ and $T_1\cap T_2\neq\emptyset$). Specifically, the MTSL2IA fails if these overlapping tiers are associated with a single \text{*}$\rho_1\rho_2$ restriction (i.e., when it is blocked by a different symbol on each tier), but it will succeed when they are associated with different restrictions.
+
+\section{Extending the Evaluation}
+
+\section{Conclusion}
+
+
+\bibliography{sstsl.bib}
+\bibliographystyle{acl_natbib}
+
+\appendix
+
+\section{Supplemental Material}
+\label{sec:supplemental}
+
+
+\end{document}

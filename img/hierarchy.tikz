@@ -1,0 +1,89 @@
+\begin{tikzpicture}[rotate=90,
+    highlight/.style = { draw, rectangle, dashed },
+    every text node part/.style={align=center}
+    ]
+\node (R) at (0,10) {Regular};
+\node (SF) at (0,8.5) {SF};
+%
+\node (LTT) at (-1.4,5.5) {LTT};
+\node (LT) at (-1.4,3) {LT};
+\node (SL) at (-0.7,1.5) {SL};
+%
+\node (PT) at (1.4,5) {PT};
+\node (SP) at (1.4,1.5) {SP};
+%-1.5,6.5
+\node(MSS) at (0,6.5) {SS-MTSL};
+\node (SSTSL) at (0.5,4.5) {SS-TSL};
+\node (MTSL) at (-0.5,4.5) {MTSL};
+\node (TSL) at (0,3) {TSL};
+%
+\foreach \Source/\Target in {%
+        R.east/SF.west,
+        SF.east/LTT.west,
+        LTT.east/LT.west,
+        LT.east/SL.west,
+        SF.east/PT.west,
+        PT.east/SP.west,
+        TSL.east/SL.west,
+       MTSL.east/TSL.west%
+    }
+\draw (\Source) to (\Target);
+\draw (SSTSL.east) to (TSL.west);
+%   \draw ( SF.east) to (TESL.west);
+\draw ( SF.east) to (MSS.west);
+% \draw ( TESL.east) to (SSTSL.west);
+%
+\draw ( MSS.east) to (MTSL.west);
+\draw ( MSS.east) to (SSTSL.west);
+%MESS
+%  \draw ( SF.east) to (MESS.west);
+% \draw ( MESS.east) to (MSS.west);
+%  \draw ( MESS.east) to (TESL.west);
+
+\end{tikzpicture}
+
+%with TSL section at the bottom instead than in the middle
+%\begin{tikzpicture}[rotate=90,
+%    highlight/.style = { draw, rectangle, dashed },
+%    every text node part/.style={align=center}
+%    ]
+%\node (R) at (0,10) {Regular};
+%\node (SF) at (0,8.5) {SF};
+%%
+%\node (LTT) at (0,6.5) {LTT};
+%\node (LT) at (0,5) {LT};
+%\node (SL) at (0,1.5) {SL};
+%%
+%\node (PT) at (1.5,5) {PT};
+%\node (SP) at (1.5,1.5) {SP};
+%%
+%\node(MSS) at (-1.5,6.5) {SS-MTSL};
+%\node (SSTSL) at (-1,4.5) {SS-TSL};
+%\node (MTSL) at (-2,4.5) {MTSL};
+%\node (TSL) at (-1.5,3) {TSL};
+%%
+%\foreach \Source/\Target in {%
+%        R.east/SF.west,
+%        SF.east/LTT.west,
+%        LTT.east/LT.west,
+%        LT.east/SL.west,
+%        SF.east/PT.west,
+%        PT.east/SP.west,
+%        TSL.east/SL.west,
+%       MTSL.east/TSL.west%
+%    }
+%\draw (\Source) to (\Target);
+%\draw (SSTSL.east) to (TSL.west);
+%%   \draw ( SF.east) to (TESL.west);
+%\draw ( SF.east) to (MSS.west);
+%% \draw ( TESL.east) to (SSTSL.west);
+%%
+%\draw ( MSS.east) to (MTSL.west);
+%\draw ( MSS.east) to (SSTSL.west);
+%%MESS
+%%  \draw ( SF.east) to (MESS.west);
+%% \draw ( MESS.east) to (MSS.west);
+%%  \draw ( MESS.east) to (TESL.west);
+%
+%\end{tikzpicture}
+

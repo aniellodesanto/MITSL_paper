@@ -1,0 +1,44 @@
+\begin{tikzpicture}[
+    highlight/.style = { draw, rectangle, dashed },
+    every text node part/.style={align=center}
+    ]
+\node (R) at (0,9.2) {Regular};
+\node (SF) at (0,8.2) {SF};
+\node (LTT) at (0,7) {LTT};
+\node (LT) at (0,5.5) {LT};
+\node (SL) at (0,4) {SL};
+%
+\node (PT) at (1.5,5.5) {PT};
+\node (SP) at (1.5,4) {SP};
+%
+\node(MSS) at (-2.5,7) {SS-MTSL};
+%  \node(MESS) at (-2.5,8) {MTESL};
+\node (MTSL) at (-3.5,6) {MTSL};
+\node (SSTSL) at (-1.5,6) {SS-TSL};
+%   \node (TESL) at (-1.5,7) {TESL};
+\node (TSL) at (-2.5,5) {TSL};
+%
+\foreach \Source/\Target in {%
+        R.south/SF.north,
+        SF.south/LTT.north,
+        LTT.south/LT.north,
+        LT.south/SL.north,
+        SF.south/PT.north,
+        PT.south/SP.north,
+        TSL.south/SL.north,
+       MTSL.south/TSL.north%
+    }
+\draw (\Source) to (\Target);
+\draw (SSTSL.south) to (TSL.north);
+%   \draw ( SF.south) to (TESL.north);
+\draw ( SF.south) to (MSS.north);
+% \draw ( TESL.south) to (SSTSL.north);
+%
+\draw ( MSS.south) to (MTSL.north);
+\draw ( MSS.south) to (SSTSL.north);
+%MESS
+%  \draw ( SF.south) to (MESS.north);
+% \draw ( MESS.south) to (MSS.north);
+%  \draw ( MESS.south) to (TESL.north);
+
+\end{tikzpicture}

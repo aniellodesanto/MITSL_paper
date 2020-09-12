@@ -1,0 +1,116 @@
+%A collection of macros for mathy stuff
+%
+%Last edit Dec 16 2014
+%
+%Much stolen from jim/CLmacros.tex
+
+%Short \textnormal
+\newcommand{\tn}[1]{\textnormal{#1}}
+
+%**Notation
+
+%Enclosures
+%tuples
+\newcommand{\Tup}[1]{{\left\langle#1\right\rangle}}
+\newcommand{\tup}[1]{\langle{#1}\rangle}
+%sets
+\newcommand{\Set}[1]{\left\{#1\right\}}
+%\newcommand{\set}[1]{\{#1\}}
+%brackets
+\newcommand{\Brac}[1]{\left[#1\right]}
+\newcommand{\brac}[1]{[#1]}
+%parens
+\newcommand{\Paren}[1]{\left(#1\right)}
+\newcommand{\paren}[1]{(#1)}
+%cardinality
+\newcommand{\Card}[1]{\left|#1\right|}
+\newcommand{\card}[1]{|#1|}
+
+%Common notational thingies
+\def\natn{\mathbb{N}}
+\def\treq{\triangleq}
+
+\newcommand\pow[1]{\ensuremath{\mathcal{P}(#1)}}       %powerset
+\newcommand\powf[1]{\ensuremath{\mathcal{P}_{fin}(#1)}} %set of all finite sets
+\newcommand\powk[2]{\ensuremath{\mathcal{P}_{=#1}(#2)}} %set of sets of cardinality k
+\def\Tau{\ensuremath{\tn{T}}}
+\def\Alpha{\ensuremath{\tn{A}}}
+
+%Equals and iff for definitions
+\def\defeq{\mathrel{\buildrel \mbox{\footnotesize def} \over =}}
+\def\defiff{\mathrel{\buildrel \mbox{\footnotesize def} \over \liff}}
+\def\defequiv{\mathrel{\buildrel \mbox{\footnotesize def} \over \equiv}}
+
+%Logic
+\def\land{\wedge}                         %and
+\def\fatimp{\ensuremath{\Rightarrow}}     %implication (for teh meta)
+\def\fatbackimp{\ensuremath{\Leftarrow}}  %implication (left) (for teh meta)
+\def\fatiff{\ensuremath{\Leftrightarrow}} %iff (for teh meta)
+\def\limp{\rightarrow}                    %implication (regular)
+\let\liff=\leftrightarrow                 %iff (regular)
+\def\sats{\models}                        %satisfies
+
+%Models
+\newcommand{\sW}{\ensuremath{\mathcal{W}}}     %Word model
+\newcommand{\sU}{\ensuremath{\mathcal{U}}}     %Word model (U)
+\newcommand{\sX}{\ensuremath{\mathcal{X}}}     %Word model (X)
+\newcommand{\sA}{\ensuremath{\mathcal{A}}}     %Association model
+
+\newcommand{\SW}{\ensuremath{\mathbb{W}}}      %Set of word models
+\newcommand{\SU}{\ensuremath{\mathbb{U}}}      %Set of word models (U)
+\newcommand{\SX}{\ensuremath{\mathbb{X}}}      %Set of word models (X)
+\newcommand{\SA}{\ensuremath{\mathbb{A}}}      %Set of association models
+
+\newcommand{\Mod}[1][]{\ensuremath{\mathbf{Mod}_{#1}}}     %Model [structure]
+\newcommand{\Th}{\ensuremath{\mathbf{Th}}}                %Theory
+
+\newcommand{\ladj}[1][]{\mathrel{\triangleleft_{#1}}}     %Adjacency (immediate precedence); [tier]
+\newcommand{\lltpred}[1][]{\mathrel{\triangleleft^+_{#1}}}%Less than precedence optional; [tier]
+\newcommand{\lpred}[1][]{\mathrel{\triangleleft^*_{#1}}}  %Full precedence optional; [tier]
+\newcommand{\assoc}{\vartriangle}                         %Immediate association
+\newcommand{\lequals}{\approx}                            %Equivalence for variables
+
+%Automata
+\newcommand{\nerode}[1]{\equiv_{#1}}%Nerode equivalence (over #1)
+\def\fancyl{\mathcal{L}}%A class of languages
+\def\fancyt{\mathcal{T}}%A class of transductions
+
+%Strings and stringsets
+\newcommand{\calL}{\ensuremath{\mathcal{L}}} % class of languages
+\newcommand{\calG}{\ensuremath{\mathcal{G}}} % class of grammars
+\newcommand{\beg}{\ensuremath{\rtimes}} % the right-closed fish
+\newcommand{\fin}{\ensuremath{\ltimes}}% the left-closed fish
+
+%Relations
+\def\bpred{\prec}%The (standard) precedence relation Steven Bird uses
+\def\bpredeq{\preccurlyeq}%Plus equals
+\def\olap{\circ}%Bird, Sagey, etc.'s overlap
+
+%Graphs
+\def\arc{\ensuremath{\rightarrow}}
+\def\arcl{\ensuremath{\leftarrow}}
+\def\biedge{\ensuremath{\leftrightarrow}}
+\def\unedge{\ensuremath{-}}
+
+
+%**Formatting
+
+%Theorems 
+%\newtheorem{definition}{Definition}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{remark}{Remark}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{conjecture}{Conjecture}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{axiom}{Axiom}
+
+
+%Proofs
+% \newenvironment{proof}%
+%   {\nobreak \trivlist \item[\hskip \labelsep{\bfseries Proof:}]}%
+%   {\nobreak\hfill\nobreak$\square$\\*[0pt]}
+
+%Long comments
+\newcommand{\longcomment}[1]{}
+
+\endinput

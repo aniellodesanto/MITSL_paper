@@ -1,0 +1,184 @@
+\ProvidesPackage{mycommands}
+
+% \col - Colon for logic and set notation
+% The typed colon ':' has the same spacing as a relation in math mode,
+% so instead you should use this command for logic and set notation
+\newcommand{\col}{\ensuremath{\colon\thinspace}}
+
+% \cardof - cardinality
+\newcommand{\cardof}[1]{\ensuremath{\left\vert #1 \right\vert}}
+
+% \setof - set with auto-sized brackets
+\newcommand{\setof}[1]{\ensuremath{\left \{ #1 \right \}}}
+
+% \tuple - tuple with auto-sized brackets
+\newcommand{\tuple}[1]{\ensuremath{\left \langle #1 \right \rangle }}
+
+% \vect - vector
+\newcommand{\vect}[1]{\ensuremath{\overrightarrow{#1}}}
+
+% \word - how to highlight natural language excerpts in float text
+\newcommand{\word}[1]{\emph{#1}}
+
+% Defines
+\newcommand{\is}{\ensuremath{\mathrel{\mathop:}=}}
+
+% symmetric difference
+\newcommand{\symdiff}{\ensuremath{\mathop{\triangle}}}
+
+% natural numbers
+\newcommand{\NatNum}{\ensuremath{\mathbb{N}}}
+
+% positive natural numbers
+\newcommand{\NatNumPos}{\ensuremath{\mathbb{N}^{+}}}
+
+% domain and co-domain
+\newcommand{\domain}{\ensuremath{\mathrm{dom}}}
+\newcommand{\codomain}{\ensuremath{\mathrm{codom}}}
+\newcommand{\range}{\ensuremath{\mathrm{ran}}}
+\newcommand{\kernel}{\ensuremath{\mathrm{ker}}}
+
+% emptystring
+\newcommand{\emptystring}{\ensuremath{\varepsilon}}
+
+% length
+\newcommand{\length}[1]{\ensuremath{\left\vert #1 \right\vert}}
+
+% modulo
+% \newcommand{\mod}{\ensuremath{\mathrel{\mathrm{mod}}}}
+
+% inverse
+\newcommand{\inv}[1]{\ensuremath{#1 ^{-1}}}
+
+% labeling function
+\newcommand{\LabelFunc}{\ensuremath{\ell}}
+
+% MG notation
+\newcommand{\Port}{\ensuremath{\Box}}
+\newcommand{\Class}[1]{\ensuremath{\mathrm{#1}}}
+\newcommand{\OP}[1]{\ensuremath{\mathrm{#1}}}
+\newcommand{\mder}[2]{\ensuremath{\textrm{#1} :\thinspace \mathrm{#2}}}
+\newcommand{\mlex}[2]{\ensuremath{\textrm{#1} ::\thinspace \mathrm{#2}}}
+\newcommand{\SelEq}{\ensuremath{\mathop{=}}}
+\newcommand{\fsel}[1]{\ensuremath{\mathrm{#1^+}}}
+\newcommand{\fcat}[1]{\ensuremath{\mathrm{#1^-}}}
+\newcommand{\flcr}[1]{\ensuremath{\mathrm{#1^+}}}
+\newcommand{\flce}[1]{\ensuremath{\mathrm{#1^-}}}
+\newcommand{\AdjEq}{\ensuremath{\mathop{\simeq}}}
+\newcommand{\fadj}{\AdjEq}
+\newcommand{\MinimalistOperation}[1]{\ensuremath{\mathit{#1}}}
+\newcommand{\Merge}{\MinimalistOperation{merge}}
+\newcommand{\Move}{\MinimalistOperation{move}}
+\newcommand{\FeatureClass}[1]{\ensuremath{\textsc{#1}}}
+\newcommand{\BaseFeat}{\FeatureClass{Base}}
+\newcommand{\FeatType}{\FeatureClass{M\text{-}Type}}
+\newcommand{\FeatPol}{\FeatureClass{Polarity}}
+\newcommand{\FeatHead}{\FeatureClass{Headedness}}
+\newcommand{\FeatOvert}{\FeatureClass{Overt}}
+\newcommand{\OpType}{\FeatureClass{Op}}
+\newcommand{\HeadLeft}{\ensuremath{\mathit{left}}}
+\newcommand{\HeadRight}{\ensuremath{\mathit{right}}}
+\newcommand{\Component}[1]{\ensuremath{\mathit{#1}}}
+\newcommand{\Lex}{\Component{Lex}}
+\newcommand{\Feat}{\Component{Feat}}
+\newcommand{\Op}{\Component{Op}}
+\newcommand{\Types}{\Component{Types}}
+\newcommand{\Final}{\Component{F}}
+\newcommand{\RegControl}{\ensuremath{\mathcal{R}}}
+\newcommand{\LcrLim}{\ensuremath{|\gamma|}}
+\newcommand{\LceLim}{\ensuremath{|\delta|}}
+\newcommand{\Slice}{\ensuremath{\mathrm{slice}}}
+\newcommand{\Occurrence}[1]{\ensuremath{\mathit{occ}_{#1}}}
+\newcommand{\fOccurrence}{\ensuremath{\mathit{f\textrm{-}occ}}}
+\newcommand{\hOccurrence}[1]{\ensuremath{\mathit{h\text{-}occ}_{#1}}}
+\newcommand{\hOccSib}{\ensuremath{\sim_h}}
+\newcommand{\antihOccSib}{\ensuremath{\sim_{\overline{h}}}}
+\newcommand{\lexical}{\mathit{lex}}
+\newcommand{\headroot}{\ensuremath{\mathit{headroot}}}
+\newcommand{\pOccurrence}[1]{\ensuremath{\mathit{pocc}_{#1}}}
+\newcommand{\SliceRoot}{\ensuremath{\mathit{sliceroot}}}
+\newcommand{\SliceP}{\ensuremath{\mathit{slice}}}
+\newcommand{\SliceFunction}{\ensuremath{\zeta}}
+\newcommand{\SliceLang}[1]{\ensuremath{\mathrm{FSL}(#1)}}
+\newcommand{\slicesib}{\ensuremath{\sim}}
+\newcommand{\slicedom}{\stackrel{\slicesib}{\idom}}
+\newcommand{\MoveTypes}{\ensuremath{\mathcal{M}}}
+\newcommand{\FeatSep}{\ensuremath{\star}}
+\newcommand{\FPol}[1]{\ensuremath{\pi(#1)}}
+\newcommand{\FType}[1]{\ensuremath{\tau(#1)}}
+\newcommand{\FOp}[1]{\ensuremath{\omega(#1)}}
+\newcommand{\FName}[1]{\ensuremath{\nu(#1)}}
+\newcommand{\LI}{\ensuremath{\mathit{lex}}}
+\newcommand{\match}{\ensuremath{\mathit{match}}}
+\newcommand{\CatF}{\ensuremath{\mathit{cat}}}
+
+\newcommand{\idom}{\ensuremath{\triangleleft}}
+\newcommand{\hidom}{\ensuremath{\idom_h}}
+\newcommand{\antihidom}{\ensuremath{\idom_{\overline{h}}}}
+\newcommand{\pdom}{\ensuremath{\idom^+}}
+\newcommand{\rdom}{\ensuremath{\idom^*}}
+\newcommand{\outdom}{\ensuremath{\blacktriangleleft}}
+\newcommand{\iprec}{\ensuremath{\prec}}
+\newcommand{\pprec}{\ensuremath{\prec^+}}
+\newcommand{\lprec}{\ensuremath{\propto}}
+\newcommand{\joint}{\ensuremath{\mathit{joint}}}
+
+\newcommand{\RefineFunction}{\ensuremath{\rho}}
+\newcommand{\ProjFunc}{\ensuremath{\pi}}
+
+\newcommand{\LTwoKP}{\ensuremath{L^2_{K,P}}}
+\newcommand{\LogicTransSymb}{\ensuremath{\Phi}}
+\newcommand{\GraphTrans}{\LogicTransSymb_{\mathit{gr}}}
+\newcommand{\TreeTrans}{\LogicTransSymb_{\mathit{tr}}}
+\newcommand{\PhonExp}{\ensuremath{\mathit{pe}}}
+\newcommand{\falsum}{\ensuremath{\bot}}
+
+\newcommand{\MoveFeat}{\FeatureClass{M\textrm{-}Feat}}
+\newcommand{\MaxMovers}{\ensuremath{\mu}}
+\newcommand{\Traffic}[1]{\ensuremath{\mathrm{traf}(#1)}}
+
+% RC notation
+\newcommand{\Lang}{\ensuremath{L}}
+\newcommand{\transduction}{\ensuremath{\tau}}
+
+\newcommand{\MGConstraint}[1]{\textbf{#1}}
+\newcommand{\SMCC}{\MGConstraint{SMC}}
+\newcommand{\FinalC}{\MGConstraint{Final}}
+\newcommand{\MergeC}{\MGConstraint{Merge}}
+\newcommand{\MoveC}{\MGConstraint{Move}}
+\newcommand{\TierSMCC}{\MGConstraint{Tier-SMC}}
+\newcommand{\TierMoveC}{\MGConstraint{Tier-Move}}
+
+\newcommand{\TMove}{\ensuremath{\circ}}
+\newcommand{\TMerge}{\ensuremath{\bullet}}
+\newcommand{\TTier}{\ensuremath{\Box}}
+\newcommand{\TLI}{\ensuremath{\Diamond}}
+
+\newcommand{\SMNFtrans}{\ensuremath{\tau}}
+
+\newcommand{\String}[1]{\ensuremath{\mathit{#1}}}
+
+\newcommand{\LeftEdge}{\ensuremath{\rtimes}}
+\newcommand{\RightEdge}{\ensuremath{\ltimes}}
+
+\newcommand{\rewrite}{\ensuremath{\rightarrow}}
+
+\colorlet{tierf}{red!75}
+\colorlet{tierg}{blue!75}
+\colorlet{tierh}{brown!75}
+\newcommand{\TierF}[1]{\textcolor{tierf}{#1}}
+\newcommand{\TierG}[1]{\textcolor{tierg}{#1}}
+\newcommand{\TierH}[1]{\textcolor{tierh}{#1}}
+
+\newcommand{\Sfk}[1]{\ensuremath{\mathtt{Suff}^{k-1}(#1)}} 
+
+\newcommand{\ipa}[1]{\textipa{#1}}
+
+\newcommand{\ProtoTierFunc}{\ensuremath{\pi}}
+\newcommand{\TierFunc}{\ensuremath{\pi}}
+\newcommand{\Rooted}[1]{\ensuremath{\mathrm{rooted}(#1)}}
+\newcommand{\posL}[1]{\ensuremath{L^+(#1)}}
+\newcommand{\negL}[1]{\ensuremath{L^-(#1)}}
+
+\newcommand{\subtree}[2]{\ensuremath{#1 \upharpoonright #2}}
+\newcommand{\Subst}[4][\unskip]{\ensuremath{#2[#3 \xleftarrow{#1} #4]}}

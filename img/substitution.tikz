@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+
+\node (10) at (-0.5,0.5) {a };
+\node (0) at (0,0.5) {a };
+\node (5) at (1,0.5) { b $\cdots$ b};
+\node (1) at (2,0.5) {a};
+\node (1) at (2.5,0.5) {a};
+\node (2) at (3.5,0.5) { $\notin L$};
+%tier
+\node (00) at (0,1.5) {a };
+\node (05) at (1,1.5) { b $\cdots$ b};
+\node (00) at (2,1.5) {b};
+\node (00) at (3.5,1.5) { $\in L$};
+%
+\node (00) at (0,1) {};
+\node (05) at (1,1) { b $\cdots$ b};
+\node (00) at (2,1) {a};
+\node (00) at (2.5,1) {a};
+
+\node (00) at (3.5,1) { $\in L$};
+%
+\draw[thick] (-0.55,0.74) to (4,0.74);
+\draw [thick, blue,decorate,decoration={brace,amplitude=5pt},xshift=0.4pt,yshift=-0.4pt](0.5,1.8) -- (1.5,1.8) node[black,midway,yshift=0.35cm] {\footnotesize $x$};
+\end{tikzpicture}

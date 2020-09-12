@@ -1,0 +1,105 @@
+\begin{thebibliography}{16}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Applegate(1972)}]{Applegate72}
+R.B. Applegate. 1972.
+\newblock \emph{Ineseno Chumash grammar}.
+\newblock Ph.D. thesis, UC Berkeley.
+
+\bibitem[{Baek(2017)}]{Baek2017CLS}
+Hyunah Baek. 2017.
+\newblock Computational representation of unbounded stress patterns: tiers with
+  structural features.
+\newblock In \emph{Proceedings of the 53rd Meeting of the Chicago Linguistic
+  Society (CLS53)}.
+
+\bibitem[{De~Santo and Graf(2019)}]{desanto2019structure}
+Aniello De~Santo and Thomas Graf. 2019.
+\newblock Structure sensitive tier projection: Applications and formal
+  properties.
+\newblock In \emph{International Conference on Formal Grammar}, pages 35--50.
+  Springer.
+
+\bibitem[{Goldsmith(1976)}]{goldsmith1976autosegmental}
+John Goldsmith. 1976.
+\newblock \emph{Autosegmental phonology}.
+\newblock Ph.D. thesis, MIT, Cambridge, MA.
+
+\bibitem[{Graf(2017)}]{Graf17Phonology}
+Thomas Graf. 2017.
+\newblock \href {https://doi.org/10.1017/S0952675717000197} {The power of
+  locality domains in phonology}.
+\newblock \emph{Phonology}, 34:385--405.
+
+\bibitem[{Graf and Mayer(2018)}]{graf2018sanskrit}
+Thomas Graf and Connor Mayer. 2018.
+\newblock Sanskrit n-retroflexion is input-output tier-based strictly local.
+\newblock In \emph{Proceedings of the Fifteenth Workshop on Computational
+  Research in Phonetics, Phonology, and Morphology}, pages 151--160.
+
+\bibitem[{Hayward(1990)}]{Hayward_Aari}
+R.~J. Hayward. 1990.
+\newblock Notes on the {A}ari language.
+\newblock In R.~J. Hayward, editor, \emph{Omotic language studies}, pages
+  425--493. School of Oriental and African Studies, U. of London, London, UK.
+
+\bibitem[{Heinz(2011)}]{Heinz2011a}
+Jeffrey Heinz. 2011.
+\newblock Computional phonology -- part 1: Foundations.
+\newblock \emph{Language and Linguistics Compass}, 5(4):140--152.
+
+\bibitem[{Heinz et~al.(2011)Heinz, Rawal, and Tanner}]{HeinzRawalTanner}
+Jeffrey Heinz, Chetan Rawal, and Herbert Tanner. 2011.
+\newblock \href {http://dl.acm.org/citation.cfm?id=2002736.2002750} {Tier-based
+  strictly local constraints for phonology}.
+\newblock In \emph{Proceedings of the ACL 49th: Human Language Technologies:
+  Short Papers - Volume 2}, pages 58--64.
+
+\bibitem[{Jardine and Heinz(2016)}]{JardineHeinz16}
+Adam Jardine and Jeffrey Heinz. 2016.
+\newblock \href {https://aclweb.org/anthology/Q/Q16/Q16-1007.pdf} {Learning
+  tier-based strictly 2-local languages}.
+\newblock \emph{Transactions of the ACL}, 4:87--98.
+
+\bibitem[{Jardine and McMullin(2017)}]{jardinemcmullin17}
+Adam Jardine and Kevin McMullin. 2017.
+\newblock Efficient learning of tier-based strictly $k$-local languages.
+\newblock In \emph{Language and Automata Theory and Applications, 11th
+  International Conference}, LNCS, pages 64--76. Springer.
+
+\bibitem[{Mayer and Major(2018)}]{MayerMajor18}
+Connor Mayer and Travis Major. 2018.
+\newblock A challenge for tier-based strict locality from {U}yghur backness
+  harmony.
+\newblock In \emph{Formal Grammar 2018. Lecture Notes in Computer Science, vol.
+  10950}, pages 62--83. Springer, Berlin, Heidelberg.
+
+\bibitem[{McMullin(2016)}]{McMullin16}
+Kevin McMullin. 2016.
+\newblock \href {https://doi.org/http://dx.doi.org/10.14288/1.0228114}
+  {\emph{Tier-based locality in long-distance phonotactics?: learnability and
+  typology}}.
+\newblock Ph.D. thesis, U. of British Columbia.
+
+\bibitem[{McMullin et~al.(2019)McMullin, Aks{\"e}nova, and
+  De~Santo}]{McMullinSCIL2019}
+Kevin McMullin, Al{\"e}na Aks{\"e}nova, and Aniello De~Santo. 2019.
+\newblock \href {https://doi.org/https://doi.org/10.7275/s8ym-bx57} {Learning
+  phonotactic restrictions on multiple tiers}.
+\newblock \emph{Proceedings of the Society for Computation in Linguistics},
+  2(1):377--378.
+
+\bibitem[{McMullin and Hansson(2016)}]{McMullinHansson16}
+Kevin McMullin and Gunnar Hansson. 2016.
+\newblock \href {https://doi.org/10.3765/amp.v2i0.3750} {Long-distance
+  phonotactics as tier-based strictly 2-local languages}.
+\newblock \emph{Proceedings of the Annual Meetings on Phonology}, 2(0).
+
+\bibitem[{Walker(2000)}]{WalkerYaka}
+Rachel Walker. 2000.
+\newblock \href {https://doi.org/10.3765/bls.v26i1.1164} {Yaka nasal harmony:
+  Spreading or segmental correspondence?}
+\newblock \emph{Annual Meeting of the Berkeley Linguistics Society},
+  26(1):321--332.
+
+\end{thebibliography}
