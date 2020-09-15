@@ -16,7 +16,7 @@
 \draw[dotted, thick, blue] (-0.35,0.55) to (2.8,0.55);
 %\node at (0.5,0.40) {{\tiny T: sibilant harmony}};
 
-\begin{scope}[xshift=150pt]
+\begin{scope}[xshift=120pt]
  \node (00) at (-0.4,0.1) {$^{ok}$};
 \node (0) at (0,0) {\textyogh };
 \node (1) at (0.5,0) {a:};

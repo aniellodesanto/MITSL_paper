@@ -1,0 +1,85 @@
+Consider the case of Consonantal Nasal harmony in Yaka  \cite{Walker_Yaka}: \\- a nasal stop induces nasalization of voiced consonants (Cs) occurring at any distance to its right.
+As can be seen from the  segmental alternation in  Ex.~(\ref{ex:1}),  the phoneme \textipa{/d/} surfaces as  \textipa{[n]} after a nasal  (cf.  Ex.~(\ref{ex:1a}, \ref{ex:1b} vs.  \ref{ex:1c})).
+Vowels and voiceless consonants intervening between the two harmonizing stops remain unaffected  (cf. Ex.~(\ref{ex:2})).
+
+
+\begin{exe}
+    \ex\label{ex:1}\begin{xlist}
+    	 \ex\label{ex:1a} \textipa{yan-ini}   
+	 \ex\label{ex:1b} \textipa{yad-idi}
+	 \ex\label{ex:1c} $^*$\textipa{yan-idi}      
+	\end{xlist}
+    \ex\label{ex:2}\begin{xlist}
+     	\ex\label{ex:2a}\textipa{hamuk-ini} 
+    	\ex\label{ex:2b}\textip{miituk-ini}
+    \end{xlist}
+     \ex\label{ex:3}\begin{xlist}
+    	 \ex\label{ex:3a}    \textipa{biimb-idi}
+	 \ex\label{ex:3b}  \textipa{kuund-idi}
+	 \ex\label{ex:3c}  \textipa{naang-ini}
+	\end{xlist}
+\end{exe}
+
+A TSL analysis for this patter seems straightforward, as this data can be captured by projecting a tier of voiced consonants, and enforcing constraints banning tier adjacent  \textipa{[nd]}.
+
+\begin{figure}[t]
+\centering
+    \input{./img/tier_left.tikz}   %    \input{./img/tier_left_new.tikz} 
+        %
+       \hspace{2cm}
+    \input{./img/tier_right.tikz}    
+        \caption{Example of a TSL analysis of nasal harmony in Samala: (a) is ill-formed because of adjacent $^*$\textipa{[nd]}; (b) is well-formed since  \textipa{[n]} is followed by another  \textipa{[n]} later in the string; (c) is well-formed because the \textipa{[nd]} cluster does not enforce nasality on the following stops, but it is still ruled out by the constraint needed for (b). }
+        \label{fig:YAKA1}
+        \end{figure}
+
+
+
+However, observe now the examples in  Ex.~(\ref{ex:3}): consonantal complexes composed of a nasal and a voiced oral stop neither trigger   Ex.~(\ref{ex:3a},\ref{ex:3b}) nor block nasality agreement   Ex.~(\ref{ex:3c}).
+Fig.~\ref{fig:YAKA1} exemplifies why this interaction of a local and a non-local dependency is not TSL\@. 
+Since \textipa{[nd]} is sometimes observed in a string-adjacent context (as in Ex.~(\ref{ex:3b})), it must be permitted as a $2$-gram on a tier --- even though it is only allowed when  \textipa{[nd]} re immediately adjacent in the string.
+But then,  a TSL grammar would have no means of distinguishing Ex.~(\ref{ex:1b}) from Ex.~(\ref{ex:3b}).
+
+The reader might point out that the difference between Fig.~ \ref{fig:YAKA1}.a and Fig.~ \ref{fig:YAKA1}.c can be resolved by extending the tier-grammar to consider $3$-grams.
+However, in order to enforce harmony correctly, the tier-projection places every occurrence of voiced stops in the string on the tier, thus making $3$-grams constraints insufficient (e.g., Ex.~(\ref{ex:3}c)).
+Thus, since the number of segments between harmonizing elements is potentially unbounded, no TSL grammar can generally account for this pattern, independently of the dimension of the tier $k$-grams.
+
+Consider now the examples in Ex.~(\ref{ex:3}). 
+We know that the nasals immediately followed by a viced stop do nt trigegr harmony, and that said stop does not harmonize. 
+Moreover, since they do not block the harmonic process, these consonants do no participate in the harmony at all.
+Thus, if we could make projection of nasal and stops to avoid  those segments that appear in specific consonant clusters (e.g. \textipa{[nd]}) the tier constraints discussed above would work once again.
+This is not possible with TSL as originally defined in \cite{HeinzRawalTanner}, as TSL selects tier elements only based on their $1$-local properties (i.e. which kind of segment they are). %Sec.~\ref{sec:SSTSL}.
+The intuition is that we can make a TSL grammar  simultaneously aware of local and non-local properties of segments in the string with a natural change to the definition of the erasing function.
+This kind of expressivity can be accomplished by increasing the locality window of the \emph{tier projection mechanism}. 
+
+\begin{figure}[]
+\begin{center}
+    %\input{./img/sstsl.tikz}
+    \input{./img/sstsl_new.tikz}
+        \end{center}
+        % \caption{Example from Samala, allowing generalized tier projection: (a) is ill-formed because of $^*$\textipa{sn}; (b) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
+         %if changed to new fig
+        \caption{Example of a TSL analysis of nasal harmony in Samala: (a) is ill-formed because of adjacent $^*$\textipa{[nd]}; (b) is well-formed since  \textipa{[n]} is followed by another  \textipa{[n]} later in the string; (c) is well-formed because the \textipa{[nd]} cluster does not enforce nasality on the following stops.  Note that \textipa{[n,d]} are projected on the tier only when not immediately adjacent in the input. }
+        \label{fig:YAKA2}
+        \end{figure}
+
+
+Fig.~\ref{fig:YAKA2} shows how, by increasing the locality of the projection to $2$, we allow the grammar to project a nasal iff it is not immediately followed by a voiced oral stop, and then use $2$-local tier constraints to ban  \textipa{nd}.%
+This time,  possible intermediate clusters are not a problem, since the projection is able to infer that they are in local contexts that make them irrelevant to the harmonic process.
+
+Finally, note the following additional data:
+
+
+\begin{exe}
+    \ex\label{ex:4}\begin{xlist}
+    	 \ex\label{ex:4a} \textipa{kem-ene}   
+	 \ex\label{ex:4b} \textipa{keb-ede}
+	\end{xlist}
+\end{exe}
+
+Ex.~(\ref{ex:4}) shows a vowel alternation that is independent of the nasality process, and is instead due to vowel heigh harmony.
+Vowel harmony can be easily accounted for with a TSL grammar.
+However, this is only true if we analyze it by itself, and fails if we try to model nasal harmony and vowel harmony in a single grammar.
+In order to account for this, vowel will need to be projected on the tier, thus interfering with the nasalization process.
+This issue is resolved working with the intersection closure of ITSL languages (MITSL).
+
+Since the ability to model multiple processes in the phonotactic of a language remains obviously desirable, it seems reasonable then to focus on the learnability of MITSL languages directly, as any algorithm able to learn an MITSL language will also trivially learn an ITSL one.

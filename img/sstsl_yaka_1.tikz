@@ -1,0 +1,24 @@
+\begin{tikzpicture} %SSTSL EXAMPLE
+\node (A) at (-1,1.4) {\textbf{(b)}};
+\node (00) at (-0.4,0.1) {$^{ok}$};
+\node (0) at (0,0) {k};
+\node (1) at (0.5,0) {\textipa{\'u}};
+\node (2) at (1,0) {\textipa{\'u}};
+\node (3) at (1.5,-0.05) {n};
+\node (4) at (2,0) {d};
+\node (5) at (2.5,0) {i};
+\node (6) at (3,0) {d};
+\node (7) at (3.5,0) {i};
+%tier
+\node (6) at (3,1) {d};
+        %
+        %projection function
+         \draw  [dashed, blue] (1.2,-0.28 ) rectangle (2.2, 0.28);
+         \draw [dashed, blue](2.3,-0.28 ) rectangle (3.25, 0.28);
+          %local constraints   
+\node (000) at (1.5,1.5) {$^{ok}$};
+\draw [dashed, green!50!black] (1.7, 0.8) -- (3.3, 0.8) -- (3.3,1.4) -- (1.7,1.4) -- (1.7, 0.8);
+
+        %tier bar
+\draw[dotted, thick, blue] (-0.35,0.60) to (3.8,0.60);    
+\end{tikzpicture}

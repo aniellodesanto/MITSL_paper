@@ -7,45 +7,51 @@ Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: sstsl.bib
+Warning--I didn't find a database entry for "hyman1995nasal"
+Warning--I didn't find a database entry for "Walker_Yaka"
+Warning--I didn't find a database entry for "JardineHeinz2016"
+Warning--I didn't find a database entry for ""
+Warning--I didn't find a database entry for "AksenovaDeshmukh2018"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 You've used 16 entries,
             3571 wiz_defined-function locations,
-            808 strings with 8539 characters,
-and the built_in function-call counts, 10417 in all, are:
-= -- 984
-> -- 308
+            816 strings with 8698 characters,
+and the built_in function-call counts, 10613 in all, are:
+= -- 1000
+> -- 320
 < -- 20
-+ -- 99
-- -- 79
-* -- 587
-:= -- 1557
++ -- 102
+- -- 82
+* -- 610
+:= -- 1574
 add.period$ -- 68
 call.type$ -- 16
-change.case$ -- 117
+change.case$ -- 119
 chr.to.int$ -- 16
 cite$ -- 16
-duplicate$ -- 714
-empty$ -- 855
-format.name$ -- 123
-if$ -- 2360
+duplicate$ -- 727
+empty$ -- 868
+format.name$ -- 130
+if$ -- 2401
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 134
+missing$ -- 138
 newline$ -- 84
 num.names$ -- 66
-pop$ -- 289
+pop$ -- 293
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 91
 quote$ -- 0
-skip$ -- 585
+skip$ -- 590
 stack$ -- 0
-substring$ -- 451
-swap$ -- 356
+substring$ -- 470
+swap$ -- 367
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 144
 warning$ -- 0
-while$ -- 75
+while$ -- 77
 width$ -- 0
 write$ -- 215
+(There were 5 warnings)

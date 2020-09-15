@@ -176,8 +176,8 @@ First one projects from the string a tier $T$ that only contains sibilants, and 
 \end{figure}
 %\vspace{-0.3cm}
 
-The class of TSL languages has been shown to have good cross-linguistic coverage, accounting for a variety of different phonotactic patters cross-linguistically \citep{HeinzRawalTanner,McMullin16}.
-Moreover, and most interesting to us, TSL$_k$ languages have been shown to be efficiently (in time and input) learnable in the limit from positive data, even when the tier-alphabet is not known \emph{a priori}  \citep{JardineHeinz16,Graf17Phonology,jardinemcmullin17}.
+The class of TSL languages has been shown to have good cross-linguistic coverage, accounting for a variety of different phonotactic patters cross-linguistically \citep{HeinzRawalTanner,McMullin16,Graf17Phonology}.
+Moreover, and most interesting to us, TSL$_k$ languages have been shown to be efficiently (polynomial in time and input) learnable in the limit from positive data, even when the tier-alphabet is not known \emph{a priori}  \citep{JardineHeinz16,jardinemcmullin17}.
 
 However, there are two main known limits to TSL as a good formal account for natural language phonotactics.
 
@@ -196,73 +196,185 @@ Recently, several patterns have been reported that cannot be described by the wa
 These patterns include the long-distance sibilant harmony in Imdlawn Tashlhiyt  \citep{McMullin16}, the nasal harmony pattern in Yaka \cite{WalkerYaka}, the unbounded stress of Classical Arabic (see \cite{Baek2017CLS} and references therein), and cases of unbounded tone plateauing.
 These patterns share the common trait that one has to inspect the local context of a segment before projecting it on a tier. 
 
-Consider the case of sibilant harmony in Samala, where an unbounded dependency can override a local one (see \cite{Applegate72} for the original data set and \cite{McMullin16} for a subregular analysis).
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%Consider the case of sibilant harmony in Samala, where an unbounded dependency can override a local one (see \cite{Applegate72} for the original data set and \cite{McMullin16} for a subregular analysis).
+%
+%\begin{exe}
+%    \ex\label{ex:1}\begin{xlist}
+%    	 \ex\label{ex:1a} \textipa{/k-su-Sojin/} $\rightarrow$  \textipa{kSuSojin}   
+%	\end{xlist}
+%    \ex\label{ex:2}\begin{xlist}
+%     	\ex\label{ex:2a}\textipa{/s-ni\textglotstop/}  $\rightarrow$ \textipa{Sni\textglotstop} 
+%    	\ex\label{ex:2b} \textipa{/s-ni\textglotstop/}  $\rightarrow$ $^*$\textipa{sni\textglotstop}
+%    \end{xlist}
+%     \ex\label{ex:3}\begin{xlist}
+%    	 \ex\label{ex:3a}   \textipa{/s-net-us/}  $\rightarrow$  \textipa{snetus}
+%	 \ex\label{ex:3b}   \textipa{/s-net-us/}  $\rightarrow$  $^*$\textipa{Senetus}
+%	\end{xlist}
+%\end{exe}
+%
+%
+%Like Aari, Samala displays sibilant harmony such that \textipa{[s]} and \textipa{[S]} may not co-occur anywhere within the same word (cf. Ex.~(\ref{ex:1a})).
+%There is also a ban against string-adjacent \textipa{[st]}, \textipa{[sn]}, \textipa{[sl]}, which is resolved by dissimilation of \textipa{[s]} to \textipa{[S]} (cf. Ex.~(\ref{ex:2a}) and (\ref{ex:2b})). %  (b) and (c).
+%However, dissimilation is blocked if the result would violate sibilant harmony.
+%Thus \textipa{/sn/} surfaces as \textipa{[Sn]} or \textipa{[sn]} depending on whether the word contains \textipa{[s]} somewhere to the right (cf. Ex.~(\ref{ex:2a}) and (\ref{ex:3a})).%(b) and (d)):
+%
+%
+%\begin{figure}[t]
+%\centering
+%    \input{./img/tier_left.tikz}   %    \input{./img/tier_left_new.tikz} 
+%        %
+%       \hspace{2cm}
+%    \input{./img/tier_right.tikz}    
+%        \caption{Example of a TSL analysis of sibilant harmony in Samala: (a) is ill-formed because of adjacent $^*$\textipa{[sn]}; (b) is well-formed since  \textipa{[sn]} is followed by another  \textipa{[s]} later in the string, but it is still ruled out by the grammar.}
+%        %if switched to new example
+%        % \caption{Example of a TSL analysis of sibilant harmony in Samala: (a) should be  ill-formed because of violated sibilant harmony, but \textipa{[s]} and \textipa{[S]} are not adjacent on the tier so the grammar allows it; (b) is well-formed since  \textipa{[sn]} is followed by another  \textipa{[s]} later in the string, but it is still ruled out by the grammar because of adjacent \textipa{[sn]}.}
+%        \label{fig:SAMALA1}
+%        \end{figure}
+%
+%Fig.~\ref{fig:SAMALA1} exemplifies why this interaction of a local and a non-local dependency is not TSL\@. 
+%Since \textipa{[sn]} is sometimes observed in a string-adjacent context (as in Ex.~(\ref{ex:3a})), it must be permitted as a $2$-gram on a tier --- even though it is only allowed when a segment such as \textipa{[s]} follows later in the string.
+%But then,  a TSL grammar would have no means of distinguishing Ex.~(\ref{ex:2a}) from Ex.~(\ref{ex:3a}).
+%%But then, a TSL grammar would have no means of banning \textipa{[sn]} when there is no subsequent \textipa{[s]} in the string (as in  Ex.~(\ref{ex:2a}) vs. (\ref{ex:2b})).
+%Vice-versa, if we ban  \textipa{[sn]} on $T$, then the grammar will not be able to allow it when another \textipa{[s]} follows on the tier.
+%%
+%
+%The reader might point out that the difference between Fig.~ \ref{fig:SAMALA1}.a and Fig.~ \ref{fig:SAMALA1}.b can be resolved by extending the tier-grammar to consider $3$-grams; which are anyway needed to account for the contrast between Ex.~(\ref{ex:3a}) and Ex.~(\ref{ex:3b}).
+%However, in order to ban \textipa{[sn]}, the tier-projection places every occurrence of \textipa{[n]} in the string on the tier.
+%Since the number of \textipa{[n]} segments between two sibilants is potentially unbounded, no TSL grammar can generally account for this pattern, independently of the dimension of the tier $k$-grams.
+%The 3-gram proposal would work, though, if we could limit projection of \textipa{[n]} to only those segments that immediately follow an \textipa{[s]}.
+%This is not possible with TSL as originally defined in \cite{HeinzRawalTanner}, as TSL selects tier elements only based on their $1$-local properties (i.e. which kind of segment they are). %Sec.~\ref{sec:SSTSL}.
+%This kind of patters have inspired the definition of a different TSL extension --- input-sensitive TSL (ITSL) --- with a projection mechanism simultaneously aware of local and non-local properties of segments in the string \citep{desanto2019structure}.
+%
+%\begin{figure}[]
+%\begin{center}
+%    %\input{./img/sstsl.tikz}
+%    \input{./img/sstsl_new.tikz}
+%        \end{center}
+%        % \caption{Example from Samala, allowing generalized tier projection: (a) is ill-formed because of $^*$\textipa{sn}; (b) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
+%         %if changed to new fig
+%        \caption{Example from Samala, allowing generalized tier projection: (a) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string; (b) is ill-formed because of $^*$\textipa{Ss}. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
+%        \label{fig:SAMALA}
+%        \end{figure}
+%
+%To see how this works in practice, consider again Samala's combination of  long-distance sibilant harmony with local dissimilation between \textipa{/s/} and \textipa{/n/}.
+%%
+%Fig.~\ref{fig:SAMALA} shows how, by increasing the locality of the projection to $2$, we allow the grammar to project  \textipa{[n]} iff it is immediately preceded by a sibilant in the input string, and then use $3$-local tier constraints to ban  $\{$\textipa{sn}($\neg$ \textipa{s}), \textipa{Sns}$\}$, in addition to the factors needed to enforce the usual sibilant harmony patterns.
+%
+%This time, the possible unboundedness of \textipa{[n]} is not a problem, since \textipa{[n]} is now relevant for the projection only when adjacent to a sibilant.
+
+Consider the case of Consonantal Nasal harmony in Yaka, in which a nasal stop induces nasalization of voiced consonants occurring at any distance to its right  \cite{hyman1995nasal,Walker_Yaka}.
+For instance, the  segmental alternation shown in  Ex.~(\ref{ex:1}) is due to the phoneme \textipa{/d/} surfacing as  \textipa{[n]} after a preceding nasal  (cf.  Ex.~(\ref{ex:1a}, \ref{ex:1b} vs.  \ref{ex:1c})).\@
+Vowels and voiceless consonants intervening between the two harmonizing stops remain unaffected  (cf. Ex.~(\ref{ex:2})).
+
 
 \begin{exe}
     \ex\label{ex:1}\begin{xlist}
-    	 \ex\label{ex:1a} \textipa{/k-su-Sojin/} $\rightarrow$  \textipa{kSuSojin}   
+    	 \ex\label{ex:1a} \textipa{y\'an-ini}   `\emph{to cry out}'
+	 \ex\label{ex:1b} \textipa{y\'ad-idi}   `\emph{to spread}'
+	 \ex\label{ex:1c} $^*$\textipa{y\'an-idi}      
 	\end{xlist}
     \ex\label{ex:2}\begin{xlist}
-     	\ex\label{ex:2a}\textipa{/s-ni\textglotstop/}  $\rightarrow$ \textipa{Sni\textglotstop} 
-    	\ex\label{ex:2b} \textipa{/s-ni\textglotstop/}  $\rightarrow$ $^*$\textipa{sni\textglotstop}
+     	\ex\label{ex:2a}\textipa{h\'am\'uk-ini} `\emph{to give away}'
+    	\ex\label{ex:2b}\textipa{m\'i\'ituk-ini} `\emph{to sulk}'
     \end{xlist}
      \ex\label{ex:3}\begin{xlist}
-    	 \ex\label{ex:3a}   \textipa{/s-net-us/}  $\rightarrow$  \textipa{snetus}
-	 \ex\label{ex:3b}   \textipa{/s-net-us/}  $\rightarrow$  $^*$\textipa{Senetus}
+    	 \ex\label{ex:3a}    \textipa{b\'i\'imb-idi} `\emph{to embrace}'
+	 \ex\label{ex:3b}  \textipa{k\'u\'und-idi} `\emph{to bury}'
+	 \ex\label{ex:3c}  \textipa{n\'a\'aNg-ini} `\emph{to last}'
 	\end{xlist}
 \end{exe}
 
-
-Like Aari, Samala displays sibilant harmony such that \textipa{[s]} and \textipa{[S]} may not co-occur anywhere within the same word (cf. Ex.~(\ref{ex:1a})).
-There is also a ban against string-adjacent \textipa{[st]}, \textipa{[sn]}, \textipa{[sl]}, which is resolved by dissimilation of \textipa{[s]} to \textipa{[S]} (cf. Ex.~(\ref{ex:2a}) and (\ref{ex:2b})). %  (b) and (c).
-However, dissimilation is blocked if the result would violate sibilant harmony.
-Thus \textipa{/sn/} surfaces as \textipa{[Sn]} or \textipa{[sn]} depending on whether the word contains \textipa{[s]} somewhere to the right (cf. Ex.~(\ref{ex:2a}) and (\ref{ex:3a})).%(b) and (d)):
-
+A TSL analysis for this patter seems straightforward, as this data can be captured by projecting a tier of voiced consonants, and enforcing constraints banning tier adjacent  \textipa{[nd]}.
 
 \begin{figure}[t]
 \centering
-    \input{./img/tier_left.tikz}   %    \input{./img/tier_left_new.tikz} 
+    \input{./img/tier_left_yaka.tikz}   %    \input{./img/tier_left_new.tikz} 
         %
-       \hspace{2cm}
-    \input{./img/tier_right.tikz}    
-        \caption{Example of a TSL analysis of sibilant harmony in Samala: (a) is ill-formed because of adjacent $^*$\textipa{[sn]}; (b) is well-formed since  \textipa{[sn]} is followed by another  \textipa{[s]} later in the string, but it is still ruled out by the grammar.}
-        %if switched to new example
-        % \caption{Example of a TSL analysis of sibilant harmony in Samala: (a) should be  ill-formed because of violated sibilant harmony, but \textipa{[s]} and \textipa{[S]} are not adjacent on the tier so the grammar allows it; (b) is well-formed since  \textipa{[sn]} is followed by another  \textipa{[s]} later in the string, but it is still ruled out by the grammar because of adjacent \textipa{[sn]}.}
-        \label{fig:SAMALA1}
+    \input{./img/tier_right_yaka.tikz}    
+	%
+    \input{./img/tier_center_yaka.tikz}    
+        \caption{Example of a TSL analysis of nasal harmony in Yaka: (a) is ill-formed because of tier adjacent $^*$\textipa{[nd]}; (b) is well-formed since  there are no voiced stops on the tier disagreeing in nasality; (c) is well-formed because the \textipa{[d]} immediately following \textipa{[n]} stops the latter from being a trigger for harmony, but it is still ruled out by the constraint needed for (b).}
+        \label{fig:YAKA1}
         \end{figure}
 
-Fig.~\ref{fig:SAMALA1} exemplifies why this interaction of a local and a non-local dependency is not TSL\@. 
-Since \textipa{[sn]} is sometimes observed in a string-adjacent context (as in Ex.~(\ref{ex:3a})), it must be permitted as a $2$-gram on a tier --- even though it is only allowed when a segment such as \textipa{[s]} follows later in the string.
-But then,  a TSL grammar would have no means of distinguishing Ex.~(\ref{ex:2a}) from Ex.~(\ref{ex:3a}).
-%But then, a TSL grammar would have no means of banning \textipa{[sn]} when there is no subsequent \textipa{[s]} in the string (as in  Ex.~(\ref{ex:2a}) vs. (\ref{ex:2b})).
-Vice-versa, if we ban  \textipa{[sn]} on $T$, then the grammar will not be able to allow it when another \textipa{[s]} follows on the tier.
-%
 
-The reader might point out that the difference between Fig.~ \ref{fig:SAMALA1}.a and Fig.~ \ref{fig:SAMALA1}.b can be resolved by extending the tier-grammar to consider $3$-grams; which are anyway needed to account for the contrast between Ex.~(\ref{ex:3a}) and Ex.~(\ref{ex:3b}).
-However, in order to ban \textipa{[sn]}, the tier-projection places every occurrence of \textipa{[n]} in the string on the tier.
-Since the number of \textipa{[n]} segments between two sibilants is potentially unbounded, no TSL grammar can generally account for this pattern, independently of the dimension of the tier $k$-grams.
-The 3-gram proposal would work, though, if we could limit projection of \textipa{[n]} to only those segments that immediately follow an \textipa{[s]}.
+
+However, observe now the examples in  Ex.~(\ref{ex:3}): consonantal complexes composed of a nasal and a voiced oral stop neither trigger   Ex.~(\ref{ex:3a},\ref{ex:3b}) nor block nasality agreement   Ex.~(\ref{ex:3c}).
+Fig.~\ref{fig:YAKA1} exemplifies why this interaction of a local and a non-local dependency is not TSL\@. 
+Since \textipa{[nd]} is sometimes observed in a string-adjacent context (as in Ex.~(\ref{ex:3b})), it must be permitted as a $2$-gram on a tier --- even though it is only allowed when  \textipa{[nd]} re immediately adjacent in the string.
+But then,  a TSL grammar would have no means of distinguishing Ex.~(\ref{ex:1b}) from Ex.~(\ref{ex:3b}).
+
+The reader might point out that the difference between Fig.~\ref{fig:YAKA1}.a and Fig.~\ref{fig:YAKA1}.c can be resolved by extending the tier-grammar to consider $3$-grams.
+However, in order to enforce harmony correctly, the tier-projection places every occurrence of voiced stops in the string on the tier, thus making $3$-grams constraints insufficient (e.g., Ex.~(\ref{ex:3}c)).
+Moreover, since the number of segments between harmonizing elements is potentially unbounded, no TSL grammar can generally account for this pattern, independently of the dimension of the tier $k$-grams.
+
+Let us consider the examples in Ex.~(\ref{ex:3}) once more. 
+Any nasal immediately followed by a voiced stop does not trigger harmony. 
+In fact, since they do not block the harmonic process, neither the nasal nor the stop participate in the harmony at all.
+If we could make the projection of nasals and stops avoid  those segments that appear in specific consonant clusters (e.g. \textipa{[nd]}) the tier constraints discussed above would work once again.
 This is not possible with TSL as originally defined in \cite{HeinzRawalTanner}, as TSL selects tier elements only based on their $1$-local properties (i.e. which kind of segment they are). %Sec.~\ref{sec:SSTSL}.
-This kind of patters have inspired the definition of a different TSL extension --- input-sensitive TSL (ITSL) --- with a projection mechanism simultaneously aware of local and non-local properties of segments in the string \citep{desanto2019structure}.
+However, this kind of expressivity can be accomplished by increasing the locality window of the \emph{tier projection mechanism}. 
+
+In particular, the intuition behind  \citet{desanto2019structure}'s ITSL class is that  a TSL grammar  can be made simultaneously aware of local and non-local properties of segments in the string with a natural change to the definition of the erasing function.
 
 \begin{figure}[]
 \begin{center}
     %\input{./img/sstsl.tikz}
-    \input{./img/sstsl_new.tikz}
+     \input{./img/sstsl_yaka_0.tikz}  
+    \input{./img/sstsl_yaka_1.tikz}
+      \input{./img/sstsl_yaka_2.tikz}
         \end{center}
         % \caption{Example from Samala, allowing generalized tier projection: (a) is ill-formed because of $^*$\textipa{sn}; (b) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
          %if changed to new fig
-        \caption{Example from Samala, allowing generalized tier projection: (a) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string; (b) is ill-formed because of $^*$\textipa{Ss}. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
-        \label{fig:SAMALA}
+        \caption{Example of a ITSL analysis of nasal harmony in Yaka: (a) is ill-formed because of adjacent $^*$\textipa{[nd]}; (b) is well-formed since  \textipa{[n]} is followed by another  \textipa{[n]} later in the string; (c) is well-formed because the \textipa{[nd]} cluster does not enforce nasality on the following stops.  Note that \textipa{[n,d]} are projected on the tier only when not immediately adjacent in the input. }
+        \label{fig:YAKA2}
         \end{figure}
 
-To see how this works in practice, consider again Samala's combination of  long-distance sibilant harmony with local dissimilation between \textipa{/s/} and \textipa{/n/}.
-%
-Fig.~\ref{fig:SAMALA} shows how, by increasing the locality of the projection to $2$, we allow the grammar to project  \textipa{[n]} iff it is immediately preceded by a sibilant in the input string, and then use $3$-local tier constraints to ban  $\{$\textipa{sn}($\neg$ \textipa{s}), \textipa{Sns}$\}$, in addition to the factors needed to enforce the usual sibilant harmony patterns.
-%
-This time, the possible unboundedness of \textipa{[n]} is not a problem, since \textipa{[n]} is now relevant for the projection only when adjacent to a sibilant.
-In the rest of the paper, we present a grammatical inference algorithm able to learn ITSL grammars with 2-local contexts and 2-local tier constraints (ITSL$^2_2$), only from positive examples and without a-priori knowledge about the tiers.
-Since, as discussed, intersection closure if a fundamental component of natural language phonotactics, we directly expand of \citet{McMullinSCIL2019}'s MTSL2IA algorithm for MTSL$_2$ languages, and learn conjunctions of ITSL$^2_2$ languages (MITSL$^2_2$).
+
+Fig.~\ref{fig:YAKA2} shows how, by increasing the locality of the projection to $2$, we allow the grammar to project a nasal iff it is not immediately followed by a voiced oral stop, and then use $2$-local tier constraints to ban  \textipa{nd}.%
+This time,  possible intermediate clusters are not a problem, since the projection is able to infer that they are in local contexts that make them irrelevant to the harmonic process.
+
+Finally, note the following additional data:
+
+
+\begin{exe}
+    \ex\label{ex:4}\begin{xlist}
+    	 \ex\label{ex:4a} \textipa{k\'em-ene}   
+	 \ex\label{ex:4b} \textipa{k\'eb-ede}
+	\end{xlist}
+\end{exe}
+
+Ex.~(\ref{ex:4}) shows a vowel alternation that is independent of the nasality process, and is instead due to vowel heigh harmony.
+Vowel harmony can be easily accounted for with a TSL grammar.
+However, this is only true if we analyze it by itself, and fails if we try to model nasal harmony and vowel harmony in a single grammar.
+In order to account for this, vowel will need to be projected on the tier, thus interfering with the nasalization process.
+This issue is resolved working with the intersection closure of ITSL languages (MITSL).
+
+This class can be intuitively understood as having a grammar projecting multiple tiers, and enforcing independent local constraints on each tier.
+For a string to belong to the language, it needs to be well-formed on every tier.
+For instance, Fig.~\ref{fig:YAKA3} shows a grammar projecting two separate tier: a tier of vowel, with constraints ensuring height harmony: and a tier enforcing nasal harmony as in the examples above.
+
+
+\begin{figure}[]
+\begin{center}
+    %\input{./img/sstsl.tikz}
+     \input{./img/mtsl_yaka_1.tikz}  
+    \input{./img/mtsl_yaka_2.tikz}
+        \end{center}
+        % \caption{Example from Samala, allowing generalized tier projection: (a) is ill-formed because of $^*$\textipa{sn}; (b) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
+         %if changed to new fig
+        \caption{Example of a MITSL analysis of  Yaka nasal and vowel harmony: (a) is ill-formed because there is a violation on the nasal harmony tier; (b) is well-formed since there are no violations on either tier.}
+        \label{fig:YAKA3}
+        \end{figure}
+
+
+%Since the ability to model multiple processes in the phonotactic of a language remains obviously desirable, it seems reasonable then to focus on the learnability of MITSL languages directly, as any algorithm able to learn an MITSL language will also trivially learn an ITSL one.
+%%%%%%%%%%%%%%%%%%
+In the rest of the paper, we directly expand of \citet{McMullinSCIL2019}'s MTSL2IA algorithm and present a grammatical inference algorithm able to learn conjunction ITSL grammars with $2$-local contexts and $2$-local tier constraints ($k$-MITSL$^2_2$), only from positive examples and without a-priori knowledge about the content or the number of tiers.
+%Since, as discussed, intersection closure if a fundamental component of natural language phonotactics, we directly expand of \citet{McMullinSCIL2019}'s MTSL2IA algorithm for MTSL$_2$ languages, and learn conjunctions of ITSL$^2_2$ languages (MITSL$^2_2$).
 
 
 \section{MITSL Inference Algorithm}

@@ -1,17 +1,17 @@
 \begin{thebibliography}{16}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[{Applegate(1972)}]{Applegate72}
-R.B. Applegate. 1972.
-\newblock \emph{Ineseno Chumash grammar}.
-\newblock Ph.D. thesis, UC Berkeley.
-
 \bibitem[{Baek(2017)}]{Baek2017CLS}
 Hyunah Baek. 2017.
 \newblock Computational representation of unbounded stress patterns: tiers with
   structural features.
 \newblock In \emph{Proceedings of the 53rd Meeting of the Chicago Linguistic
   Society (CLS53)}.
+
+\bibitem[{Chandlee and Heinz(2018)}]{ChandleeHeinz18}
+Jane Chandlee and Jeffrey Heinz. 2018.
+\newblock Strict locality and phonological maps.
+\newblock \emph{Linguistic Inquiry}, 49:23--60.
 
 \bibitem[{De~Santo and Graf(2019)}]{desanto2019structure}
 Aniello De~Santo and Thomas Graf. 2019.
