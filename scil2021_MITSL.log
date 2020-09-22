@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  14 SEP 2020 19:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  21 SEP 2020 19:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1370,7 +1370,7 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 LaTeX Font Info:    Trying to load font information for T3+ptm on input line 15
-8.
+4.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/tipa/t3ptm.fd
 File: t3ptm.fd 2001/12/31 TIPA font definitions
@@ -1396,34 +1396,22 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 <special> header=gastex.pro
 
-]
-
-Package natbib Warning: Citation `hyman1995nasal' on page 2 undefined on input 
-line 268.
-
-
-Package natbib Warning: Citation `Walker_Yaka' on page 2 undefined on input lin
-e 268.
-
-(./img/tier_left_yaka.tikz) (./img/tier_right_yaka.tikz)
+] (./img/tier_left_yaka.tikz) (./img/tier_right_yaka.tikz)
 (./img/tier_center_yaka.tikz) [2]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 323.
+               Default added (so using `tbp') on input line 240.
 
 (./img/sstsl_yaka_0.tikz) (./img/sstsl_yaka_1.tikz) (./img/sstsl_yaka_2.tikz)
 [3]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 361.
+               Default added (so using `tbp') on input line 280.
 
 (./img/mtsl_yaka_1.tikz) (./img/mtsl_yaka_2.tikz)
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
+71.
 
-Package natbib Warning: Citation `JardineHeinz2016' on page 4 undefined on inpu
-t line 385.
-
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 3
-98.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -1432,7 +1420,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 2065) in paragraph at lines 397--402
+Underfull \hbox (badness 2065) in paragraph at lines 470--475
 []\OT1/ptm/m/n/10.95 (+20) A string $\OML/cmm/m/it/10.95 u$ \OT1/ptm/m/n/10.95 
 (+20) is a $\OML/cmm/m/it/10.95 k$\OT1/ptm/m/n/10.95 (+20) -\OT1/ptm/m/it/10.95
  (+20) factor \OT1/ptm/m/n/10.95 (+20) of a string $\OML/cmm/m/it/10.95 w$ \OT1
@@ -1440,50 +1428,98 @@ Underfull \hbox (badness 2065) in paragraph at lines 397--402
  []
 
 [4]
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 515.
 
-Package natbib Warning: Citation `JardineHeinz2016' on page 5 undefined on inpu
-t line 466.
+Overfull \hbox (8.44705pt too wide) detected at line 516
+\OML/cmm/m/it/10.95 L \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/1
+0.95 w \OMS/cmsy/m/n/10.95 2 \OT1/cmr/m/n/10.95 ^^F[] : [][](\U/msb/m/n/10.95 o
+[]\OML/cmm/m/it/10.95 ^^Y[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 w\OT1/cmr/m/
+n/10.95 )\U/msb/m/n/10.95 n[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 \ \OML/cm
+m/m/it/10.95 R \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 ;g\OML/cmm/m/it/10.95 :
 
-
-Underfull \hbox (badness 1286) in paragraph at lines 468--469
-[]\OT1/ptm/m/n/10.95 (+20) Intuitively, a 2-path can be thought of as a
  []
 
 
-Overfull \hbox (10.35655pt too wide) in paragraph at lines 468--469
-\OMS/cmsy/m/n/10.95 h[]i\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 h[]i\OML/cmm/
-m/it/10.95 ; \OMS/cmsy/m/n/10.95 h[]i\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 
-h[]i\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (-20) . 
+Underfull \hbox (badness 1117) in paragraph at lines 554--557
+\OML/cmm/m/it/10.95 ^^Z[]$\OT1/ptm/m/n/10.95 (+20) . For-mally, each 2-path is 
+there-fore a 3-
  []
 
 
-Package natbib Warning: Citation `AksenovaDeshmukh2018' on page 5 undefined on 
-input line 498.
+Underfull \hbox (badness 1014) in paragraph at lines 554--557
+\OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\
+OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) , 
+$\OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) ,
+ []
 
-(./scil2021_MITSL.bbl [5]
-Underfull \hbox (badness 1014) in paragraph at lines 24--27
+
+Underfull \hbox (badness 1521) in paragraph at lines 554--557
+\OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\
+OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) ,
+ []
+
+
+Underfull \hbox (badness 1888) in paragraph at lines 554--557
+\OT1/ptm/m/n/10.95 (+20) tend $\OML/cmm/m/it/10.95 paths[]\OT1/cmr/m/n/10.95 (\
+OMS/cmsy/m/n/10.95 ^^A\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 (+20) from strin
+gs to lan-guages as
+ []
+
+
+Underfull \hbox (badness 2096) in paragraph at lines 558--563
+\OT1/ptm/m/n/10.95 (+20) proper. The def-i-ni-tion of $\OML/cmm/m/it/10.95 path
+s[]\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 ^^A\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/
+n/10.95 (+20) stays as
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 558--563
+\OT1/ptm/m/n/10.95 (+20) once more the string $\U/msb/m/n/10.95 o\OML/cmm/m/it/
+10.95 abcc\U/msb/m/n/10.95 n$\OT1/ptm/m/n/10.95 (+20) , the set of 2-
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 558--563
+\OT1/ptm/m/n/10.95 (+20) paths is now the fol-low-ing: $\OMS/cmsy/m/n/10.95 h[]
+i$\OT1/ptm/m/n/10.95 (+20) ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 558--563
+\OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\
+OT1/ptm/m/n/10.95 (+20) ,
+ []
+
+[5] [6]
+
+Package natbib Warning: Citation `AksenovaDeshmukh2018' on page 7 undefined on 
+input line 651.
+
+(./scil2021_MITSL.bbl
+Underfull \hbox (badness 1014) in paragraph at lines 29--32
 []\OT1/ptm/m/n/10 John Gold-smith. 1976.  \OT1/ptm/m/it/10 Au-toseg-men-tal pho
 nol-ogy\OT1/ptm/m/n/10 .
  []
 
 
-Underfull \hbox (badness 1348) in paragraph at lines 65--69
+Underfull \hbox (badness 1348) in paragraph at lines 80--84
 []\OT1/ptm/m/n/10 Adam Jar-dine and Kevin Mc-Mullin. 2017.  Ef-fi-
  []
 
 
-Underfull \hbox (badness 1609) in paragraph at lines 78--83
+Underfull \hbox (badness 1609) in paragraph at lines 93--98
 \OT1/ptm/m/it/10 distance phono-tac-tics?: learn-abil-ity and ty-pol-ogy[][]\OT
 1/ptm/m/n/10 .
  []
 
 
-Underfull \hbox (badness 4416) in paragraph at lines 86--91
+Underfull \hbox (badness 4416) in paragraph at lines 101--106
 []\OT1/ptm/m/n/10 Kevin Mc-Mullin, Al[]ena Aks[]enova, and Aniello
  []
 
 
-Underfull \hbox (badness 1132) in paragraph at lines 93--97
+Underfull \hbox (badness 1132) in paragraph at lines 108--112
 \OT1/ptm/m/n/10 guages[][].  \OT1/ptm/m/it/10 Pro-ceed-ings of the An-nual Meet
 -ings on
  []
@@ -1492,23 +1528,23 @@ Underfull \hbox (badness 1132) in paragraph at lines 93--97
 
 Package natbib Warning: There were undefined citations.
 
-[6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 514.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 514.
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 665.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 665.
  (./scil2021_MITSL.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 514.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 514.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 665.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 665.
 Package rerunfilecheck Info: File `scil2021_MITSL.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 514.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 665.
  )
 (\end occurred when \iffalse on line 352 was incomplete) 
 Here is how much of TeX's memory you used:
- 37981 strings out of 480608
- 798233 string characters out of 5903631
- 1143429 words of memory out of 5000000
- 52941 multiletter control sequences out of 15000+600000
- 572834 words of font info for 210 fonts, out of 8000000 for 9000
+ 38051 strings out of 480608
+ 799238 string characters out of 5903631
+ 1147626 words of memory out of 5000000
+ 52978 multiletter control sequences out of 15000+600000
+ 578853 words of font info for 235 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,14n,77p,1591b,797s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/202
@@ -1523,15 +1559,16 @@ public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/u
-rw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helve
-tic/uhvb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a
-.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr
-/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/te
-xlive/2020/texmf-dist/fonts/type1/public/tipa/xipa10.pfb>
-Output written on scil2021_MITSL.pdf (6 pages, 202838 bytes).
+rw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/couri
+er/ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhv
+b8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></
+usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/
+texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2
+020/texmf-dist/fonts/type1/public/tipa/xipa10.pfb>
+Output written on scil2021_MITSL.pdf (7 pages, 216905 bytes).
 PDF statistics:
- 262 PDF objects out of 1000 (max. 8388607)
- 235 compressed objects within 3 object streams
- 58 named destinations out of 1000 (max. 500000)
- 24077 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 298 PDF objects out of 1000 (max. 8388607)
+ 269 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 31245 words of extra memory for PDF output out of 35830 (max. 10000000)
 

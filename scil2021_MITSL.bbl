@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{19}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Baek(2017)}]{Baek2017CLS}
@@ -19,6 +19,11 @@ Aniello De~Santo and Thomas Graf. 2019.
   properties.
 \newblock In \emph{International Conference on Formal Grammar}, pages 35--50.
   Springer.
+
+\bibitem[{Gold(1967)}]{gold1967language}
+E~Mark Gold. 1967.
+\newblock Language identification in the limit.
+\newblock \emph{Information and control}, 10(5).
 
 \bibitem[{Goldsmith(1976)}]{goldsmith1976autosegmental}
 John Goldsmith. 1976.
@@ -54,6 +59,16 @@ Jeffrey Heinz, Chetan Rawal, and Herbert Tanner. 2011.
   strictly local constraints for phonology}.
 \newblock In \emph{Proceedings of the ACL 49th: Human Language Technologies:
   Short Papers - Volume 2}, pages 58--64.
+
+\bibitem[{De~la Higuera(2010)}]{de2010grammatical}
+Colin De~la Higuera. 2010.
+\newblock \emph{Grammatical inference: learning automata and grammars}.
+\newblock Cambridge University Press.
+
+\bibitem[{Hyman(1995)}]{hyman1995nasal}
+Larry~M Hyman. 1995.
+\newblock Nasal consonant harmony at a distance the case of yaka.
+\newblock \emph{Studies in African Linguistics}, 24(1):6--30.
 
 \bibitem[{Jardine and Heinz(2016)}]{JardineHeinz16}
 Adam Jardine and Jeffrey Heinz. 2016.
