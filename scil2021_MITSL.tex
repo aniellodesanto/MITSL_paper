@@ -630,7 +630,7 @@ As the algorithm will instantiate a tier for each unattested   $\rho_1\rho_2$ in
   Note howveer that this complication is implicit within the definition of ITSL constraints, since they tie the distribution of segments in a language to their local \emph{and} non-local contexts symultaneously.
 
 A peculiarity of our specific implementation is that the MITSL grammar returned is in its a specific canonical form.
-That is, by assigning each tier to a single constraint,  it redundantly ties even non conflicting constraints sharing the same sets of contexts to distinct tiers.
+That is, by assigning each tier to a single constraint,  it redundantly ties even  constraints that could co-exist on the same tier to distinct tiers.
 Additionally, as a consequence of treating bigrams as unary symbols,  when a segment is freely distributed with respect to its contexts --- i.e., it gets projected on a tier independently on the context --- the algorithm will still treat each bigram as a distinct element.
 For instance, consider $\Sigma =\{ a, e, o \}$ and assume  $e$ a tier element independently of context.
 What our algorithm will infer is that any bigram containing $e$ will be a tier element, so that $C = \{ ae, ea, eo, oe, ee\}$.
@@ -656,10 +656,6 @@ However, we note that the algorithm relies on the assumption that each bigram re
 \bibliography{sstsl.bib}
 \bibliographystyle{acl_natbib}
 
-\appendix
-
-\section{Supplemental Material}
-\label{sec:supplemental}
 
 
 \end{document}
