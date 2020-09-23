@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  23 SEP 2020 13:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  23 SEP 2020 14:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1545,7 +1545,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 562.
 Here is how much of TeX's memory you used:
  38091 strings out of 480608
  800158 string characters out of 5903631
- 1146468 words of memory out of 5000000
+ 1146471 words of memory out of 5000000
  53000 multiletter control sequences out of 15000+600000
  578470 words of font info for 237 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1569,7 +1569,7 @@ ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a
 /local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/tex
 live/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2020
 /texmf-dist/fonts/type1/public/tipa/xipa10.pfb>
-Output written on scil2021_MITSL.pdf (10 pages, 242635 bytes).
+Output written on scil2021_MITSL.pdf (10 pages, 242659 bytes).
 PDF statistics:
  380 PDF objects out of 1000 (max. 8388607)
  346 compressed objects within 4 object streams

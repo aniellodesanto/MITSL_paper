@@ -1,8 +1,8 @@
 \begin{thebibliography}{29}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[{Aksenova(2020)}]{aksenova2020tool}
-Alena Aksenova. 2020.
+\bibitem[{Aks\"{e}nova(2020)}]{aksenova2020tool}
+Al\"{e}na Aks\"{e}nova. 2020.
 \newblock \emph{Tool-assisted induction of subregular languages and mappings}.
 \newblock Ph.D. thesis, State University of New York at Stony Brook.
 
