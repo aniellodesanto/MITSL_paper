@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{29}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Aksenova(2020)}]{aksenova2020tool}
@@ -75,10 +75,15 @@ R.~J. Hayward. 1990.
 \newblock In R.~J. Hayward, editor, \emph{Omotic language studies}, pages
   425--493. School of Oriental and African Studies, U. of London, London, UK.
 
-\bibitem[{Heinz(2011)}]{Heinz2011a}
-Jeffrey Heinz. 2011.
+\bibitem[{Heinz(2011{\natexlab{a}})}]{Heinz2011a}
+Jeffrey Heinz. 2011{\natexlab{a}}.
 \newblock Computional phonology -- part 1: Foundations.
 \newblock \emph{Language and Linguistics Compass}, 5(4):140--152.
+
+\bibitem[{Heinz(2011{\natexlab{b}})}]{Heinz2011b}
+Jeffrey Heinz. 2011{\natexlab{b}}.
+\newblock Computional phonology -- part 2: Grammars, learning, and the future.
+\newblock \emph{Language and Linguistics Compass}, 5(4):153--168.
 
 \bibitem[{Heinz et~al.(2011)Heinz, Rawal, and Tanner}]{HeinzRawalTanner}
 Jeffrey Heinz, Chetan Rawal, and Herbert Tanner. 2011.

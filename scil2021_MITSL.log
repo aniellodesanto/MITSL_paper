@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  22 SEP 2020 20:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  23 SEP 2020 13:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1352,13 +1352,11 @@ LaTeX Font Info:    Trying to load font information for U+stmry on input line 1
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 LaTeX Font Info:    Trying to load font information for T3+ptm on input line 15
-6.
+7.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/tipa/t3ptm.fd
 File: t3ptm.fd 2001/12/31 TIPA font definitions
-)
-(./img/example1.tikz) [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/upd
-map/pdftex.map}
+) [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 Non-PDF special ignored!
 <special> header=pstricks.pro
 Non-PDF special ignored!
@@ -1378,21 +1376,34 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 <special> header=gastex.pro
 
-] (./img/tier_left_yaka.tikz) (./img/tier_right_yaka.tikz)
-(./img/tier_center_yaka.tikz) [2]
+] (./img/example1.tikz) (./img/tier_left_yaka.tikz)
+(./img/tier_center_yaka.tikz)
+Overfull \hbox (2.32779pt too wide) in paragraph at lines 219--224
+ [][] 
+ []
+
+[2]
+Underfull \hbox (badness 1062) in paragraph at lines 239--243
+[]\OT1/ptm/m/n/10.95 (+20) This is ac-com-plished by [][]De Santo and Graf[][]
+ []
+
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 242.
+               Default added (so using `tbp') on input line 244.
 
 (./img/sstsl_yaka_0.tikz) (./img/sstsl_yaka_1.tikz) (./img/sstsl_yaka_2.tikz)
+Overfull \hbox (4.55833pt too wide) in paragraph at lines 250--255
+ [] 
+ []
+
 [3]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 282.
+               Default added (so using `tbp') on input line 285.
 
 (./img/mtsl_yaka_1.tikz) (./img/mtsl_yaka_2.tikz)
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
-73.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 3
+22.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -1402,7 +1413,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 2065) in paragraph at lines 472--477
+Underfull \hbox (badness 2065) in paragraph at lines 321--326
 []\OT1/ptm/m/n/10.95 (+20) A string $\OML/cmm/m/it/10.95 u$ \OT1/ptm/m/n/10.95 
 (+20) is a $\OML/cmm/m/it/10.95 k$\OT1/ptm/m/n/10.95 (+20) -\OT1/ptm/m/it/10.95
  (+20) factor \OT1/ptm/m/n/10.95 (+20) of a string $\OML/cmm/m/it/10.95 w$ \OT1
@@ -1411,9 +1422,9 @@ Underfull \hbox (badness 2065) in paragraph at lines 472--477
 
 [4]
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 517.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 358.
 
-Overfull \hbox (8.44705pt too wide) detected at line 518
+Overfull \hbox (8.44705pt too wide) detected at line 359
 \OML/cmm/m/it/10.95 L \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/1
 0.95 w \OMS/cmsy/m/n/10.95 2 \OT1/cmr/m/n/10.95 ^^F[] : [][](\U/msb/m/n/10.95 o
 []\OML/cmm/m/it/10.95 ^^Y[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 w\OT1/cmr/m/
@@ -1423,119 +1434,122 @@ m/m/it/10.95 R \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 ;g\OML/cmm/m/it/10.95 :
  []
 
 
-Underfull \hbox (badness 1117) in paragraph at lines 556--559
+Underfull \hbox (badness 1117) in paragraph at lines 394--398
 \OML/cmm/m/it/10.95 ^^Z[]$\OT1/ptm/m/n/10.95 (+20) . For-mally, each 2-path is 
 there-fore a 3-
  []
 
 
-Underfull \hbox (badness 1014) in paragraph at lines 556--559
+Underfull \hbox (badness 1014) in paragraph at lines 394--398
 \OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\
 OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) , 
 $\OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) ,
  []
 
 
-Underfull \hbox (badness 1521) in paragraph at lines 556--559
+Underfull \hbox (badness 1521) in paragraph at lines 394--398
 \OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\
 OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) ,
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 556--559
+Underfull \hbox (badness 1888) in paragraph at lines 394--398
 \OT1/ptm/m/n/10.95 (+20) tend $\OML/cmm/m/it/10.95 paths[]\OT1/cmr/m/n/10.95 (\
 OMS/cmsy/m/n/10.95 ^^A\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 (+20) from strin
 gs to lan-guages as
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 560--565
-\OT1/ptm/m/n/10.95 (+20) proper. The def-i-ni-tion of $\OML/cmm/m/it/10.95 path
-s[]\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 ^^A\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/
-n/10.95 (+20) stays as
+Underfull \hbox (badness 1721) in paragraph at lines 399--404
+[]\OT1/ptm/m/n/10.95 (+20) In or-der to have 2-paths cap-ture the no-tion
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 560--565
+Underfull \hbox (badness 2932) in paragraph at lines 399--404
+\OT1/ptm/m/n/10.95 (+20) of con-text, we have $\OML/cmm/m/it/10.95 ^^Z[]; ^^Z[]
+$ \OT1/ptm/m/n/10.95 (+20) be el-e-ments in
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 399--404
 \OT1/ptm/m/n/10.95 (+20) once more the string $\U/msb/m/n/10.95 o\OML/cmm/m/it/
 10.95 abcc\U/msb/m/n/10.95 n$\OT1/ptm/m/n/10.95 (+20) , the set of 2-
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 560--565
+Underfull \hbox (badness 2809) in paragraph at lines 399--404
 \OT1/ptm/m/n/10.95 (+20) paths is now the fol-low-ing: $\OMS/cmsy/m/n/10.95 h[]
 i$\OT1/ptm/m/n/10.95 (+20) ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 560--565
+Underfull \hbox (badness 10000) in paragraph at lines 399--404
 \OMS/cmsy/m/n/10.95 h[]i$\OT1/ptm/m/n/10.95 (+20) , $\OMS/cmsy/m/n/10.95 h[]i$\
 OT1/ptm/m/n/10.95 (+20) ,
  []
 
 [5]
-Underfull \vbox (badness 1540) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-Underfull \vbox (badness 2941) has occurred while \output is active []
-
- [7]
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 6
-93.
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 5
+04.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 693.
- [8]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 504.
+ [7] [8]
 (./scil2021_MITSL.bbl
 Underfull \hbox (badness 1014) in paragraph at lines 51--54
 []\OT1/ptm/m/n/10 John Gold-smith. 1976.  \OT1/ptm/m/it/10 Au-toseg-men-tal pho
 nol-ogy\OT1/ptm/m/n/10 .
  []
 
-[9]
-Underfull \hbox (badness 1348) in paragraph at lines 113--117
+
+Underfull \hbox (badness 1348) in paragraph at lines 118--122
 []\OT1/ptm/m/n/10 Adam Jar-dine and Kevin Mc-Mullin. 2017.  Ef-fi-
  []
 
 
-Underfull \hbox (badness 1609) in paragraph at lines 133--138
+Underfull \hbox (badness 1609) in paragraph at lines 138--143
 \OT1/ptm/m/it/10 distance phono-tac-tics?: learn-abil-ity and ty-pol-ogy[][]\OT
 1/ptm/m/n/10 .
  []
 
 
-Underfull \hbox (badness 4416) in paragraph at lines 141--146
+Underfull \hbox (badness 4416) in paragraph at lines 146--151
 []\OT1/ptm/m/n/10 Kevin Mc-Mullin, Al[]ena Aks[]enova, and Aniello
  []
 
-
-Underfull \hbox (badness 1132) in paragraph at lines 148--152
+[9]
+Underfull \hbox (badness 1132) in paragraph at lines 153--157
 \OT1/ptm/m/n/10 guages[][].  \OT1/ptm/m/it/10 Pro-ceed-ings of the An-nual Meet
 -ings on
  []
 
-) [10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 752.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 752.
+) [10
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 562.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 562.
  (./scil2021_MITSL.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 752.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 752.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 562.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 562.
 Package rerunfilecheck Info: File `scil2021_MITSL.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 752.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 562.
  )
 (\end occurred when \iffalse on line 352 was incomplete) 
 Here is how much of TeX's memory you used:
- 38097 strings out of 480608
- 800245 string characters out of 5903631
- 1148010 words of memory out of 5000000
+ 38091 strings out of 480608
+ 800158 string characters out of 5903631
+ 1146468 words of memory out of 5000000
  53000 multiletter control sequences out of 15000+600000
- 579060 words of font info for 240 fonts, out of 8000000 for 9000
+ 578470 words of font info for 237 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,14n,77p,1591b,797s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,15n,77p,1591b,797s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/202
 0/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2020/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fon
@@ -1555,10 +1569,10 @@ ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a
 /local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/tex
 live/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2020
 /texmf-dist/fonts/type1/public/tipa/xipa10.pfb>
-Output written on scil2021_MITSL.pdf (10 pages, 242910 bytes).
+Output written on scil2021_MITSL.pdf (10 pages, 242635 bytes).
 PDF statistics:
- 366 PDF objects out of 1000 (max. 8388607)
- 332 compressed objects within 4 object streams
- 78 named destinations out of 1000 (max. 500000)
- 30733 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 380 PDF objects out of 1000 (max. 8388607)
+ 346 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 30221 words of extra memory for PDF output out of 35830 (max. 10000000)
 

@@ -126,36 +126,37 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-This paper proposes a grammatical  inference algorithm to learn input-sensitive tier-based strictly local languages across multiple tiers from positive data only, when the locality of the tier-constraints and of the tier-projection function is set to two \cite[MITSL$^2_2$][]{desanto2019structure}.
-We provide a Python implementation for the leaner and a set of data generators, and conduct simulations showing that the algorithm succeeds in learning MITSL$^2_2$ from an initial set of artificial languages.
+This paper proposes a grammatical  inference algorithm to learn input-sensitive tier-based strictly local languages across multiple tiers from positive data only, when the locality of the tier-constraints and of the tier-projection function is set to two \cite[MITSL$^2_2$;][]{desanto2019structure}.
+We then conduct simulations showing that the algorithm succeeds in learning MITSL$^2_2$ from an initial set of artificial languages.
 \end{abstract}
 
 
 \section{Introduction}
 
 Formal language theory has long been used to study the complexity of linguistic dependencies.
-Recent research in this sense has posited that the phonotactics of natural languages can be described by subclasses of the regular languages.
-In particular, tier-based strictly local (TSL) grammars  ---  a minor extension of n-gram models --- have been shown to be able to capture a variety of non-local, unbounded processes \cite{HeinzRawalTanner,McMullin16,McMullinHansson16}.
-Recently however, it has been suggested that the particular notion of relativized locality employed by the TSL class is unable to describe a variety of complex phonotactic patterns cross-linguistically.
+Recent research in this sense has posited that the phonotactics of natural languages can be described by subclasses of the regular languages \citep{Heinz2011a,Heinz2011b}.
+In particular, tier-based strictly local (TSL) grammars  ---  a minor extension of n-gram models --- have been shown to be able to capture a variety of non-local, unbounded processes \cite[subregular classes;][]{HeinzRawalTanner,McMullin16,McMullinHansson16}.
+Recently however, it has been suggested that the particular notion of relativized locality employed by the TSL class is unable to describe a variety of complex phonotactic patterns cross-linguistically \citep[a.o.]{McMullin16,MayerMajor18}.
 Based on this linguistic motivation, extensions have been proposed in the search of the right fit for natural language phonotactics.
-Specifically, input-sensitive TSL languages have been suggested as being able to encode a combination of local and non local requirements on the wellformedness of strings in the language.
+Specifically, input-sensitive TSL languages \citep[ISTL;][]{desanto2019structure} consider the local context of elements in the input string (their immediate surrounding environment), in order to simultaneously encode local and non local requirements on the wellformedness of strings in the language.
 
-Apart from typological coverage, an important aspect of evaluating the linguistic relevance of these analyses is to understand under which conditions such patterns are learnable.
-In this sense, an approach to learning grounded in grammatical inferences in interesting, as it illumintaes how properties of the patterns can restrict the learning space in useful ways.
-In this framework, TSL languages have been shown to be efficiently learnable from positive input only.
-While ITSL languages have been argued to share the same property, no learning algorithm exists for this class.
+Apart from typological coverage, an important aspect of evaluating the linguistic relevance of these analyses is to understand under which conditions such patterns are efficiently learnable.
+In this sense, learning approach grounded in grammatical inferences highlight how knowledge about the formal properties of natural language phonotactics can help restrict the learning space in useful ways; and how they can inform different learning frameworks.
+
+In this sense, TSL languages have been shown to be efficiently learnable from positive input only \cite{JardineHeinz16,jardinemcmullin17}.
+While ITSL languages have been argued to share the same property, no learning algorithm exists for this class yet.
 In this paper, we extend \citet{McMullinSCIL2019} inference algorithm for multiple tier-based strictly $2$ local languages (MITSL$_2$), in order to learn patterns in the intersection closure of ITSL$_2$ which consider $2$-local \emph{contexts} for segments in the input string (MITSL$^2_2$). 
-The intersection closure is essential, if we strive to provide learning approaches able to capture the whole phonotactics of a language, and not one single pattern at the time.
-We evaluate our algorithm qualitatively over a variety of natural and formal examples, and discuss known limitations of the framework and possible extensions.
+The intersection closure of these languages is essential, if we strive to provide learning approaches able to capture the whole phonotactics of a language, and not one single pattern at the time.
+We evaluate our algorithm qualitatively over a variety of formal examples, and discuss known limitations of the framework and possible extensions.
 
-\section{MITSL Languages and Linguistic Motivation}
+\section{MITSL Languages in Phonotactics}
 \label{sec:MITSL}
 
 
 Many dependencies in phonology can be captured by strictly local (SL) grammars: \emph{local constraints} that only make distinctions on the basis of contiguous substrings of segments up to some length $k$ \citep[essentially, $k$-grams;][]{Heinz2011a}.
 For example, a ($k$=2) local dependency requiring \textipa{/s/} to surface as \textipa{[z]} when followed by \textipa{[l]} can be captured by a grammar that forbids the sequence \textipa{[sl]}.
 However, while prominent in natural language phonology, (unbounded) long-distance dependencies cannot be captured by local constraints.
-To account for this, work studying linguistic dependencies from a formal language theoretical perspective has characterized long-distance phonotactic patterns  as \emph{tier-based strictly local}.
+To account for this, work studying linguistic dependencies from a formal language theoretical perspective has characterized long-distance phonotactic patterns  as \emph{tier-based strictly local} \citep[TSL;][]{HeinzRawalTanner}.
 
 Tier-based strictly local languages (TSL) are able to encode a notion of relativized locality inspired by the idea of phonological tier, already popular in autosegmental phonology   \cite{goldsmith1976autosegmental}.
 While a  formal introduction  to the properties of TSL  is beyond the scope of this paper,  a TSL dependency is intuitively non-local in the input string but local over a \emph{tier}.
@@ -178,14 +179,13 @@ The class of TSL languages has been shown to have good cross-linguistic coverage
 Moreover, and most interesting to us, TSL$_k$ languages have been shown to be efficiently (polynomial in time and input) learnable in the limit from positive data, even when the tier-alphabet is not known \emph{a priori}  \citep{JardineHeinz16,jardinemcmullin17}.
 
 However, there are two main known limits to TSL as a good formal account for natural language phonotactics.
-
-The first issue  lies in the simplicity of TSL's projection mechanism.
+A first ``issue''  lies in the simplicity of TSL's projection mechanism.
 Recently, several patterns have been reported that cannot be described by the way TSL's tier-projection masks out parts of a string before enforcing some strictly local constraint \citep{McMullin16,MayerMajor18,Baek2017CLS,graf2018sanskrit,desanto2019structure}.
 These patterns include the long-distance sibilant harmony in Imdlawn Tashlhiyt  \citep{McMullin16}, the nasal harmony pattern in Yaka \cite{WalkerYaka}, the unbounded stress of Classical Arabic \cite[see][and references therein]{Baek2017CLS}, and cases of unbounded tone plateauing.
-These patterns share the common trait that one has to inspect the \emph{local context} (i.e.,~the surrounding environment) of a segment before projecting it on a tier. 
+The common trait shared by these phenomena is that one has to inspect the \emph{local context} (i.e.,~the surrounding environment) of a segment before projecting it on a tier. 
 
 Consider the case of Consonantal Nasal harmony in Yaka, in which a nasal stop induces nasalization of voiced consonants occurring at any distance to its right  \cite{hyman1995nasal,WalkerYaka}.
-For instance, the  segmental alternation shown in  Ex.~(\ref{ex:1}) is due to the phoneme \textipa{/d/} surfacing as  \textipa{[n]} after a preceding nasal  (cf.~Ex.~(\ref{ex:1a}, \ref{ex:1b} vs.  \ref{ex:1c})).\@
+For instance, the  segmental alternation shown in  Ex.~(\ref{ex:1}) is due to the phoneme \textipa{/d/} surfacing as  \textipa{[n]} after a preceding nasal  (cf.~Ex.~(\ref{ex:1a}), (\ref{ex:1b}), vs.~( (\ref{ex:1c})).\@
 Vowels and voiceless consonants intervening between the two harmonizing stops remain unaffected  (cf. Ex.~(\ref{ex:2})).
 
 
@@ -207,24 +207,26 @@ Vowels and voiceless consonants intervening between the two harmonizing stops re
 \end{exe}
 
 A TSL analysis for this pattern seems straightforward, as the data can be captured by projecting a tier of voiced consonants, and enforcing constraints banning tier adjacent  \textipa{[nd]}.\@
-However, observe now the examples in  Ex.~(\ref{ex:3}): consonantal complexes composed of a nasal and a voiced oral stop neither trigger  (Ex.~(\ref{ex:3a}),\ref{ex:3b}) nor block nasality agreement  (Ex.~(\ref{ex:3c})).\@
+However, observe now the examples in  Ex.~(\ref{ex:3}): consonantal complexes composed of a nasal and a voiced oral stop neither trigger  (Ex.~(\ref{ex:3a}), (\ref{ex:3b})) nor block nasality agreement  (Ex.~(\ref{ex:3c})).\@
 Fig.~\ref{fig:YAKA1} exemplifies why this interaction of a local and a non-local dependency is not TSL\@. 
 Since \textipa{[nd]} is sometimes observed in a string-adjacent context (as in Ex.~(\ref{ex:3b})), it must be permitted as a $2$-gram on a tier --- even though it is only allowed when  \textipa{[n]} and \textipa{[d]} are immediately adjacent in the string.
 But then,  a TSL grammar would have no means of distinguishing Ex.~(\ref{ex:1c}) from Ex.~(\ref{ex:3b}).
 
 \begin{figure}[htbp]
 \centering
-    \input{./img/tier_left_yaka.tikz}   %    \input{./img/tier_left_new.tikz} 
-        %
-    \input{./img/tier_right_yaka.tikz}    
-	%
+\scalebox{0.8}{
+    \input{./img/tier_left_yaka.tikz}  
+    }
+    \scalebox{0.8}{
+   % \input{./img/tier_right_yaka.tikz}    
     \input{./img/tier_center_yaka.tikz}    
-        \caption{Example of a TSL analysis of nasal harmony in Yaka: (a) is ill-formed because of tier adjacent $^*$\textipa{[nd]}; (b) is well-formed since  there are no voiced stops on the tier disagreeing in nasality; (c) is well-formed because the \textipa{[d]} immediately following \textipa{[n]} stops the latter from being a trigger for harmony, but it is still ruled out by the constraint needed for (b).}
+    }
+        \caption{Example of a TSL analysis of nasal harmony in Yaka: (a) is ill-formed because of tier adjacent $^*$\textipa{[nd]}; (b) is well-formed since  there are no voiced stops on the tier disagreeing in nasality; (c) is well-formed because the \textipa{[d]} immediately following \textipa{[n]} in the input string stops the latter from being a trigger for harmony, but it is still ruled out by the constraint needed for (b).}
         \label{fig:YAKA1}
         \end{figure}
 
 The reader might point out that the difference between Fig.~\ref{fig:YAKA1}.a and Fig.~\ref{fig:YAKA1}.c can be resolved by extending the tier-grammar to consider $3$-grams.
-However, in order to enforce harmony correctly, the tier-projection places every occurrence of voiced stops in the string on the tier, thus making $3$-grams constraints insufficient (e.g.,Ex.~(\ref{ex:3}c)).
+However, in order to enforce harmony correctly, the tier-projection places every occurrence of voiced stops in the string on the tier, thus making $3$-grams constraints insufficient (e.g.,~Ex.~(\ref{ex:3}c)).
 Moreover, since the number of segments between harmonizing elements is potentially unbounded, no TSL grammar can generally account for this pattern, independently of the dimension of the tier $k$-grams.
 
 Let us consider the examples in Ex.~(\ref{ex:3}) once more. 
@@ -232,9 +234,9 @@ Any nasal immediately followed by a voiced stop does not trigger harmony.
 In fact, since they do not block the harmonic process, neither the nasal nor the stop participate in the harmony at all.
 If we could make the projection of nasals and stops avoid  those segments that appear in specific consonant clusters (e.g.,~\textipa{[nd]}) the tier constraints discussed above would work once again.
 This is not possible with TSL as originally defined in \cite{HeinzRawalTanner}, as TSL selects tier elements only based on their $1$-local properties (i.e.,~which kind of segment they are). %Sec.~\ref{sec:SSTSL}.
-However, this kind of expressivity can be accomplished by increasing the locality window of the \emph{tier projection mechanism}. 
+However, this kind of expressivity can be accomplished by increasing the locality window of the \emph{tier-projection mechanism}. 
 
-This is the intuition behind  \citet{desanto2019structure}'s ITSL class: a TSL grammar  can be made simultaneously aware of local and non-local properties of segments in the string with a natural change to the definition of the erasing function.
+This is accomplished by \citet{desanto2019structure}'s ITSL class: a TSL grammar is made simultaneously aware of local and non-local properties of segments in the string with a natural change to the definition of the projection function.
 Fig.~\ref{fig:YAKA2} shows how, by increasing the locality of the projection to $2$, we allow the grammar to project a nasal iff it is not immediately followed by a voiced oral stop, and a voiced stop iff it is not immediately preceded by a nasal.
 Then, we can use $2$-local tier constraints to ban  \textipa{[nd]}.
 This time,  possible intermediate clusters are not a problem, since the projection is able to infer that they are in local contexts that make them irrelevant to the harmonic process.
@@ -242,19 +244,21 @@ This time,  possible intermediate clusters are not a problem, since the projecti
 \begin{figure}[]
 \begin{center}
     %\input{./img/sstsl.tikz}
+    \scalebox{0.8}{
      \input{./img/sstsl_yaka_0.tikz}  
-    \input{./img/sstsl_yaka_1.tikz}
+         \input{./img/sstsl_yaka_1.tikz}
+         }
+         %
+         \scalebox{0.8}{
       \input{./img/sstsl_yaka_2.tikz}
+      }
         \end{center}
-        % \caption{Example from Samala, allowing generalized tier projection: (a) is ill-formed because of $^*$\textipa{sn}; (b) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
-         %if changed to new fig
-        \caption{Example of a ITSL analysis of nasal harmony in Yaka: (a) is ill-formed because of adjacent $^*$\textipa{[nd]}; (b) is well-formed since  \textipa{[n]} is followed by another  \textipa{[n]} later in the string; (c) is well-formed because the \textipa{[nd]} cluster does not enforce nasality on the following stops.  Note that \textipa{[n,d,g,N]} are projected on the tier only when not immediately adjacent in the input. }
+        \caption{Example of a ITSL analysis of nasal harmony in Yaka: (a) is ill-formed because of adjacent $^*$\textipa{[nd]}; (b) is well-formed since  \textipa{[n]} is followed by another  \textipa{[n]} later in the string; (c) is well-formed because the \textipa{[Ng]} cluster does not enforce nasality on the following stops.  Note that \textipa{[n,d,g,N]} are projected on the tier only when not in a nasal-stop cluster in the input. }
         \label{fig:YAKA2}
         \end{figure}
 
 ITSL languages have been shown to properly extend TSL, and fix a gap in its typological coverage. 
 However, there is a second shortcoming to adopting TSL as a model for natural language phonotactics, that carries over to ITSL:  TSL (and thus ITSL) languages are not closed under intersection.
-
 Lack of closure under intersection is problematic as it entails that the complexity of phonological dependencies is no longer constant under factorization.
 This implies that the upper bound for phonological phenomena would shift, depending on whether one treats a constraint as a single phenomenon or the interaction of multiple phenomena.
 Moreover, we clearly want to be able to consider multiple phenomena at the same time when describing the phonotactics of a language.
@@ -273,10 +277,9 @@ Vowel harmony can be easily accounted for with a TSL grammar.
 However, this is only true if we analyze it by itself, and fails if we try to model nasal harmony and vowel harmony in a single grammar.
 In order to account for this, vowels would need to be projected on the tier, thus interfering with the nasalization process.
 To account for this, \citet{desanto2019structure} propose  working with the intersection closure of TSL (MTSL) and ITSL languages (MITSL).
-
 Intuitively, MTSL and MITSL can be conceptualized as encoding multiple projections (tiers) at the same time, and enforcing independent strictly local constraints over each tier.
 For a string to belong to the language, it needs to be well-formed on every tier.
-For instance, Fig.~\ref{fig:YAKA3} shows a grammar projecting two separate tier: a tier of vowel, with constraints ensuring height harmony; and a tier enforcing nasal harmony as in the examples above.
+For instance, Fig.~\ref{fig:YAKA3} shows a grammar projecting a tier of vowel, with constraints ensuring height harmony; and a tier enforcing nasal harmony as in the examples above.
 
 
 \begin{figure}[]
@@ -294,163 +297,7 @@ For instance, Fig.~\ref{fig:YAKA3} shows a grammar projecting two separate tier:
 
 Since intersection closure is a fundamentally desirable property from a linguistic perspective, \citet{McMullinSCIL2019} propose an algorithm that efficiently learns multiple tier-based strictly $2$-local  (i.e.,~where tier constraints are bigrams) dependencies, with no a-priori knowledge about the tier-segments or the number of tiers required.
 Given the typological importance of input-sensitive projection, in this paper we expand on \citet{McMullinSCIL2019} and present a grammatical inference algorithm able to learn MITSL grammars with $2$-local contexts and $2$-local tier constraints ($k$-MITSL$^2_2$), only from positive examples and without a-priori knowledge about the content --- or the number --- of necessary tiers.
-Moreover, since MTSL languages are properly contained in MITSL, we also implicitly provide an implementation of  \citet{McMullinSCIL2019}'s approach.
-
-
-%Many dependencies in phonology can be captured by strictly local (SL) grammars: \emph{local constraints} that only make distinctions on the basis of contiguous substrings of segments up to some length $k$ \citep[essentially, $k$-grams;][]{Heinz2011a}.
-%For example, a ($k$=2) local dependency requiring \textipa{/s/} to surface as \textipa{[z]} when followed by \textipa{[l]} can be captured by a grammar that forbids the sequence \textipa{[sl]}.
-%However, while prominent in natural language phonology, (unbounded) long-distance dependencies cannot be captured by local constraints.
-%To account for this, work studying linguistic dependencies from a formal language theoretical perspective has characterized long-distance phonotactic patterns  as \emph{tier-based strictly local}.
-%%We give a full introduction to the mathematical properties of TSL in Section~\ref{ssec:Subreg_intro}, but an informal treatment will suffice for now.
-%
-%Tier-based strictly local languages (TSL) are able to encode a notion of relativized locality inspired by the idea of phonological tier, already popular in autosegmental phonology   \cite{goldsmith1976autosegmental}.
-%While a  formal introduction  to the properties of TSL  is beyond the scope of this paper,  a TSL dependency is intuitively non-local in the input string but local over a \emph{tier}.
-%A tier is defined as the projection of a subset of the segments of the input string, and the grammar constraints are characterized as the set of sequences of length $k$ not allowed on the tier.
-%For instance, the example in Figure~\ref{fig:Aari} (from Aari, an Omotic language of south Ethiopia) shows how to enforce long-distance sibilant harmony in anteriority.
-%First one projects from the string a tier $T$ that only contains sibilants, and then one bans contiguous \textipa{[\textctyogh s]} and \textipa{[s\textctyogh]} on $T$  \cite[see][]{Hayward_Aari}.
-%%
-% \begin{figure}[h!]
-%\begin{center}
-%%\resizebox{0.6\textwidth}{!}{%
-%\input{./img/example1.tikz}
-%%}
-%\end{center}
-%\caption{Example of sibilant harmony over tier from Aari. }
-%\label{fig:Aari}
-%\end{figure}
-%%\vspace{-0.3cm}
-%
-%The class of TSL languages has been shown to have good cross-linguistic coverage, accounting for a variety of different phonotactic patters cross-linguistically \citep{HeinzRawalTanner,McMullin16,Graf17Phonology}.
-%Moreover, and most interesting to us, TSL$_k$ languages have been shown to be efficiently (polynomial in time and input) learnable in the limit from positive data, even when the tier-alphabet is not known \emph{a priori}  \citep{JardineHeinz16,jardinemcmullin17}.
-%
-%However, there are two main known limits to TSL as a good formal account for natural language phonotactics.
-%
-%First, it is known that TSL languages are not closed under intersection.
-%Lack of closure under intersection is problematic as it entails that the complexity of phonological dependencies is no longer constant under factorization.
-%This implies that the upper bound for phonological phenomena would shift, depending on whether one treats a constraint as a single phenomenon or the interaction of multiple phenomena.
-%Moreover, we clearly want to be able to consider multiple phenomena at the same time when describing the phonotactics of a language.
-%Intersection closure is thus a fundamentally desirable property from a linguistic perspective.
-%To account for this, \citet{desanto2019structure} propose the multiple tier-based strictly local (MTSL) class, as a proper extension of TSL formalizing its intersection closure.
-%Intuitively, MTSL can be conceptualized has a class encoding multiple projections (tiers) at the same time, and enforcing distinct strictly local constraints over each tier.
-%\citet{McMullinSCIL2019} propose an algorithm that efficiently learns multiple tier-based strictly $2$-local  (i.e. where tier constraints are bigrams) dependencies, with no a-priori knowledge about the tier-segments or the number of tiers required.
-%
-%
-%The second limit of TSL lies in the simplicity of its projection mechanism.
-%Recently, several patterns have been reported that cannot be described by the way TSL currently uses tier projection to mask out parts of a string before enforcing some strictly local constraint \citep{McMullin16,MayerMajor18,Baek2017CLS,graf2018sanskrit,desanto2019structure}.
-%These patterns include the long-distance sibilant harmony in Imdlawn Tashlhiyt  \citep{McMullin16}, the nasal harmony pattern in Yaka \cite{WalkerYaka}, the unbounded stress of Classical Arabic (see \cite{Baek2017CLS} and references therein), and cases of unbounded tone plateauing.
-%These patterns share the common trait that one has to inspect the local context of a segment before projecting it on a tier. 
-%
-%Consider the case of Consonantal Nasal harmony in Yaka, in which a nasal stop induces nasalization of voiced consonants occurring at any distance to its right  \cite{hyman1995nasal,Walker_Yaka}.
-%For instance, the  segmental alternation shown in  Ex.~(\ref{ex:1}) is due to the phoneme \textipa{/d/} surfacing as  \textipa{[n]} after a preceding nasal  (cf.  Ex.~(\ref{ex:1a}, \ref{ex:1b} vs.  \ref{ex:1c})).\@
-%Vowels and voiceless consonants intervening between the two harmonizing stops remain unaffected  (cf. Ex.~(\ref{ex:2})).
-%
-%
-%\begin{exe}
-%    \ex\label{ex:1}\begin{xlist}
-%    	 \ex\label{ex:1a} \textipa{y\'an-ini}   `\emph{to cry out}'
-%	 \ex\label{ex:1b} \textipa{y\'ad-idi}   `\emph{to spread}'
-%	 \ex\label{ex:1c} $^*$\textipa{y\'an-idi}      
-%	\end{xlist}
-%    \ex\label{ex:2}\begin{xlist}
-%     	\ex\label{ex:2a}\textipa{h\'am\'uk-ini} `\emph{to give away}'
-%    	\ex\label{ex:2b}\textipa{m\'i\'ituk-ini} `\emph{to sulk}'
-%    \end{xlist}
-%     \ex\label{ex:3}\begin{xlist}
-%    	 \ex\label{ex:3a}    \textipa{b\'i\'imb-idi} `\emph{to embrace}'
-%	 \ex\label{ex:3b}  \textipa{k\'u\'und-idi} `\emph{to bury}'
-%	 \ex\label{ex:3c}  \textipa{n\'a\'aNg-ini} `\emph{to last}'
-%	\end{xlist}
-%\end{exe}
-%
-%A TSL analysis for this patter seems straightforward, as this data can be captured by projecting a tier of voiced consonants, and enforcing constraints banning tier adjacent  \textipa{[nd]}.
-%
-%\begin{figure}[t]
-%\centering
-%    \input{./img/tier_left_yaka.tikz}   %    \input{./img/tier_left_new.tikz} 
-%        %
-%    \input{./img/tier_right_yaka.tikz}    
-%	%
-%    \input{./img/tier_center_yaka.tikz}    
-%        \caption{Example of a TSL analysis of nasal harmony in Yaka: (a) is ill-formed because of tier adjacent $^*$\textipa{[nd]}; (b) is well-formed since  there are no voiced stops on the tier disagreeing in nasality; (c) is well-formed because the \textipa{[d]} immediately following \textipa{[n]} stops the latter from being a trigger for harmony, but it is still ruled out by the constraint needed for (b).}
-%        \label{fig:YAKA1}
-%        \end{figure}
-%
-%
-%
-%However, observe now the examples in  Ex.~(\ref{ex:3}): consonantal complexes composed of a nasal and a voiced oral stop neither trigger   Ex.~(\ref{ex:3a},\ref{ex:3b}) nor block nasality agreement   Ex.~(\ref{ex:3c}).
-%Fig.~\ref{fig:YAKA1} exemplifies why this interaction of a local and a non-local dependency is not TSL\@. 
-%Since \textipa{[nd]} is sometimes observed in a string-adjacent context (as in Ex.~(\ref{ex:3b})), it must be permitted as a $2$-gram on a tier --- even though it is only allowed when  \textipa{[nd]} re immediately adjacent in the string.
-%But then,  a TSL grammar would have no means of distinguishing Ex.~(\ref{ex:1b}) from Ex.~(\ref{ex:3b}).
-%
-%The reader might point out that the difference between Fig.~\ref{fig:YAKA1}.a and Fig.~\ref{fig:YAKA1}.c can be resolved by extending the tier-grammar to consider $3$-grams.
-%However, in order to enforce harmony correctly, the tier-projection places every occurrence of voiced stops in the string on the tier, thus making $3$-grams constraints insufficient (e.g., Ex.~(\ref{ex:3}c)).
-%Moreover, since the number of segments between harmonizing elements is potentially unbounded, no TSL grammar can generally account for this pattern, independently of the dimension of the tier $k$-grams.
-%
-%Let us consider the examples in Ex.~(\ref{ex:3}) once more. 
-%Any nasal immediately followed by a voiced stop does not trigger harmony. 
-%In fact, since they do not block the harmonic process, neither the nasal nor the stop participate in the harmony at all.
-%If we could make the projection of nasals and stops avoid  those segments that appear in specific consonant clusters (e.g. \textipa{[nd]}) the tier constraints discussed above would work once again.
-%This is not possible with TSL as originally defined in \cite{HeinzRawalTanner}, as TSL selects tier elements only based on their $1$-local properties (i.e. which kind of segment they are). %Sec.~\ref{sec:SSTSL}.
-%However, this kind of expressivity can be accomplished by increasing the locality window of the \emph{tier projection mechanism}. 
-%
-%In particular, the intuition behind  \citet{desanto2019structure}'s ITSL class is that  a TSL grammar  can be made simultaneously aware of local and non-local properties of segments in the string with a natural change to the definition of the erasing function.
-%
-%\begin{figure}[]
-%\begin{center}
-%    %\input{./img/sstsl.tikz}
-%     \input{./img/sstsl_yaka_0.tikz}  
-%    \input{./img/sstsl_yaka_1.tikz}
-%      \input{./img/sstsl_yaka_2.tikz}
-%        \end{center}
-%        % \caption{Example from Samala, allowing generalized tier projection: (a) is ill-formed because of $^*$\textipa{sn}; (b) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
-%         %if changed to new fig
-%        \caption{Example of a ITSL analysis of nasal harmony in Yaka: (a) is ill-formed because of adjacent $^*$\textipa{[nd]}; (b) is well-formed since  \textipa{[n]} is followed by another  \textipa{[n]} later in the string; (c) is well-formed because the \textipa{[nd]} cluster does not enforce nasality on the following stops.  Note that \textipa{[n,d]} are projected on the tier only when not immediately adjacent in the input. }
-%        \label{fig:YAKA2}
-%        \end{figure}
-%
-%
-%Fig.~\ref{fig:YAKA2} shows how, by increasing the locality of the projection to $2$, we allow the grammar to project a nasal iff it is not immediately followed by a voiced oral stop, and then use $2$-local tier constraints to ban  \textipa{nd}.%
-%This time,  possible intermediate clusters are not a problem, since the projection is able to infer that they are in local contexts that make them irrelevant to the harmonic process.
-%
-%Finally, note the following additional data:
-%
-%
-%\begin{exe}
-%    \ex\label{ex:4}\begin{xlist}
-%    	 \ex\label{ex:4a} \textipa{k\'em-ene}   
-%	 \ex\label{ex:4b} \textipa{k\'eb-ede}
-%	\end{xlist}
-%\end{exe}
-%
-%Ex.~(\ref{ex:4}) shows a vowel alternation that is independent of the nasality process, and is instead due to vowel heigh harmony.
-%Vowel harmony can be easily accounted for with a TSL grammar.
-%However, this is only true if we analyze it by itself, and fails if we try to model nasal harmony and vowel harmony in a single grammar.
-%In order to account for this, vowel will need to be projected on the tier, thus interfering with the nasalization process.
-%This issue is resolved working with the intersection closure of ITSL languages (MITSL).
-%
-%This class can be intuitively understood as having a grammar projecting multiple tiers, and enforcing independent local constraints on each tier.
-%For a string to belong to the language, it needs to be well-formed on every tier.
-%For instance, Fig.~\ref{fig:YAKA3} shows a grammar projecting two separate tier: a tier of vowel, with constraints ensuring height harmony: and a tier enforcing nasal harmony as in the examples above.
-%
-%
-%\begin{figure}[]
-%\begin{center}
-%    %\input{./img/sstsl.tikz}
-%     \input{./img/mtsl_yaka_1.tikz}  
-%    \input{./img/mtsl_yaka_2.tikz}
-%        \end{center}
-%        % \caption{Example from Samala, allowing generalized tier projection: (a) is ill-formed because of $^*$\textipa{sn}; (b) is well-formed since  \textipa{[sn]} is followed by \textipa{[s]} later in the string. Note that \textipa{[n]} is projected on the tier only when adjacent to \textipa{[s]}.}
-%         %if changed to new fig
-%        \caption{Example of a MITSL analysis of  Yaka nasal and vowel harmony: (a) is ill-formed because there is a violation on the nasal harmony tier; (b) is well-formed since there are no violations on either tier.}
-%        \label{fig:YAKA3}
-%        \end{figure}
-%
-%
-%%Since the ability to model multiple processes in the phonotactic of a language remains obviously desirable, it seems reasonable then to focus on the learnability of MITSL languages directly, as any algorithm able to learn an MITSL language will also trivially learn an ITSL one.
-%%%%%%%%%%%%%%%%%%%
-%In the rest of the paper, we directly expand of \citet{McMullinSCIL2019}'s MTSL2IA algorithm and present a grammatical inference algorithm able to learn conjunction ITSL grammars with $2$-local contexts and $2$-local tier constraints ($k$-MITSL$^2_2$), only from positive examples and without a-priori knowledge about the content or the number of tiers.
-%%Since, as discussed, intersection closure if a fundamental component of natural language phonotactics, we directly expand of \citet{McMullinSCIL2019}'s MTSL2IA algorithm for MTSL$_2$ languages, and learn conjunctions of ITSL$^2_2$ languages (MITSL$^2_2$).
-
+%Moreover, since MTSL languages are properly contained in MITSL, we also implicitly provide an implementation of  \citet{McMullinSCIL2019}'s approach.
 
 \section{MITSL Inference Algorithm}
 
@@ -464,10 +311,12 @@ We also discuss a generalization of the notion of  $2\text{-}path$ as introduced
 
 %symbols background
 We assume familiarity with set notation on the reader's part.
-Given a finite alphabet $\Sigma$, $\Sigma^*$ is the set of all possible finite strings of symbols drawn from $\Sigma$. %while $\Sigma^{\leq n}$ denotes the set of strings of length $\leq n$.
+Given a finite alphabet $\Sigma$, $\Sigma^*$ is the set of all possible finite strings of symbols drawn from $\Sigma$.
 A language $L$ is a subset of $\Sigma^*$.
-For every string $w$ and every non-empty string $u$, $|w|$ denotes the length of the string, $|w|_u$ denotes the number of occurrences of $u$ in $w$, and $\lambda$ is the unique empty string.
+For every string $w$ and every non-empty string $u$, $|w|$ denotes the length of the string, and $\lambda$ is the unique empty string.
 Left and right word boundaries are marked by  $\rtimes, \ltimes \notin \Sigma$ respectively.
+ $\Sigma_{\rtimes, \ltimes }$ denotes the set of strings $w in \Sigma^*$ that have been enriched with start and end symbols.
+
 
 A string $u$ is a $k$-\emph{factor} of a string $w$ iff $\exists x, y \in \Sigma^*$ such that $w=xuy$ and $|u| = k$. 
 The function $\facn{k}$ maps words to the set of $k$-factors within them: $\facn{k}(w) := \{ u : u \textit{ is a $k$-factor of } w \textit{ if } |w| \geq k, \textit{ else } u = w\}$.
@@ -475,21 +324,13 @@ For example, $\facn{2}(aab) = \{ aa, ab\}$.
 %
 The domain of $\facn{k}$ is generalized to languages $L \subseteq \Sigma^*$ in the usual way: $\facn{k}(L) = \bigcup_{w \in L} \facn{k}(w)$.
 
-As usual, we allow standard Boolean connectives ($\wedge$, $\vee$, $\neg$, $\rightarrow $), and first-order quantification ($\exists$, $\forall $) over individuals. 
-We let $x \prec y$ denote \emph{precedence}, $x \approx y$ denote \emph{identity}, and $x, y$ denote variables ranging over positions in a finite string $w \in \Sigma^*$. Note that $\prec$ is a strict total order.
-The remaining logical connectives are obtained from the given ones in the standard fashion, and brackets may be dropped where convenient. 
-For example, \emph{immediate precedence} is defined as $x \triangleleft y \leftrightarrow x \prec y \wedge \neg \exists z [ x \prec z \wedge z \prec y ]$.
-%
-%We add a dedicated predicate for each label $\sigma \in \Sigma$ we wish to use: $\sigma(x)$ holds iff $x$ is labelled $\sigma$, where $x$ is a position in $w$.
-%Classical results on definability of strings represented as finite first-order structures are then used \cite{McNaughtonPapert71}.
-%If $\Sigma = \{ \sigma_1, \dots, \sigma_n \}$, then a string $w \in \Sigma^*$ can be represented as a structure $M_w$ in the signature$(\sigma_1(\cdot), \dots, \sigma_n(\cdot), \prec)$. 
-%% $(P_{\sigma_1}, \dots, P_{\sigma_n}, \prec)$. 
-%If $\varphi$ is a logical formula without any free variables, we use $L(\varphi) = \{ w \in \Sigma^* | M_w \text{ satisfies } \varphi \}$ as the stringset extension of $\varphi$ .
+We allow standard Boolean connectives ($\wedge$, $\vee$, $\neg$, $\rightarrow $), and first-order quantification ($\exists$, $\forall $) over individuals. 
+We let $x \prec y$ denote \emph{precedence}, $x \approx y$ denote \emph{identity}, and $x, y$ denote variables ranging over positions in a finite string $w \in \Sigma^*$. 
 
 %ITSL languages
 As discussed, TSL languages  have $k$-local constraints only apply to elements of a tier $T \subseteq \Sigma$.
 In order to do so, a projection function (also callederasing function) is introduced to delete (or mask) all symbols that are not in $T$.
-In order to extend the notion of tier in TSL languages to consider local properties of the segments in the input string, \citet{desanto2019structure} take inspiration from \cite{ChandleeHeinz18} and define ITSL projection function in terms of local contexts.
+In order to extend the notion of tier in TSL languages to consider local properties of the segments in the input string, \citet{desanto2019structure} take inspiration from \cite{ChandleeHeinz18} and define an input-sensitive projection function in terms of local contexts.
 %
 \begin{definition}[Contexts]
     A \emph{$k$-context} $c$ over alphabet $\Sigma$ is a triple $\tuple{\sigma, u, v}$ such that $\sigma \in \Sigma$, $u, v \in \Sigma^*$ and $|u| + |v| \leq k$.
@@ -512,17 +353,17 @@ Note that an ISL-$1$ tier projection only determines projection of $\sigma$ base
 The definition of ITSL languages then  is as follows\@.
 
 \begin{definition}[ITSL]
-A language $L$ is \emph{$m$-input local $k$-TSL} ($m$-ITSL$_k$) iff there exists an $m$-context set $C$ and a finite set $R \subseteq \Sigma^k$ such that
+A language $L$ is \emph{$m$-input local $k$-TSL} (ITSL$^m_k$) iff there exists an $m$-context set $C$ and a finite set $R \subseteq \Sigma^k$ such that
 \[
 L = \{ w \in \Sigma^*: \facn{k}(\rtimes^{k-1} \pi_C(w) \ltimes^{k-1})  \cap R = \emptyset \}.
 \]
-A language is \emph{input-local TSL} (ITSL) iff it is $m$-ITSL$_k$ for some $k, m \geq 0$.
+A language is \emph{input-local TSL} (ITSL) iff it is ITSL$^m_k$ for some $k, m \geq 0$.
 We call $\tuple{C, R}$ an ITSL grammar.
 \label{dfn:ITSL}
 \end{definition}
 
 Note that the notion of tier is here expressed by the set of contexts C, which is the set of tier segments with the locality conditions necessary for them to be relevant to the tier constraints.
-Finally, a $k$-MITSL language is defined as the intersection of $k$ ISTL languages.
+Finally, a $n$-MITSL language is defined as the intersection of $n$ ISTL languages.
 The MITSL class has been shown to properly extend TSL, while remaining a proper subclass of star-free languages --- and thus subregular in its expressivity \cite{desanto2019structure}.
 
 %Let us return to the interaction of local dissimilation and non-local harmony in Samala.
@@ -545,19 +386,17 @@ The intuition behind this paper's proposal is that, from a learning perspective,
 To do so, the algorithm incorporates the notion of a $2\text{-}path$ \citep{JardineHeinz16}, generalized over bigrams.
 A $2\text{-}path$ is a $3$-tuple $\tup{\rho_1, X, \rho_2}$, where $\rho_1, \rho_2$  are elements in $\Sigma_{\rtimes,\ltimes}$ and $X$ is a subset of $\Sigma$.
 The $2\text{-}paths$ of a strong $w = \sigma_1\sigma_2\dots\sigma_n$ are denoted $paths_2(w)$:
-
 $$
   \begin{array}{ll}
   paths_2= \{ \tup{\sigma_i,X,\sigma_j} & |  i < j  \textit{ and}\\
    & X = \{ \sigma_z | i < z<j\} \}
     \end{array}
 $$
-
 Intuitively, a 2-path can be thought of as a precedence relation ($\rho_1\ldots{}\rho_2$) accompanied by the set $X$ of symbols that intervene between $\rho_1$ and $\rho_2$. Formally, each 2-path is therefore a 3-tuple of the form $\tup{\rho_1, X, \rho_2}$. For example, the string $\rtimes abcc\ltimes$ includes the following 2-paths: 
 $\tup{a, \{\emptyset\}, b}$, $\tup{a, \{b\}, c}$, $\tup{a, \{b,c\}, c}$, $\tup{b, \{\emptyset\}, c}$, $\tup{b, \{c\}, c}$, $\tup{\rtimes, \{\emptyset\}, a}$, $\tup{\rtimes, \{a\}, b}$,  $\tup{\rtimes, \{a,b\}, c}$, $ \tup{\rtimes,\{a,b,c\},c}$, $ \tup{\rtimes,\{a,b,c\},\ltimes}$, $\tup{a, \{b,c\}, \ltimes}$, $ \tup{b, \{c\}, \ltimes}$, $\tup{c, \{c\}, \ltimes}$, $ \tup{c, \{\emptyset\}, \ltimes}$.\@
 We can extend  $paths_2(\cdot)$ from strings to languages as $paths_2(L) = \bigcup_{w \in L} paths_2(w)$.
 
-In order to have 2-paths capture the notion of context, we  have   $\rho_1, \rho_2$ be elements in $ \facn{2}(\Sigma^*_{\rtimes,\ltimes})$ and $X$ is a subset of $ \facn{2}(\Sigma)$ instead of $\Sigma$ proper.\@
+In order to have 2-paths capture the notion of context, we  have   $\rho_1, \rho_2$ be elements in $ \facn{2}(\Sigma^*_{\rtimes,\ltimes})$ and $X$ a subset of $ \facn{2}(\Sigma)$ instead of $\Sigma$ proper.\@
 The definition of $paths_2(\cdot)$ stays as above, considering $\sigma_i,\sigma_j,\sigma_z$ to be $2$-factors in $w$.\@
 As this is the only notion of paths relevant for this paper, from now on we use paths, $2$-paths, or $paths_2$ interchangeably to refer this extended notion of paths over $2$-factors.
 Consider once more the string $\rtimes abcc\ltimes$,  the set of  2-paths is now the following: 
@@ -569,32 +408,11 @@ This results is unaffected, once we factor the cost of generating the set of $2$
 
 \subsection{The Algorithm}
 
-This paper's algorithm  takes as input a set $I$ of strings over an alphabet $\Sigma$, and returns an MITSL$^2_2$ grammar $G=\bigwedge\tup{C_i,R_i}$ --- where each $C_i$ is a set of contexts in bigram formats, and each $R_i$ is a set of $2$-local constraints over contexts, represented as $4$-factors.
+This paper's algorithm  takes as input a set $I$ of strings over an alphabet $\Sigma$, and returns an $n$-MITSL$^2_2$ grammar $G=\bigwedge\tup{C_i,R_i}$ --- where each $C_i$ is a set of contexts in bigram formats, and each $R_i$ is a set of $2$-local constraints over contexts, represented as $4$-factors.
 
 As mentioned before, we adopt an approach rooted in grammatical inference, following the identification in the limit learning paradigm \cite{gold1967language}, with polynomial bounds on time and data \cite{de2010grammatical}.\@
-Because of this, we make the fundamental assumption that the sample data in input to the learning algorithm is a \emph{characteristic sample} for the targetted MITSL  language --- that is, it contains all the information necessary to distinguish a specific learning target (i.e., the phonological MITSL phenomenon) from any other potential targets present in the input.
+Because of this, we make the fundamental assumption that the sample data in input to the learning algorithm is a \emph{characteristic sample} for the targeted MITSL  language --- that is, it contains all the information necessary to distinguish a specific learning target (i.e., the phonological MITSL phenomenon) from any other potential targets present in the input.
 In other words, we assume that the input is fully descriptive of the target pattern.
-
-%\begin{algorithm}[!ht]
-%	\KwData{A finite input sample $I\subset \Sigma^*$}
-%    \KwResult{MITSL$^2_2$ grammar of the form $G=\bigwedge\tup{C_i,R_i}$}
-%    Initialize $F=\facn{4}(\Sigma^*)-\facn{4}(I)$; \\
-%    Initialize $B=\facn{2}(\Sigma^*)$; \\
-%    	\ForEach{$f \in F$}
-%        	{
-%            Initialize $R_i=f$, $C_i=B$; (with $1 \leq i \leq  |F|$) \\
-%             Initialize $\rho_1 = f[:2] ;\rho_2 = f[2:]$;\\
-%            \ForEach{$\sigma\in B - \{f[:2], f[2:]\}$}
-%            	{
-%                	~\lIf {$\forall \tup{f[:2], X, f[2:]}\in paths_2(I)$ s.t. $\sigma\in X, \tup{f[:2], X-\{\sigma\}, f[2:]}\in paths_2(I)$\\}
-%    					{$C_i=C_i-\{\sigma\}$ (i.e., remove $\sigma$ from $C_i$)}}
-%					$G_i=\tup{C_i,R_i}$
-%                }
-%            $\mathbf{Return}\tn{ }G=G_1\wedge G_2\wedge ... \wedge G_{|F|}$
-%            \medskip
-%	\caption{Pseudocode for the MITSL$^2_2$ Inference Algorithm introduced in this paper.}
-%\end{algorithm}
-
 \begin{algorithm}[!ht]
 	\KwData{A finite input sample $I\subset \Sigma^*$}
     \KwResult{MITSL$^2_2$ grammar of the form $G=\bigwedge\tup{C_i,R_i}$}
@@ -614,89 +432,81 @@ In other words, we assume that the input is fully descriptive of the target patt
             \medskip
 	\caption{Pseudocode for the MITSL$^2_2$ Inference Algorithm introduced in this paper.}
 \end{algorithm}
-
-%\ForEach{$\sigma\in\Sigma - \{f[0], f[1], f[2], f[3]\}$}
 Recall once again that $2$-factors (bigrams) are unitary symbols for the algorithm, and thus $2$-local tier constraints are in fact $4$-grams.
 The learner exploits the fact that if a $4$-gram $\rho_1\rho_2$ is banned on some tier, then it will never appear in string-adjacent contexts.
 Thus, it establishes a canonical form for an MITSL grammar by associating a tier to each individual constraint.
-It then explores the specific set of contexts relevant to each specific constraint, one tier at the time, starting from the assumption that each tier projects the full set of symbols in the input string.
+It then explores the set of contexts relevant to each specific constraint, one tier at the time, starting from the assumption that each tier projects the full set of symbols in the input string.
 That is, we want to explore which symbols can act as blockers for a specific constraint.
  For each factor $\rho_1\rho_2$ absent from the training data, the goal is therefore to determine which symbols can be safely removed from the associated tier. 
- The algorithm does this by determining which bigrams are freely distributed with respect to the $4$-gram whose tier it is currently constructing.
+ %The algorithm does this by determining which bigrams are freely distributed with respect to the $4$-gram whose tier it is currently constructing.
 Recall now the notion of $2$-paths, which denote precedence relations between two symbols in the language, augmented with sets of all intervening symbols.
-Thus, by examining the set of $2$-paths present in the training data, we can determine which bigrams are freely distributed with respect to the $4$-gram $\rho_1\rho_2$ that is known to be banned on some tier. 
-  Specifically, if all of the attested $\tup{\rho_1, X, \rho_2}$ $2$-paths that include an intervening $\sigma \in \facn{2}(\Sigma^*)$ are likewise attested \emph{without} an intervening $\sigma$, the algorithm removes that bigram from the tier, since the presence of $\rho_1\ldots{}\rho_2$ is not dependent on that intervening bigram.
-Therefore , given a tier associated to the input-sensitive constraint  $\rho_1\rho_2$, only those elements that are not freely distributed with respect to  $\rho_1\rho_2$ will remain on the tier.
+Thus, by examining the set of $2$-paths present in the training data, we can determine which bigrams are freely distributed with respect to the $4$-gram $\rho_1\rho_2$ associated to the tier we are currently contructing. 
+Given a tier associated to the input-sensitive constraint  $\rho_1\rho_2$, only those elements that are not freely distributed with respect to  $\rho_1\rho_2$ will remain on the tier.
+  Specifically, if all of the attested $\tup{\rho_1, X, \rho_2}$ $2$-paths that include an intervening $\sigma \in \facn{2}(\Sigma^*)$ are likewise attested \emph{without} an intervening $\sigma$, the algorithm removes $\sigma$ from the tier, since the presence of $\rho_1\ldots{}\rho_2$ is not dependent on that intervening bigram.
 As the algorithm will instantiate a tier for each unattested   $\rho_1\rho_2$ in the input sample --- and  with the assumption that the input is a characteristic sample  --- this elimination procedure guarantees that the algorithms will converge to the full set of constraints and blockers for the target language.
   The crucial difference from \citet{McMullinSCIL2019}'s MTSL algorithm is that here the input sample needs to be representative of alternations between bigrams in the language, instead of elements in $\Sigma$.
   Note however that this complication is implicit within the definition of ITSL constraints, since they tie the distribution of segments in a language to their local \emph{and} non-local contexts simultaneously.
-  Note that, because of this ``project everything and then remove'' strategy, the learner trivially also infers simple local constraints in the input string, which are enforced on tiers where every element of $\Sigma$ is also an element of the tier (i.e. a trivial tier).
+  Note that, because of this ``project everything and then remove'' strategy, the learner trivially also infers simple local constraints in the input string, which are enforced on tiers where every element of $\Sigma$ is also an element of the tier (i.e., a trivial tier).
   This is consistent with the definition of MITSL, and it is actually optimal, since it makes the algorithm truly able to capture both local and long-distance dependencies in the phonotactic of a language.
-
-Finally, a peculiarity of our specific implementation is that the MITSL grammar returned is in its a specific canonical form.
-That is, by assigning each tier to a single constraint,  it redundantly ties even  constraints that could co-exist on the same tier to distinct tiers.
+  
+Finally, a peculiarity of our specific implementation is that the MITSL grammar returned is in its a specific ``canonical form''.
+That is, by assigning each tier to a single constraint,  it ties even  constraints that could co-exist on the same tier to distinct tiers.
 Additionally, as a consequence of treating bigrams as unary symbols,  when a segment is freely distributed with respect to its contexts --- i.e., it gets projected on a tier independently on the context --- the algorithm will still treat each bigram as a distinct element.
 For instance, consider $\Sigma =\{ a, e, o \}$ and assume  $e$ a tier element independently of context.
 What our algorithm will infer is that any bigram containing $e$ will be a tier element, so that $C = \{ ae, ea, eo, oe, ee\}$.
-
+While redundant, these two aspects of the representation learned by the algorithm are in line with our assumptions about the nature of MITSL dependencies and do not affects the ``naturalness" of the generalization.
 In practice, it is trivially possible to add a unification step to the tier and context selection, in order to have a representation closer to the grammar a human phonologist would write.
-However note that, while redundant, these two aspects of the representation learned by the algorithm are in line with our assumptions about the nature of MITSL dependencies and do not affects the ``naturalness" of the generalization.
-
 The following section discusses the performance of the algorithm on an initial set of test data.
 We also discuss how the way the algorithm instantiates tiers affects the class of learnable patterns.
 
 
-\section{Evaluation\footnote{A Python implementation of the learning algorithm and testing tools is available at ADD LINK TO ANONYMOUS NOTEBOOK}}
+\section{Evaluation}
 
-Setting up to evaluating the algorithm, it is important to underline once again that, consistently with previous work on subregular learners,  probability plays no role in the learning approach we outlined.
+Consistently with previous work on subregular learners,  probability plays no role in the learning approach we outlined.
 As an obvious consequence, it is trivial to point out that the algorithm's generalizations are weak with respect to noisy data, since exceptions to the target pattern are treated equally to any other strings independently of their frequency.
 Thus, in what follows we set up a set of preliminary evaluation cases that produce input samples devoid of exceptions.
 The reader will rightfully object that this is rather unnatural for a natural language phonotactic perspective.
-However, it is important to note that probabilistic approaches are not intrinsically incompatible with the MITSL learner (nor with any learner in this tradition).
-For the sake of this paper though, the focus is on whether it is possible to learn MISTL$^2_2$ languages efficiently, inferring the tiers from perfect data.
+However, it is worth noting that probabilistic approaches are not intrinsically incompatible with the MITSL learner (nor with learners in this tradition in general).
+For the sake of this paper though, the focus is on whether it is possible to learn MISTL$^2_2$ languages efficiently, inferring  tiers and constraints from ideal data without \emph{a priori} knowledge about their content.
 This  factorization approach to the learning problem is standard in computational learning theory, as it disentangles the problem of handling noisy input from that of navigating the structure of the learning space \cite[a.o.]{OncinaGarcia91,jardine2016learning,JardineHeinz16}.
 
-\subsection{Learnable Patterns}
+\subsection{Learnable Patterns\footnote{A Python implementation of the learning algorithm and testing tools is available at ADD LINK TO ANONYMOUS NOTEBOOK}}
 
 We evaluate the  MISTL$^2_2$ learner on four distinct patterns representative of the classes of language the algorithm is designed to be successful over, inspecting the ability of the learner to infer grammars fully representative of the input language.
 Note that we generate input samples from every language $L$ we test via random generation of strings from $\Sigma^*$ consistent with specified tier constraints.
 Thus, each sample is not guaranteed to be a characteristic sample.
-In this first evaluation, we set the cardinality of the input sample for each language at $1000$ --- which simulations show being sufficient for the learner to ifner the correct patter for every language analyzed.
+In this first evaluation, we set the cardinality of the input sample for each language at $1000$ --- which simulations show being sufficient for the learner to infer the correct patter for every language analyzed.
 
 
-\paragraph{An Artificial ITSL$^2_2$ Pattern} Since MITSL is a proper extension of ITSL, we first test the learner on a language with a single input-sensitive rule. Using an artificial patter instead of a (even simplified) natural language pattern allows us to keep the target generalization transparent and to use a small alphabet set. Specifically, we generate an input sample for an ITSL language $L_1$ with $\Sigma = \{a, e, o, x\}$ such that $o$ immediately before $x$ prohibits $e$ to appear anywhere in the string. 
+\paragraph{An Artificial ITSL$^2_2$ Pattern} Since MITSL is a proper extension of ITSL, we first test the learner on a language with a single input-sensitive rule. Using an artificial pattern instead of a (even simplified) natural language pattern allows us to keep the target generalization transparent and to use a small alphabet set. Specifically, we generate an input sample for an ITSL language $L_1$ with $\Sigma = \{a, e, o, x\}$ such that $o$ immediately before $x$ prohibits $e$ to appear anywhere in the string. 
 For instance,  $eaaxaae,axaexeeexx,eaoxaao \in L_1$, while $oxaxe \notin L_1$.
 The learner should infer that the correct grammar projects $o$ on the tier banning $^*oe$ iff $o$ is immediately followed by $x$, and also projects $e$ in every context.
 This is exactly what the algorithm learns, with the representational peculiarities discussed above.
 In particular, since the projection of $e$ is independent of context, instead of a single tier the learner instantiates a tier for every $4$-gram  $^*oxe\sigma$ and   $^*ox\sigma e$, where $\sigma$ is every element of $\Sigma = \{a, e, o, x\}$.
 For each such tiers, the algorithm infers that $ox$ is always projected, as is the corresponding bigram containing $e$.
-%Note that the target constraint is learned even for smaller sized of the input sample, but with a grammar that --- while perfectly compatible with the input data --- is not consistent with the original grammar originating the data.
-%For instance, with an input sample of $100$ strings, the algorithm learns that $ao$ is a 
 
 \paragraph{First-Last Harmony}
 We then test a second ITSL$^2_2$ often discussed in the formal language literature on the complexity of phonotactics: an harmonic dependency between the first and the last element in the string.
 For instance, assuming that the first and last symbols in a string are vowels, the requirement might be that they agree in height.
-Specifically, we consider a language $L_{FL}$ with $\Sigma =\{ a, o, x\}$, and strings in$L_{FL}$  as usual enriched with start ($\rtimes$) and end ($\ltimes$) symbols.
-Then, we generate data such that $^*\rtimes ao\ltimes$ $^*\rtimes oa\ltimes$ should be banned a tier.
+Specifically, we consider a language $L_{FL}$ with $\Sigma =\{ a, o, x\}$.
+Then, we generate data such that $^*\rtimes ao\ltimes$, $^*\rtimes oa\ltimes$ should be banned a tier.
 For instance, $axaxoaxa, oaaxaxoaxo \in L_{FL}$ but  $oxaxoaxa, aaxaxoaxo \notin L_{FL}$.
 This pattern is worth testing in addition to the one we used above, as it requires both elements in the constraint to be sensitive to their local context (the end and start symbol, respectively).
 As expected, the learned succeeds in generalizing over the input sample, instantiating a distinct tier for each constraint combination.
 
 
-
-\paragraph{An Artificial MTSL$^2_2$ Pattern} As the algorithm is fully successful on a single ITSL pattern, we then test it on the other relevant subclass of MITSL: as MTSL$^2_2$ language with constraints to be enforced on multiple tiers, but with a TSL projection for each tier which does not depend on context.
+\paragraph{An Artificial MTSL$^2_2$ Pattern} As the algorithm is fully successful on a single ITSL pattern, we then test it on the other relevant subclass of MITSL: an MTSL$^2_2$ language with constraints to be enforced on multiple tiers, but with a TSL projection for each tier which does not depend on context.
 Specifically, we generate an artificial language $L_2$ which replicates the idea of a consonant harmony and a vowel harmony process occurring within the same language.
-Specifically, we consider  $L_2$ with $\Sigma = \{a, o, p, b\}$, $T_1=\{a,o\}$, $T_2=\{p,b\}$ and enforce constraints such that $R_1 = \{^*ao, ^*oa\}, R_2= \{^*bp, ^*pb\}$.
+We consider  $L_2$ with $\Sigma = \{a, o, p, b\}$, $T_1=\{a,o\}$, $T_2=\{p,b\}$ and enforce constraints such that $R_1 = \{^*ao, ^*oa\}, R_2= \{^*bp, ^*pb\}$.
 For instance, $apapp, abbap, popooo \in L_2$ but  $apabo, appoppp \notin L_2$.
-As expected, as an extension of  \citet{McMullinSCIL2019}'s MTSL inference algorithm, the learned successfully infers the full grammar.
+As expected, the learned successfully infers the full grammar.
 As the algorithm still considers the patter an MITSL one, it actually needs to consider every possible context for each symbol, and it thus requires a more extensive input set than \citet{McMullinSCIL2019}'s.
 For example, in order to infer ``project $a$'', the current algorithm actually learns to project \{ao, oa, ap, pa, ab, ba\}.
 Importantly, this is exactly what is expected when learning an input-sensitive projection.
 
 
 \paragraph{An Artificial MITSL$^2_2$ Pattern}
-
-Once we are sure that the algorithm generalizes correctly over the appropriate subclasses, we can test it on a proper MITSL$^2_2$ pattern, which combines instances of the dependencies observed above.
+Finally, we test a proper MITSL$^2_2$ pattern, which combines instances of the dependencies observed above.
 In particular, we generate a language that respects two independent  ITSL$^2_2$ constraints. 
 A first constraint is the one we exploited in our artificial  ITSL$^2_2$ example, such that $o$ immediately before $x$ prohibits $e$ to appear anywhere in the string.
 The second constraint enforces that if $b$ immediately precedes $y$, then any following instance of $d$ is forbidden.
@@ -716,8 +526,8 @@ To understand why, note again that the algorithm instantiates a tier for each po
 From this, it follows immediately that  each restriction can only be enforced on at most one tier. 
 Thus, the learner fails on those patters that have overlapping tier alphabets --- so tiers that share some symbols, but that are not overall in a set/subset relation.
 Specifically, the algorithm is not able to consider overlapping tiers that are associated with a single \text{*}$\rho_1\rho_2$ restriction (e.g., if such constraint needs to be independently blocked by a different symbol on each tier).
-It is important to note that languages exhibiting patterns with these problematic dependencies appear to be unattested, and for reasons that have been speculated to be directly related to ease of learnability, as excluding overlapping tiers exponentially reduces a learner hypothesis space \citep{aksenova2018formal}.
-In this sense, algorithms of the kind presented here can help us  explicitly explore how the characteristics of subclasses of subregular languages are tied to learnability claims.
+It is important to note that languages exhibiting patterns with these problematic dependencies appear to be unattested, and for reasons that have been speculated to be directly related to ease of learnability, as excluding overlapping tiers exponentially reduces a learner's hypothesis space \citep{aksenova2018formal}.
+%In this sense, algorithms of the kind presented here can help us  explicitly explore how the characteristics of subclasses of subregular languages are tied to learnability claims.
 
 \section{Discussion}
 
@@ -726,23 +536,23 @@ The algorithm makes use of the characteristics of the language class in order to
 We provided a Python implementation, and discussed simulations demonstrating the learner's success over four artificial languages belonging to subclasses of MITSL$^2_2$ languages.
 Thus, this paper contributes to the growing array of results for the efficient learnability of classes in the subregular hierarchy.
 
-While the learner succeeds over languages belonging to the target class, there are several limitations towards its use as a practical learning algorithm for natural language phonotactics.
+%While the learner succeeds over languages belonging to the target class, there are several limitations towards its use as a practical learning algorithm for natural language phonotactics.
 One usual critique of algorithms of this kind is the unrealistic assumptions made about the nature of the input sample.
-First of all, while it is true that these algorithms are only guaranteed to converge to the correct grammar if the sample is a characteristic, that doesn't mean that the algorithm will fail in other cases.
-The condition on the input comes from the fact that this learning approaches give us converging guarantees.
+First of all, while it is true that these algorithms are only guaranteed to converge to the correct grammar if the sample is a characteristic, that doesn't mean that they fail in other cases.
+The condition on the input ``simply''  gives us a converging guarantee.
 In this sense, our qualitative evaluation is meant as a first step toward a more extensive study of the general learning performance of these approaches, when varying the coverage of the input sample ---  in the spirit of what recently suggested in \citep{aksenova2020tool}.
 
 
 Similarly, an obvious issue when applying and testing this algorithm to natural language data will come from its inability to deal with exceptions and noisy input in general.
 Obviously, exceptions in the data could be handled by developing probabilistic versions of the learner. 
 Note that, while formal languages were discussed here as categorical in nature, they admit stochastic counterparts.
-A stochastic version of a learning algorithms for MTSL languages could for instance take into consideration the frequency of a specific path before removing a symbol from the tier.
-It is also reasonable to conceive of versions of this algorithm taking natural phonotactic classes into account in order to discriminate between possible conceivable hypothesis about the a tier in presence of contradicting data.
+A stochastic version of an MITSL algorithm could for instance take into consideration the frequency of a specific path before removing a symbol from the tier.
+It is also reasonable to conceive of versions of this algorithm taking natural phonotactic classes into account in order to discriminate between ppotential hypotheses about the a tier in presence of contradicting data.
 Crucially though, the results in this paper show how inferring tiers and input-sensitive tier constraints can be achieved without \emph{a priori} information about them.
 The strategy formulated here could then be combined with learning approaches that take advantage of different aspects of the nature of the input data \cite{gouskova2020inducing,rasin2019simultaneous}.
 
-Moreover, the transparent way our algorithm explores the learning space suggests that these approaches can be used as a baseline to evaluate the needs of more opaque learning strategies with respect to different kinds of input, in line with previous work combining  grammatical inference techniques to blackbox learning models \citep[a.o.]{avcu2017subregular,mahalunkar2018using}.
-Moreover, recasting ITSL structural projection as a learning problem highlighted how input-sensitive dependencies are related to symbols in the input strings, bringing intuitions that could be incorporated into other approaches to learning TSL languages and their extensions \citep{burness2020modelling}.
+Finally, the transparent way our algorithm explores the learning space suggests that it could be used as a baseline to evaluate the needs of more opaque learning strategies with respect to different kinds of input, in line with previous work combining  grammatical inference techniques to blackbox learning models \citep[a.o.]{avcu2017subregular,mahalunkar2018using}.
+Moreover, recasting ITSL structural projection as a learning problem highlighted how input-sensitive dependencies are related to symbols in the input strings, providing insights that could be incorporated into other approaches to learning TSL languages and their extensions \citep{burness2020modelling}.
  
 \bibliography{sstsl.bib}
 \bibliographystyle{acl_natbib}
