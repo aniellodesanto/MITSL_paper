@@ -56,7 +56,7 @@
 %=======================Additional  Commands ==============%
 \usepackage{mycommands}
 \newcommand{\unproject}[1]{\ensuremath{\downarrow #1}}
-\newcommand{\comment}[3]{\textbf{From:} {#1} \textbf{To:} {#2} \textcolor{red}{#3}}
+%\newcommand{\comment}[3]{\textbf{From:} {#1} \textbf{To:} {#2} \textcolor{red}{#3}}
 \newcommand{\etal}{\emph{et al. }}
 
 %function macros
@@ -108,7 +108,7 @@
 
 \newcommand\BibTeX{B\textsc{ib}\TeX}
 
-\title{Learning Interactions of Local and Non-Local Constraints from Positive Input}
+\title{Learning Interactions of Local and Non-Local Phonotactic Constraints from Positive Input}
 
 \author{First Author \\
   Affiliation / Address line 1 \\
@@ -126,6 +126,8 @@
 \begin{document}
 \maketitle
 \begin{abstract}
+This paper proposes a grammatical  inference algorithm to learn input-sensitive tier-based strictly local languages across multiple tiers from positive data only, when the locality of the tier-constraints and of the tier-projection function is set to two \cite[MITSL$^2_2$][]{desanto2019structure}.
+We provide a Python implementation for the leaner and a set of data generators, and conduct simulations showing that the algorithm succeeds in learning MITSL$^2_2$ from an initial set of artificial languages.
 \end{abstract}
 
 
@@ -136,7 +138,7 @@ Recent research in this sense has posited that the phonotactics of natural langu
 In particular, tier-based strictly local (TSL) grammars  ---  a minor extension of n-gram models --- have been shown to be able to capture a variety of non-local, unbounded processes \cite{HeinzRawalTanner,McMullin16,McMullinHansson16}.
 Recently however, it has been suggested that the particular notion of relativized locality employed by the TSL class is unable to describe a variety of complex phonotactic patterns cross-linguistically.
 Based on this linguistic motivation, extensions have been proposed in the search of the right fit for natural language phonotactics.
-Specifically, input-sensitive TSL languages have been suggested as being able to encode a combination of local and non local requirements on the well-formedness of strings in the language.
+Specifically, input-sensitive TSL languages have been suggested as being able to encode a combination of local and non local requirements on the wellformedness of strings in the language.
 
 Apart from typological coverage, an important aspect of evaluating the linguistic relevance of these analyses is to understand under which conditions such patterns are learnable.
 In this sense, an approach to learning grounded in grammatical inferences in interesting, as it illumintaes how properties of the patterns can restrict the learning space in useful ways.
@@ -144,7 +146,7 @@ In this framework, TSL languages have been shown to be efficiently learnable fro
 While ITSL languages have been argued to share the same property, no learning algorithm exists for this class.
 In this paper, we extend \citet{McMullinSCIL2019} inference algorithm for multiple tier-based strictly $2$ local languages (MITSL$_2$), in order to learn patterns in the intersection closure of ITSL$_2$ which consider $2$-local \emph{contexts} for segments in the input string (MITSL$^2_2$). 
 The intersection closure is essential, if we strive to provide learning approaches able to capture the whole phonotactics of a language, and not one single pattern at the time.
-We evaluate our algorithm qualitatively ove†r a variety of natural and formal examples, and discuss known limitations of the framework and possible extensions.
+We evaluate our algorithm qualitatively over a variety of natural and formal examples, and discuss known limitations of the framework and possible extensions.
 
 \section{MITSL Languages and Linguistic Motivation}
 \label{sec:MITSL}
