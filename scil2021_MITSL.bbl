@@ -1,5 +1,21 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{28}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Aksenova(2020)}]{aksenova2020tool}
+Alena Aksenova. 2020.
+\newblock \emph{Tool-assisted induction of subregular languages and mappings}.
+\newblock Ph.D. thesis, State University of New York at Stony Brook.
+
+\bibitem[{Aks{\"e}nova and Deshmukh(2018)}]{aksenova2018formal}
+Al{\"e}na Aks{\"e}nova and Sanket Deshmukh. 2018.
+\newblock Formal restrictions on multiple tiers.
+\newblock In \emph{Proceedings of the Society for Computation in Linguistics
+  (SCiL) 2018}, pages 64--73.
+
+\bibitem[{Avcu et~al.(2017)Avcu, Shibata, and Heinz}]{avcu2017subregular}
+Enes Avcu, Chihiro Shibata, and Jeffrey Heinz. 2017.
+\newblock Subregular complexity and deep learning.
+\newblock \emph{CLASP Papers in Computational Linguistics}, page~20.
 
 \bibitem[{Baek(2017)}]{Baek2017CLS}
 Hyunah Baek. 2017.
@@ -7,6 +23,12 @@ Hyunah Baek. 2017.
   structural features.
 \newblock In \emph{Proceedings of the 53rd Meeting of the Chicago Linguistic
   Society (CLS53)}.
+
+\bibitem[{Burness and McMullin(2020)}]{burness2020modelling}
+Phillip~A Burness and Kevin McMullin. 2020.
+\newblock Modelling non-local maps as strictly piecewise functions.
+\newblock \emph{Proceedings of the Society for Computation in Linguistics},
+  3(1):493--495.
 
 \bibitem[{Chandlee and Heinz(2018)}]{ChandleeHeinz18}
 Jane Chandlee and Jeffrey Heinz. 2018.
@@ -29,6 +51,11 @@ E~Mark Gold. 1967.
 John Goldsmith. 1976.
 \newblock \emph{Autosegmental phonology}.
 \newblock Ph.D. thesis, MIT, Cambridge, MA.
+
+\bibitem[{Gouskova and Gallagher(2020)}]{gouskova2020inducing}
+Maria Gouskova and Gillian Gallagher. 2020.
+\newblock Inducing nonlocal constraints from baseline phonotactics.
+\newblock \emph{Natural Language \& Linguistic Theory}, 38(1):77--116.
 
 \bibitem[{Graf(2017)}]{Graf17Phonology}
 Thomas Graf. 2017.
@@ -70,6 +97,12 @@ Larry~M Hyman. 1995.
 \newblock Nasal consonant harmony at a distance the case of yaka.
 \newblock \emph{Studies in African Linguistics}, 24(1):6--30.
 
+\bibitem[{Jardine(2016)}]{jardine2016learning}
+Adam Jardine. 2016.
+\newblock Learning tiers for long-distance phonotactics.
+\newblock In \emph{Proceedings of the 6th Conference on Generative Approaches
+  to Language Acquisition North America (GALANA 2015)}, pages 60--72.
+
 \bibitem[{Jardine and Heinz(2016)}]{JardineHeinz16}
 Adam Jardine and Jeffrey Heinz. 2016.
 \newblock \href {https://aclweb.org/anthology/Q/Q16/Q16-1007.pdf} {Learning
@@ -81,6 +114,13 @@ Adam Jardine and Kevin McMullin. 2017.
 \newblock Efficient learning of tier-based strictly $k$-local languages.
 \newblock In \emph{Language and Automata Theory and Applications, 11th
   International Conference}, LNCS, pages 64--76. Springer.
+
+\bibitem[{Mahalunkar and Kelleher(2018)}]{mahalunkar2018using}
+Abhijit Mahalunkar and John~D Kelleher. 2018.
+\newblock Using regular languages to explore the representational capacity of
+  recurrent neural architectures.
+\newblock In \emph{International Conference on Artificial Neural Networks},
+  pages 189--198. Springer.
 
 \bibitem[{Mayer and Major(2018)}]{MayerMajor18}
 Connor Mayer and Travis Major. 2018.
@@ -109,6 +149,17 @@ Kevin McMullin and Gunnar Hansson. 2016.
 \newblock \href {https://doi.org/10.3765/amp.v2i0.3750} {Long-distance
   phonotactics as tier-based strictly 2-local languages}.
 \newblock \emph{Proceedings of the Annual Meetings on Phonology}, 2(0).
+
+\bibitem[{Oncina and Garc\'{\i}a(1991)}]{OncinaGarcia91}
+J.~Oncina and P.~Garc\'{\i}a. 1991.
+\newblock \emph{Inductive learning of subsequential functions}. Univ.
+  Politecnica de Valencia, Tech. Rep., DSIC II-34.
+
+\bibitem[{Rasin et~al.(2019)Rasin, Lan, and Katzir}]{rasin2019simultaneous}
+Ezer Rasin, Nur Lan, and Roni Katzir. 2019.
+\newblock Simultaneous learning of vowel harmony and segmentation.
+\newblock \emph{Proceedings of the Society for Computation in Linguistics},
+  2(1):353--357.
 
 \bibitem[{Walker(2000)}]{WalkerYaka}
 Rachel Walker. 2000.

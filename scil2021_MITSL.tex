@@ -108,7 +108,7 @@
 
 \newcommand\BibTeX{B\textsc{ib}\TeX}
 
-\title{Instructions for ACL 2020 Proceedings}
+\title{Learning Interactions of Local and Non-Local Constraints from Positive Input}
 
 \author{First Author \\
   Affiliation / Address line 1 \\
@@ -567,7 +567,7 @@ This results is unaffected, once we factor the cost of generating the set of $2$
 
 \subsection{The Algorithm}
 
-This paper's algorithm  takes as input a set $I$ of strings over an alphabet $\Sigma$, and returns an MITSL$^2_2$ grammar $G=G_1\wedge G_2\wedge ... \wedge G_n$ such that $G_i=\tup{C_i,R_i}$ --- where each $C_i$ is a set of contexts in bigram formats, and each $R_i$ is a set of $2$-local constraints over contexts, represented as $4$-factors.
+This paper's algorithm  takes as input a set $I$ of strings over an alphabet $\Sigma$, and returns an MITSL$^2_2$ grammar $G=\bigwedge\tup{C_i,R_i}$ --- where each $C_i$ is a set of contexts in bigram formats, and each $R_i$ is a set of $2$-local constraints over contexts, represented as $4$-factors.
 
 As mentioned before, we adopt an approach rooted in grammatical inference, following the identification in the limit learning paradigm \cite{gold1967language}, with polynomial bounds on time and data \cite{de2010grammatical}.\@
 Because of this, we make the fundamental assumption that the sample data in input to the learning algorithm is a \emph{characteristic sample} for the targetted MITSL  language --- that is, it contains all the information necessary to distinguish a specific learning target (i.e., the phonological MITSL phenomenon) from any other potential targets present in the input.
@@ -624,12 +624,14 @@ That is, we want to explore which symbols can act as blockers for a specific con
 Recall now the notion of $2$-paths, which denote precedence relations between two symbols in the language, augmented with sets of all intervening symbols.
 Thus, by examining the set of $2$-paths present in the training data, we can determine which bigrams are freely distributed with respect to the $4$-gram $\rho_1\rho_2$ that is known to be banned on some tier. 
   Specifically, if all of the attested $\tup{\rho_1, X, \rho_2}$ $2$-paths that include an intervening $\sigma \in \facn{2}(\Sigma^*)$ are likewise attested \emph{without} an intervening $\sigma$, the algorithm removes that bigram from the tier, since the presence of $\rho_1\ldots{}\rho_2$ is not dependent on that intervening bigram.
-Therefore , given a tier associated to the inout-sensitive constraint  $\rho_1\rho_2$, only those elements that are not freely distributed with respect to  $\rho_1\rho_2$ will remain on the tier.
+Therefore , given a tier associated to the input-sensitive constraint  $\rho_1\rho_2$, only those elements that are not freely distributed with respect to  $\rho_1\rho_2$ will remain on the tier.
 As the algorithm will instantiate a tier for each unattested   $\rho_1\rho_2$ in the input sample --- and  with the assumption that the input is a characteristic sample  --- this elimination procedure guarantees that the algorithms will converge to the full set of constraints and blockers for the target language.
   The crucial difference from \citet{McMullinSCIL2019}'s MTSL algorithm is that here the input sample needs to be representative of alternations between bigrams in the language, instead of elements in $\Sigma$.
-  Note howveer that this complication is implicit within the definition of ITSL constraints, since they tie the distribution of segments in a language to their local \emph{and} non-local contexts symultaneously.
+  Note however that this complication is implicit within the definition of ITSL constraints, since they tie the distribution of segments in a language to their local \emph{and} non-local contexts simultaneously.
+  Note that, because of this ``project everything and then remove'' strategy, the learner trivially also infers simple local constraints in the input string, which are enforced on tiers where every element of $\Sigma$ is also an element of the tier (i.e. a trivial tier).
+  This is consistent with the definition of MITSL, and it is actually optimal, since it makes the algorithm truly able to capture both local and long-distance dependencies in the phonotactic of a language.
 
-A peculiarity of our specific implementation is that the MITSL grammar returned is in its a specific canonical form.
+Finally, a peculiarity of our specific implementation is that the MITSL grammar returned is in its a specific canonical form.
 That is, by assigning each tier to a single constraint,  it redundantly ties even  constraints that could co-exist on the same tier to distinct tiers.
 Additionally, as a consequence of treating bigrams as unary symbols,  when a segment is freely distributed with respect to its contexts --- i.e., it gets projected on a tier independently on the context --- the algorithm will still treat each bigram as a distinct element.
 For instance, consider $\Sigma =\{ a, e, o \}$ and assume  $e$ a tier element independently of context.
@@ -639,20 +641,107 @@ In practice, it is trivially possible to add a unification step to the tier and 
 However note that, while redundant, these two aspects of the representation learned by the algorithm are in line with our assumptions about the nature of MITSL dependencies and do not affects the ``naturalness" of the generalization.
 
 The following section discusses the performance of the algorithm on an initial set of test data.
-We also discuss how the way the algorithm instantiates tiers does have consequences for the class of learnable patterns.
+We also discuss how the way the algorithm instantiates tiers affects the class of learnable patterns.
 
 
 \section{Evaluation\footnote{A Python implementation of the learning algorithm and testing tools is available at ADD LINK TO ANONYMOUS NOTEBOOK}}
 
+Setting up to evaluating the algorithm, it is important to underline once again that, consistently with previous work on subregular learners,  probability plays no role in the learning approach we outlined.
+As an obvious consequence, it is trivial to point out that the algorithm's generalizations are weak with respect to noisy data, since exceptions to the target pattern are treated equally to any other strings independently of their frequency.
+Thus, in what follows we set up a set of preliminary evaluation cases that produce input samples devoid of exceptions.
+The reader will rightfully object that this is rather unnatural for a natural language phonotactic perspective.
+However, it is important to note that probabilistic approaches are not intrinsically incompatible with the MITSL learner (nor with any learner in this tradition).
+For the sake of this paper though, the focus is on whether it is possible to learn MISTL$^2_2$ languages efficiently, inferring the tiers from perfect data.
+This  factorization approach to the learning problem is standard in computational learning theory, as it disentangles the problem of handling noisy input from that of navigating the structure of the learning space \cite[a.o.]{OncinaGarcia91,jardine2016learning,JardineHeinz16}.
+
+\subsection{Learnable Patterns}
+
+We evaluate the  MISTL$^2_2$ learner on four distinct patterns representative of the classes of language the algorithm is designed to be successful over, inspecting the ability of the learner to infer grammars fully representative of the input language.
+Note that we generate input samples from every language $L$ we test via random generation of strings from $\Sigma^*$ consistent with specified tier constraints.
+Thus, each sample is not guaranteed to be a characteristic sample.
+In this first evaluation, we set the cardinality of the input sample for each language at $1000$ --- which simulations show being sufficient for the learner to ifner the correct patter for every language analyzed.
+
+
+\paragraph{An Artificial ITSL$^2_2$ Pattern} Since MITSL is a proper extension of ITSL, we first test the learner on a language with a single input-sensitive rule. Using an artificial patter instead of a (even simplified) natural language pattern allows us to keep the target generalization transparent and to use a small alphabet set. Specifically, we generate an input sample for an ITSL language $L_1$ with $\Sigma = \{a, e, o, x\}$ such that $o$ immediately before $x$ prohibits $e$ to appear anywhere in the string. 
+For instance,  $eaaxaae,axaexeeexx,eaoxaao \in L_1$, while $oxaxe \notin L_1$.
+The learner should infer that the correct grammar projects $o$ on the tier banning $^*oe$ iff $o$ is immediately followed by $x$, and also projects $e$ in every context.
+This is exactly what the algorithm learns, with the representational peculiarities discussed above.
+In particular, since the projection of $e$ is independent of context, instead of a single tier the learner instantiates a tier for every $4$-gram  $^*oxe\sigma$ and   $^*ox\sigma e$, where $\sigma$ is every element of $\Sigma = \{a, e, o, x\}$.
+For each such tiers, the algorithm infers that $ox$ is always projected, as is the corresponding bigram containing $e$.
+%Note that the target constraint is learned even for smaller sized of the input sample, but with a grammar that --- while perfectly compatible with the input data --- is not consistent with the original grammar originating the data.
+%For instance, with an input sample of $100$ strings, the algorithm learns that $ao$ is a 
+
+\paragraph{First-Last Harmony}
+We then test a second ITSL$^2_2$ often discussed in the formal language literature on the complexity of phonotactics: an harmonic dependency between the first and the last element in the string.
+For instance, assuming that the first and last symbols in a string are vowels, the requirement might be that they agree in height.
+Specifically, we consider a language $L_{FL}$ with $\Sigma =\{ a, o, x\}$, and strings in$L_{FL}$  as usual enriched with start ($\rtimes$) and end ($\ltimes$) symbols.
+Then, we generate data such that $^*\rtimes ao\ltimes$ $^*\rtimes oa\ltimes$ should be banned a tier.
+For instance, $axaxoaxa, oaaxaxoaxo \in L_{FL}$ but  $oxaxoaxa, aaxaxoaxo \notin L_{FL}$.
+This pattern is worth testing in addition to the one we used above, as it requires both elements in the constraint to be sensitive to their local context (the end and start symbol, respectively).
+As expected, the learned succeeds in generalizing over the input sample, instantiating a distinct tier for each constraint combination.
+
+
+
+\paragraph{An Artificial MTSL$^2_2$ Pattern} As the algorithm is fully successful on a single ITSL pattern, we then test it on the other relevant subclass of MITSL: as MTSL$^2_2$ language with constraints to be enforced on multiple tiers, but with a TSL projection for each tier which does not depend on context.
+Specifically, we generate an artificial language $L_2$ which replicates the idea of a consonant harmony and a vowel harmony process occurring within the same language.
+Specifically, we consider  $L_2$ with $\Sigma = \{a, o, p, b\}$, $T_1=\{a,o\}$, $T_2=\{p,b\}$ and enforce constraints such that $R_1 = \{^*ao, ^*oa\}, R_2= \{^*bp, ^*pb\}$.
+For instance, $apapp, abbap, popooo \in L_2$ but  $apabo, appoppp \notin L_2$.
+As expected, as an extension of  \citet{McMullinSCIL2019}'s MTSL inference algorithm, the learned successfully infers the full grammar.
+As the algorithm still considers the patter an MITSL one, it actually needs to consider every possible context for each symbol, and it thus requires a more extensive input set than \citet{McMullinSCIL2019}'s.
+For example, in order to infer ``project $a$'', the current algorithm actually learns to project \{ao, oa, ap, pa, ab, ba\}.
+Importantly, this is exactly what is expected when learning an input-sensitive projection.
+
+
+\paragraph{An Artificial MITSL$^2_2$ Pattern}
+
+Once we are sure that the algorithm generalizes correctly over the appropriate subclasses, we can test it on a proper MITSL$^2_2$ pattern, which combines instances of the dependencies observed above.
+In particular, we generate a language that respects two independent  ITSL$^2_2$ constraints. 
+A first constraint is the one we exploited in our artificial  ITSL$^2_2$ example, such that $o$ immediately before $x$ prohibits $e$ to appear anywhere in the string.
+The second constraint enforces that if $b$ immediately precedes $y$, then any following instance of $d$ is forbidden.
+This replicates a simplified pattern of dissimilation.
+Thus, the whole alphabet for the language is $\Sigma = \{a, e, o, x, b, p, d, y\}$ with  $ \{o, e, x\}$ being relevant only to the first constraint, and $ \{b, y, d\}$ only to the second.
+This corresponds to a language $L_3$ such that $bdox,edyo,byoxpa \in L_3$ but $bydox,oxdye,byoxde \notin L_3$.
+As expected given the previous results, the learner is fully successful on this language, correctly generalizing over the distinct ITSL constraints independently.
+%\paragraph{Yaka Harmonies}
 
 \subsection{Unlearnable Patterns}
 \label{ssec:limits}
 
-However, we note that the algorithm relies on the assumption that each bigram restriction is enforced on at most one tier. A small portion of logically-possible MTSL patterns therefore remains out of reach at present, but the problematic cases are among those which \citet{AksenovaDeshmukh2018} claim to be unattested (those with overlapping tiers, such that $T_1\not\subseteq T_2$ and $T_1\cap T_2\neq\emptyset$). Specifically, the MTSL2IA fails if these overlapping tiers are associated with a single \text{*}$\rho_1\rho_2$ restriction (i.e., when it is blocked by a different symbol on each tier), but it will succeed when they are associated with different restrictions.
+Our simulations show that our MTSL$^2_2$  learner succeeds on a variety complex patterns, given a positive sample representative of the target language.
+However, since our approach relies directly on  \citet{McMullinSCIL2019}'s idea for instantiating multiple tiers, it suffers from the same limitations.
+That is,  there is a portion of logically-possible M(I)TSL patterns which cannot be captured using the current learning strategy.
+To understand why, note again that the algorithm instantiates a tier for each potential constraints.
+From this, it follows immediately that  each restriction can only be enforced on at most one tier. 
+Thus, the learner fails on those patters that have overlapping tier alphabets --- so tiers that share some symbols, but that are not overall in a set/subset relation.
+Specifically, the algorithm is not able to consider overlapping tiers that are associated with a single \text{*}$\rho_1\rho_2$ restriction (e.g., if such constraint needs to be independently blocked by a different symbol on each tier).
+It is important to note that languages exhibiting patterns with these problematic dependencies appear to be unattested, and for reasons that have been speculated to be directly related to ease of learnability, as excluding overlapping tiers exponentially reduces a learner hypothesis space \citep{aksenova2018formal}.
+In this sense, algorithms of the kind presented here can help us  explicitly explore how the characteristics of subclasses of subregular languages are tied to learnability claims.
 
-\section{Conclusion}
+\section{Discussion}
+
+ This paper proposes a grammatical  inference algorithm to learn multiple input-sensitive tier-based strictly local languages \citep[MITSL;][]{desanto2019structure} from positive data only, once the locality of the tier-constraints and of the tier-projection function is set to two (MITSL$^2_2$).
+The algorithm makes use of the characteristics of the language class in order to guide its exploration of the learning space.
+We provided a Python implementation, and discussed simulations demonstrating the learner's success over four artificial languages belonging to subclasses of MITSL$^2_2$ languages.
+Thus, this paper contributes to the growing array of results for the efficient learnability of classes in the subregular hierarchy.
+
+While the learner succeeds over languages belonging to the target class, there are several limitations towards its use as a practical learning algorithm for natural language phonotactics.
+One usual critique of algorithms of this kind is the unrealistic assumptions made about the nature of the input sample.
+First of all, while it is true that these algorithms are only guaranteed to converge to the correct grammar if the sample is a characteristic, that doesn't mean that the algorithm will fail in other cases.
+The condition on the input comes from the fact that this learning approaches give us converging guarantees.
+In this sense, our qualitative evaluation is meant as a first step toward a more extensive study of the general learning performance of these approaches, when varying the coverage of the input sample ---  in the spirit of what recently suggested in \citep{aksenova2020tool}.
 
 
+Similarly, an obvious issue when applying and testing this algorithm to natural language data will come from its inability to deal with exceptions and noisy input in general.
+Obviously, exceptions in the data could be handled by developing probabilistic versions of the learner. 
+Note that, while formal languages were discussed here as categorical in nature, they admit stochastic counterparts.
+A stochastic version of a learning algorithms for MTSL languages could for instance take into consideration the frequency of a specific path before removing a symbol from the tier.
+It is also reasonable to conceive of versions of this algorithm taking natural phonotactic classes into account in order to discriminate between possible conceivable hypothesis about the a tier in presence of contradicting data.
+Crucially though, the results in this paper show how inferring tiers and input-sensitive tier constraints can be achieved without \emph{a priori} information about them.
+The strategy formulated here could then be combined with learning approaches that take advantage of different aspects of the nature of the input data \cite{gouskova2020inducing,rasin2019simultaneous}.
+
+Moreover, the transparent way our algorithm explores the learning space suggests that these approaches can be used as a baseline to evaluate the needs of more opaque learning strategies with respect to different kinds of input, in line with previous work combining  grammatical inference techniques to blackbox learning models \citep[a.o.]{avcu2017subregular,mahalunkar2018using}.
+Moreover, recasting ITSL structural projection as a learning problem highlighted how input-sensitive dependencies are related to symbols in the input strings, bringing intuitions that could be incorporated into other approaches to learning TSL languages and their extensions \citep{burness2020modelling}.
+ 
 \bibliography{sstsl.bib}
 \bibliographystyle{acl_natbib}
 
