@@ -477,14 +477,14 @@ Specifically, we consider a language $L_{FL}$ with $\Sigma =\{ a, o, x\}$.
 Then, we generate data such that $^*\rtimes ao\ltimes$, $^*\rtimes oa\ltimes$ should be banned a tier.
 For instance, $axaxoaxa, oaaxaxoaxo \in L_{FL}$ but  $oxaxoaxa, aaxaxoaxo \notin L_{FL}$.
 This pattern is worth testing in addition to the one we used above, as it requires both elements in the constraint to be sensitive to their local context (the end and start symbol, respectively).
-As expected, the learned succeeds in generalizing over the input sample, instantiating a distinct tier for each constraint combination.
+As expected, the learner succeeds in generalizing over the input sample, instantiating a distinct tier for each constraint combination.
 
 
 \paragraph{An Artificial MTSL$^2_2$ Pattern} As the algorithm is fully successful on ITSL patterns, we then test it on the other relevant subclass of MITSL: an MTSL$^2_2$ language with constraints to be enforced on multiple tiers, but with a TSL projection for each tier which does not depend on context.
 Specifically, we generate an artificial language $L_2$ which replicates the idea of a consonant harmony and a vowel harmony process occurring within the same language.
 We consider  $L_2$ with $\Sigma = \{a, o, p, b\}$, $T_1=\{a,o\}$, $T_2=\{p,b\}$ and enforce constraints such that $R_1 = \{^*ao, ^*oa\}, R_2= \{^*bp, ^*pb\}$.
 For instance, $apapp, abbap, popooo \in L_2$ but  $apabo, appoppp \notin L_2$.
-As expected, the learned successfully infers the full grammar.
+As expected, the learner successfully infers the full grammar.
 As the algorithm still considers the patter an MITSL one, it actually needs to consider every possible context for each symbol, and it thus requires a more extensive input set than \citet{McMullinSCIL2019}'s.
 For example, in order to infer ``project $a$'', the current algorithm actually learns to project \{ao, oa, ap, pa, ab, ba\}.
 Importantly, this is exactly what is expected when learning an input-sensitive projection.
