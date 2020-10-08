@@ -52,7 +52,7 @@
 \usepackage{float}
 \usepackage{gastex}
 \usepackage[normalem]{ulem}
-
+\usepackage{hyperref}
 %=======================Additional  Commands ==============%
 \usepackage{mycommands}
 \newcommand{\unproject}[1]{\ensuremath{\downarrow #1}}
@@ -454,7 +454,7 @@ However, it is worth noting that probabilistic approaches are not intrinsically 
 For the sake of this paper though, the focus is on whether it is  \emph{in principle} possible to learn MISTL$^2_2$ languages efficiently, inferring  tiers and constraints from ideal data without \emph{a priori} knowledge about their content.
 This  factorization approach to the learning problem is standard in computational learning theory, as it disentangles the problem of handling noisy input from that of navigating the structure of the learning space \cite[a.o.]{OncinaGarcia91,jardine2016learning,JardineHeinz16}.
 
-\subsection{Learnable Patterns\footnote{A Python implementation of the learning algorithm and testing tools is available at ADD LINK TO ANONYMOUS NOTEBOOK}}
+\subsection{Learnable Patterns\footnote{An anonymized Python implementation of the learning algorithm and testing tools is available  \href{https://osf.io/hws2y/?view_only=d9ba02df8c8c4af5938f0a52d0339a35}{here}.}}
 
 We evaluate the  MISTL$^2_2$ learner on patterns representative of  four distinct  language classes,  inspecting the ability of the learner to infer grammars fully representative of the input language.
 Using artificial patterns instead of (even simplified) natural language ones allows us to keep the target generalization transparent by relying on a small alphabet set.
